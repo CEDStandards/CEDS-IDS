@@ -1,22 +1,39 @@
-﻿/*    Common Education Data Standards (CEDS)
-      Version 7.1
-      Normalized Data Schema (NDS)
-      
-	  Model database _CEDS table population script
-	  
-      This script populates the CEDS element and mapping tables in a NDS version 7.1 model database.  
-      
-      WARNING!!!!
-      This script is intended for use on a model database and should not 
-      be used on a database that contains data.
-      
-      The script was generated from a model database 
-      hosted on a Microsoft SQL Server 2012 platform.  
-      
-      Questions on this script can be sent to ceds@ed.gov
-      
-      More information on the data model is available at the CEDS website:  
-      http://ceds.ed.gov
+﻿/*    
+
+	Copyright 2019 Common Education Data Standards
+	
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	    http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+
+	Common Education Data Standards (CEDS)
+    Version 7.1
+    Integration Data Schema (IDS)
+    
+	Model database _CEDS table population script
+	
+    This script populates the CEDS element and mapping tables in a IDS version 7.1 model database.  
+    
+    WARNING!!!!
+    This script is intended for use on a model database and should not 
+    be used on a database that contains data.
+    
+    The script was generated from a model database 
+    hosted on a Microsoft SQL Server 2012 platform.  
+    
+    Questions on this script can be sent to ceds@ed.gov
+    
+    More information on the data model is available at the CEDS website:  
+    http://ceds.ed.gov
       	  
 */ 
 

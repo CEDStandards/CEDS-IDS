@@ -1,28 +1,44 @@
-/*    Common Education Data Standards (CEDS)
-      Version 7.1
-      Normalized Data Schema (NDS)
-      
-	  Model database update script
-	  
-      This script updates a NDS version 7 model database to version 7.1.  
-      
+/*    
 
-      WARNING!!!!
-      This script is intended for use on a model database and should not 
-      be used on a database that contains data.
-      
-      This script contains potentially breaking changes.  Queries are included to preserve data.  However, programming logic should be adjusted were necessary for these changes.
+	Copyright 2019 Common Education Data Standards
+	
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	    http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
 
-      Search for "WARNING!!!!" through this update script to see said changes and make necessary adjustments before executing.
+	Common Education Data Standards (CEDS)
+    Version 7.1
+    Integration Data Schema (IDS)
+    
+	Model database update script
+	
+    This script updates a NDS version 7 model database to version 7.1.  
+    
+
+    WARNING!!!!
+    This script is intended for use on a model database and should not 
+    be used on a database that contains data.
+    
+    This script contains potentially breaking changes.  Queries are included to preserve data.  However, programming logic should be adjusted were necessary for these changes.
+
+    Search for "WARNING!!!!" through this update script to see said changes and make necessary adjustments before executing.
 
 
-      The script was generated from a model database 
-      hosted on a Microsoft SQL Server 2012 platform.  
-      
-      Questions on this script can be sent to ceds@ed.gov
-      
-      More information on the data model is available at the CEDS website:  
-      http://ceds.ed.gov
+    The script was generated from a model database 
+    hosted on a Microsoft SQL Server 2012 platform.  
+    
+    Questions on this script can be sent to ceds@ed.gov
+    
+    More information on the data model is available at the CEDS website:  
+    http://ceds.ed.gov
       	  
 */ 
 
