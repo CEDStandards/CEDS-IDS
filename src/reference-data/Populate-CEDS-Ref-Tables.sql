@@ -37,8 +37,8 @@
       	  
 */ 
 
--- Uncomment next two lines to update a database named CEDS-NDS-V7_1 or specify appropriate DB name for your server.
---USE [CEDS-NDS-V7_1];
+-- Uncomment next two lines to update a database named CEDS-IDS-V7_1 or specify appropriate DB name for your server.
+--USE [CEDS-IDS-V7_1];
 --GO
 
 
