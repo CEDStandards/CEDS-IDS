@@ -20,7 +20,7 @@
     
 	Model database update script
 	
-    This script updates a NDS version 7 model database to version 7.1.  
+    This script updates a IDS version 7 model database to version 7.1.  
     
 
     WARNING!!!!
@@ -42,8 +42,8 @@
       	  
 */ 
 
--- Uncomment next two lines to update a database named CEDS-NDS-V7_1 or specify appropriate DB name for your server.
---USE [CEDS-NDS-V7_1];
+-- Uncomment next two lines to update a database named CEDS-IDS-V7_1 or specify appropriate DB name for your server.
+--USE [CEDS-IDS-V7_1];
 --GO
 
 
