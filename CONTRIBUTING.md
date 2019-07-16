@@ -49,6 +49,7 @@ in the data modeling.
   * PS
   * Workforce
 * Tables and elements used across data domains should be normalized for reuse.
+* Reference (aka lookup) tables are prefixed with "Ref". 
 
 ## Keys
 
