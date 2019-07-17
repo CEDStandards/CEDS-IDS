@@ -71,7 +71,7 @@ If you find a use case for a table or element that is not in CEDS, please follow
 
 * Avoid extensions if possible.  The further from the standard your database becomes, the more difficult it is to stay in alignment with the standards and to use tools and resources available in the marketplace.  
 * [Fork this repository](https://help.github.com/articles/fork-a-repo/) and store your extensions  in that fork.  This will make it easier to stay up-to-date with the main repository and to submit pull requests to the main repository.
-* Avoid making changes to the existing columns, table, and other objects.  Below are recommended methods to extend the IDS.  We will never create an upgrade script that will affect your custom extension objects.
+* Avoid making changes to the existing columns, table, and other objects.  Below are recommended methods to extend the IDS.  Upgrade script will never be created that will affect your custom extension objects.
   * Create a new table.  
   * Add fields to existing tables.
   * Create a new index.
