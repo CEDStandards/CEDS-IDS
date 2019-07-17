@@ -18,7 +18,7 @@ The database is empty by default.  Proceed with the following instructions to lo
 
 ### Loading CEDS Element Metadata
 
-The full list of CEDS Element metadata is available to load to the CEDS IDS in the form of two tables-\_CEDSElements and \_CEDStoIDSMapping.  \_CEDSElements contains the full list of CEDS Elements and basic metadata.  \_CEDStoIDSMapping contains mapping information that links CEDS Elemenet metadata to the CEDS IDS tables and columns.  
+The full list of CEDS Element metadata is available to load to the CEDS IDS in the form of two tables-\_CEDSElements and \_CEDStoIDSMapping.  \_CEDSElements contains the full list of CEDS Elements and basic metadata.  \_CEDStoIDSMapping contains mapping information that links CEDS Element metadata to the CEDS IDS tables and columns.  
 
 1. Open the script at /src/metadata/Populate-CEDS-Element-Tables.sql using your preferred SQL client.
 2. Connect to your CEDS IDS database instance. 
@@ -36,7 +36,7 @@ Many elements in CEDS contain a finite list of options (e.g. Disability Type).  
 
 ### Upgrading your CEDS IDS
 
-We will provide rerunable scripts to incrementally upgrade your IDS between compatible, incompatible, and alignment versions of the CEDS IDS.  Upgrade scripts will be rerunable to make it safe and easy to perform upgrades.  Upgrade scripts contain CEDS metadata and reference table inserts and updates.
+We will provide re-runnable scripts to incrementally upgrade your IDS between compatible, incompatible, and alignment versions of the CEDS IDS.  Upgrade scripts will be re-runnable to make it safe and easy to perform upgrades.  Upgrade scripts contain CEDS metadata and reference table inserts and updates.
 
 1. Make sure you know what version of the CEDS IDS you are working with.  
 2. Open the appropriate upgrade script at /src/upgrade using your preferred SQL client.
