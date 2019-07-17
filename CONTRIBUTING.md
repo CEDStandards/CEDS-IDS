@@ -12,9 +12,6 @@ into the project you can [fork this repository](https://help.github.com/articles
 create an issue and attach a completed [use case document](/doc/CEDS%20IDS%20Use%20Case.docx?raw=true) that details the
 parameters for your changes.
 
-Please review our [code of conduct](https://github.com/CEDStandards/CEDS-Elements/blob/master/doc/Contributor%20Code%20of%20Conduct.docx?raw=true) and [submission and governance process](https://github.com/CEDStandards/CEDS-Elements/blob/master/doc/Submission%20and%20Governance%20Process.docx?raw=true)
-for further details.
-
 # Integration Data Store Design Guidelines
 
 ## Naming Conventions
