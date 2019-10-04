@@ -1,20 +1,104 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: CEDS Integrated Data Store and Data Warehouse Use Case
+about: ''
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+This is for capturing needs not currently supported by the CEDS model. Please do not send or share actual data as examples in this document or in attachments.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Author(s)**
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**Authoring Organization(s)**
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+**Target Data Needed** 
+
+**Use Case Title**
+Provide a concise description that defines the use case.
+
+**Use Case Overview**
+Provide a concise, high-level description of the actions of the use case. While being concise, the description should cover all possible actions for the use case.
+
+**Pull Request Number(s) (If applicable)**
+
+**Use Case Background**
+Provide information related to why these changes/additions are needed.
+
+
+**Components Affected**
+Delete everything from the list below except the components affected:
+
+*CEDS Integrated Data Store (complete IDS Design Overview Table)*
+
+*CEDS Data Warehouse (complete DW Design Overview Table)*
+
+*CEDS Data Migrations (complete Data Migration Impact Analysis Table)*
+
+
+
+**CEDS Element Gap Analysis**
+Provide link to CEDS Align Map or Connection.
+
+---
+
+
+**INTEGRATED DATA STORE DESIGN OVERVIEW**
+
+
+**Description of Proposed Changes**
+Provide a concise description of the proposed changes. 
+
+**As-Is Diagram**
+Attach in issue in GitHub.
+
+**Proposed To-Be Diagram**
+Attach in issue in GitHub.
+
+**Impact Analysis**
+To be completed by the CEDS Team
+
+**Community Recommendations**
+
+---
+
+
+**DATA WAREHOUSE DESIGN OVERVIEW (Includes Dim, Fact, and Report tables)**
+
+
+**Description of Proposed Changes**
+Provide a concise description of the proposed changes.
+
+**As-Is Diagram**
+Attach in issue in GitHub.
+
+**Proposed To-Be Diagram**
+Attach in issue in GitHub.
+
+**Impact Analysis**
+To be completed by the CEDS Team.
+
+**Community Recommendations**
+
+---
+
+**DATA MIGRATION IMPACT ANALYSIS**
+
+
+**Description of Proposed Changes**
+Provide a concise description of the proposed changes.
+
+**New Business Rule**
+Provide a concise and comprehensive description of the new business rule.
+
+**Existing Business Rule**
+Provide a concise and comprehensive description of the existing business rule.
+
+**Changed Business Rule**
+Provide a concise and comprehensive description of the changes to be made to the business rule.
+
+**Impact Analysis**
+To be completed by the CEDS Team. 
+
+**Community Recommendations**
