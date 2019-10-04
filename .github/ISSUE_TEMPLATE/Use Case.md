@@ -1,6 +1,6 @@
 ---
 name: CEDS Integrated Data Store and Data Warehouse Use Case
-about: ''
+about: 'Suggest additions or edits to Integrated Data Store or Data Warehouse'
 title: ''
 labels: ''
 assignees: ''
