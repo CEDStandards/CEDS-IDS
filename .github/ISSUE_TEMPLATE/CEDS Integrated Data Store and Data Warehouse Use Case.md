@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-This is for capturing needs not currently supported by the CEDS model. Please do not send or share actual data as examples in this document or in attachments.
+This is for capturing needs not currently supported by the CEDS model. Please do not send or share actual data as examples in this issue or in attachments.
 
 **Author(s)**
 
@@ -51,15 +51,10 @@ Provide link to CEDS Align Map or Connection.
 Provide a concise description of the proposed changes. 
 
 **As-Is Diagram**
-Attach in issue in GitHub.
+Add as an attachment in this issue.
 
 **Proposed To-Be Diagram**
-Attach in issue in GitHub.
-
-**Impact Analysis**
-To be completed by the CEDS Team
-
-**Community Recommendations**
+Add as an attachment in this issue.
 
 ---
 
@@ -71,15 +66,10 @@ To be completed by the CEDS Team
 Provide a concise description of the proposed changes.
 
 **As-Is Diagram**
-Attach in issue in GitHub.
+Add as an attachment in this issue.
 
 **Proposed To-Be Diagram**
-Attach in issue in GitHub.
-
-**Impact Analysis**
-To be completed by the CEDS Team.
-
-**Community Recommendations**
+Add as an attachment in this issue.
 
 ---
 
@@ -98,7 +88,3 @@ Provide a concise and comprehensive description of the existing business rule.
 **Changed Business Rule**
 Provide a concise and comprehensive description of the changes to be made to the business rule.
 
-**Impact Analysis**
-To be completed by the CEDS Team. 
-
-**Community Recommendations**
