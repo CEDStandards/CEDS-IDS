@@ -75,5 +75,5 @@ CEDS Elements version = 8.0.0.0
 Note: The CEDS Collaborative Exchange contains resources contributed by stakeholders. These resources should contain the compatible version they were created under.  The versions are not changed for a resource unless a stakeholder updates them to function under a newer version.
 
 **License**
-This project is licensed under the Apache 2.0 License - see the LICENSE file for details.
+This project is licensed under the [Apache 2.0 License](https://github.com/CEDStandards/CEDS-Collaborative-Exchange/blob/master/LICENSE) - see the LICENSE file for details.
 
