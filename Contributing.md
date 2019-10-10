@@ -1,3 +1,5 @@
+**Contributing**
+
 Contributions are welcome from the community. For questions and discussion threads see the CEDS [CEDS Community of Practice website]( https://ceds.grads360.org/#program).
 
 **Submitting Code Changes**
