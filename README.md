@@ -34,7 +34,7 @@ CEDS Maintainers  will provide rerunnable scripts to incrementally upgrade your 
 3.	Execute the script.
 
 ## Contributing
-Please read Contributing.md for details on the process for submitting use cases and pull requests.
+Please read [Contributing.md](https://github.com/CEDStandards/CEDS-IDS/blob/master/Contributing.md) for details on the process for submitting use cases and pull requests.
 
 ## Versioning
 The CEDS open source community uses a customized version of Explicit Versioning. To keep the various CEDS open source projects in alignment with the CEDS Elements, the concept of "disruptive" releases has been replaced with "alignment" releases. These releases ensure that the data models are in sync with the official, CEDS community approved list of CEDS Elements. For the versions available, see the tags on this repository.
