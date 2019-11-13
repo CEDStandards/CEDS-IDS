@@ -55,9 +55,9 @@ The IDS is designed to store data longitudinally.  As you design new tables, ens
 
 ### Extending the IDS
 If you find a use case for a table or element that is not in CEDS, please follow these recommendations.
-* Avoid extensions if possible.  The further from the standard your database becomes, the more difficult it is to stay in alignment with the standards and to use tools and resources available in the marketplace.  
-* [Fork this repository](https://help.github.com/articles/fork-a-repo/) and store your extensions  in that fork.  This will make it easier to stay up-to-date with the main repository and to submit pull requests to the main repository.
-* Avoid making changes to the existing columns, table, and other objects.  Below are recommended methods to extend the IDS.  Upgrade script will never be created that will affect your custom extension objects.
-  * Create a new table.  
-  * Add fields to existing tables.
-  * Create a new index.
+* Avoid extensions if possible.  The further from the standard your database becomes, the more difficult it is to stay in alignment with the standards and to use tools and resources available in the marketplace.
+* [Fork this repository](https://help.github.com/articles/fork-a-repo/).  This will make it easier for you to stay up-to-date with the main repository and to submit pull requests.  Store extension tables in a separate repository to avoid conflicts.  
+* Avoid making changes to the existing columns, table, and other objects.  Below is the recommended method to extend the IDS.  Upgrade script will never be created that will affect your custom extension objects.
+  * If you wish to extend an existing table, create a new table and create a foreign key reference to its parent.  
+  * Create a new independent new table, such as a reference table to store proprietary option sets.
+  * Add new option set values to existing reference tables.  Set the JurisdictionId value to the organization ID that represents your organization (from the OrganizationDetails table).  This provides separation from CEDS values, which have JurisdictionId set to NULL.  
