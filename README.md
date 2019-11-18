@@ -28,7 +28,7 @@ Many elements in CEDS contain a finite list of options (e.g. Disability Type). T
 3.	Execute the script.
 
 ### Upgrading your CEDS IDS
-CEDS Maintainers  will provide rerunnable scripts to incrementally upgrade your IDS between compatible, incompatible, and alignment versions of the CEDS IDS. Upgrade scripts will be rerunnable to make it safe and easy to perform upgrades. Upgrade scripts contain CEDS metadata and reference table inserts and updates.
+The CEDS team  will provide rerunnable scripts to incrementally upgrade your IDS between compatible, incompatible, and alignment versions of the CEDS IDS. Upgrade scripts will be rerunnable to make it safe and easy to perform upgrades. Upgrade scripts contain CEDS metadata and reference table inserts and updates.
 1.	Based on your current version, download the appropriate upgrade script at /src/upgrade using your preferred SQL client.
 2.	Connect to your CEDS IDS database instance.
 3.	Execute the script.
