@@ -33,8 +33,11 @@ The CEDS team  will provide rerunnable scripts to incrementally upgrade your IDS
 2.	Connect to your CEDS IDS database instance.
 3.	Execute the script.
 
+## Submitting a Use Case
+Use cases may be submitted through the [Issues](https://github.com/CEDStandards/CEDS-IDS/issues) tab by clicking on **New Issue** and then **Get Started** which is located next to **CEDS Integrated Data Store and Data Warehouse Use Case**.
+
 ## Contributing
-Please read [Contributing.md](https://github.com/CEDStandards/CEDS-IDS/blob/master/Contributing.md) for details on the process for submitting use cases and pull requests.
+Please read [Contributing.md](https://github.com/CEDStandards/CEDS-IDS/blob/master/Contributing.md) for details on the process for submitting pull requests.
 
 ## Versioning
 The CEDS open source community uses a customized version of Explicit Versioning. To keep the various CEDS open source projects in alignment with the CEDS Elements, the concept of "disruptive" releases has been replaced with "alignment" releases. These releases ensure that the data models are in sync with the official, CEDS community approved list of CEDS Elements. For the versions available, see the tags on this repository.
