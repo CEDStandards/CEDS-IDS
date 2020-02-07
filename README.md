@@ -23,7 +23,7 @@ The two tables will be created and populated with the CEDS Element metadata.
 
 ### Loading CEDS Option Set Values to Reference Tables
 Many elements in CEDS contain a finite list of options (e.g. Disability Type). To load these options into the reference tables (aka lookup tables), proceed with the following instructions.
-1.	Open the script at /src/Populate-CEDS-Ref-Tables.sql using your preferred SQL client.
+1.	Open the script at /src/reference-data/Populate-CEDS-Ref-Tables.sql using your preferred SQL client.
 2.	Connect to your CEDS IDS database instance.
 3.	Execute the script.
 
