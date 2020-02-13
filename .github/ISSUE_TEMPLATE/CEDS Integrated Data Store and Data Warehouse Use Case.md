@@ -1,6 +1,6 @@
 ---
 name: CEDS Integrated Data Store and Data Warehouse Use Case
-about: 'Suggest additions or edits to Integrated Data Store or Data Warehouse'
+about: Suggest additions or edits to Integrated Data Store or Data Warehouse
 title: ''
 labels: ''
 assignees: ''
@@ -12,6 +12,8 @@ This is for capturing needs not currently supported by the CEDS model. Please do
 **Author(s)**
 
 **Authoring Organization(s)**
+
+**Email Address**
 
 **Target Data Needed** 
 
@@ -87,4 +89,3 @@ Provide a concise and comprehensive description of the existing business rule.
 
 **Changed Business Rule**
 Provide a concise and comprehensive description of the changes to be made to the business rule.
-
