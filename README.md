@@ -3,7 +3,7 @@
 # CEDS Integrated Data Store (IDS)
 Welcome to the CEDS Open Source Community!
 
-The Common Education Data Standards (CEDS) Integrated Data Store (IDS) factors the complete set of CEDS elements, entities and attributes with standard technical syntax and 3rd normal form database normalization. The IDS Model provides a standard framework for integration of P-20W data systems through a well-normalized operational data store. It can be used for transactional education data systems, to perform near real-time reporting, and as a standard staging area to load the CEDS Data Warehouse. The CEDS Data Model Guide can be found here [https://ceds.ed.gov/dataModel.aspx].
+The Common Education Data Standards (CEDS) Integrated Data Store (IDS) factors the complete set of CEDS elements, entities and attributes with standard technical syntax and 3rd normal form database normalization. The IDS Model provides a standard framework for integration of P-20W data systems through a well-normalized operational data store. It can be used for transactional education data systems, to perform near real-time reporting, and as a standard staging area to load the CEDS Data Warehouse. The CEDS Data Model Guide can be found here [https://github.com/CEDStandards/CEDS-IDS/tree/master/doc].
 
 ## Getting Started
 ### Fresh Installation
