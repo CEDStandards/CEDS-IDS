@@ -15,8 +15,6 @@ This is for capturing needs not currently supported by the CEDS model. Please do
 
 **Email Address**
 
-**Target Data Needed** 
-
 **Use Case Title**
 Provide a concise description that defines the use case.
 
