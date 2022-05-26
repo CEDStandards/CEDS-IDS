@@ -38,8 +38,8 @@
       	  
 */ 
 
--- Uncomment next two lines to update a database named CEDS-IDS-V10_0_0_0 or specify appropriate DB name for your server.
---USE [CEDS-IDS-V10_0_0_0];
+-- Uncomment next two lines to update a database named CEDS-IDS-V10_0_1_0 or specify appropriate DB name for your server.
+--USE [CEDS-IDS-V10_0_1_0];
 --GO
 
 
