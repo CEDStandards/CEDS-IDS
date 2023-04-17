@@ -10,7 +10,7 @@ The Common Education Data Standards (CEDS) Integrated Data Store (IDS) factors t
 To create a new instance of the CEDS IDS on your SQL Server, perform the following steps.
 1.	Open the database creation script at /src/ddl/CEDS-IDS.sql using your preferred SQL client.
 2.	Connect to the server on which you want to create the CEDS IDS instance.
-3.	Find and replace the existing database name in the script (eg. CEDS-NDS-V7_2_0_0) with the database name of your choice.
+3.	Find and replace the existing database name in the script (eg. CEDS-IDS-V11_0_0_0) with the database name of your choice.
 4.	Run the script.
 The database is empty by default. Proceed with the following instructions to load CEDS Element metadata and CEDS Option Set values into the reference tables.
 
@@ -28,10 +28,11 @@ Many elements in CEDS contain a finite list of options (e.g. Disability Type). T
 3.	Execute the script.
 
 ### Upgrading your CEDS IDS
-The CEDS team  will provide rerunnable scripts to incrementally upgrade your IDS between compatible, incompatible, and alignment versions of the CEDS IDS. Upgrade scripts will be rerunnable to make it safe and easy to perform upgrades. Upgrade scripts contain CEDS metadata and reference table inserts and updates.
-1.	Based on your current version, download the appropriate upgrade script at /src/upgrade using your preferred SQL client.
-2.	Connect to your CEDS IDS database instance.
-3.	Execute the script.
+The CEDS team  will provide scripts to incrementally upgrade your IDS between compatible, incompatible, and alignment versions of the CEDS IDS. Upgrade scripts contain CEDS metadata and reference table inserts and updates.
+1.	Create a back-up of your current IDS database instance.
+2.	Based on your current version, download the appropriate upgrade script at /src/upgrade using your preferred SQL client.
+3.	Connect to your CEDS IDS database instance.
+4.	Execute the script.
 
 ## Submitting a Use Case
 Use cases may be submitted through the [Issues](https://github.com/CEDStandards/CEDS-IDS/issues) tab by clicking on **New Issue** and then **Get Started** which is located next to **CEDS Integrated Data Store and Data Warehouse Use Case**.
