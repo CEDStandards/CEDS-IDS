@@ -10,7 +10,7 @@ The Common Education Data Standards (CEDS) Integrated Data Store (IDS) factors t
 To create a new instance of the CEDS IDS on your SQL Server, perform the following steps.
 1.	Open the database creation script at /src/ddl/CEDS-IDS.sql using your preferred SQL client.
 2.	Connect to the server on which you want to create the CEDS IDS instance.
-3.	Find and replace the existing database name in the script (eg. CEDS-IDS-V11_0_0_0) with the database name of your choice.
+3.	Find and replace the existing database name in the script (eg. CEDS-IDS-V12_0_0_0) with the database name of your choice.
 4.	Run the script.
 The database is empty by default. Proceed with the following instructions to load CEDS Element metadata and CEDS Option Set values into the reference tables.
 
