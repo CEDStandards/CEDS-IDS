@@ -67954,6 +67954,10 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationElementType] WHERE [Code] = '00
 VALUES ('001078', 'Adult Education Provider Type') END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationElementType] 
 SET [Description] = 'Adult Education Provider Type' WHERE [Code] = '001078'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationElementType] WHERE [Code] = '001156') BEGIN INSERT INTO dbo.[RefOrganizationElementType]([Code], [Description])
+VALUES ('001156', 'Organization Type') END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationElementType] 
+SET [Description] = 'Organization Type' WHERE [Code] = '001156'  END
 END
 
 
@@ -71306,7 +71310,206 @@ ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType]
 SET [Definition] = 'Other is specified as the type of institution responsible for providing adult education instructional services.', [SortOrder] = 8.00
 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Adult Education Provider Type' AND r.[Code] = 'Other' END
 END
-
+PRINT N'Populate RefOrganizationType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefOrganizationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Employer') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'Employer', 'Employer', 'A business, firm, institution, or other organization for whom an individual works (including self-employment) in return for financial or other compensation.', 0.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A business, firm, institution, or other organization for whom an individual works (including self-employment) in return for financial or other compensation.', [SortOrder] = 0.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Employer' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'K12School') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'K12School', 'K12 School', 'An institution that provides educational services; has one or more grade groups (PK through 12); has one or more teachers; is located in one or more buildings; has an assigned administrator(s).', 2.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An institution that provides educational services; has one or more grade groups (PK through 12); has one or more teachers; is located in one or more buildings; has an assigned administrator(s).', [SortOrder] = 2.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'K12School' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'LEA') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'LEA', 'Local Education Agency (LEA)', 'An administrative unit at the local level which exists primarily to operate schools or to contract for educational services. These units may or may not be co-extensive with county, city, or town boundaries.', 4.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An administrative unit at the local level which exists primarily to operate schools or to contract for educational services. These units may or may not be co-extensive with county, city, or town boundaries.', [SortOrder] = 4.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'LEA' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'IEU') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'IEU', 'Intermediate Educational Unit (IEU)', 'A regional, multi-services public agency authorized by State law to develop, manage, and provide services, programs, or other support (e.g., construction, food services, technology services) to LEAs.', 6.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A regional, multi-services public agency authorized by State law to develop, manage, and provide services, programs, or other support (e.g., construction, food services, technology services) to LEAs.', [SortOrder] = 6.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'IEU' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'SEA') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'SEA', 'State Education Agency (SEA)', 'The agency of the state charged with primary responsibility for coordinating and supervising public instruction, including the setting of standards for elementary and secondary instruction programs, and it is the state agency that administers federal grant programs.', 8.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'The agency of the state charged with primary responsibility for coordinating and supervising public instruction, including the setting of standards for elementary and secondary instruction programs, and it is the state agency that administers federal grant programs.', [SortOrder] = 8.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'SEA' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Recruiter') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'Recruiter', 'Recruiter', 'An organization responsible for identifying and/or selecting prospective employees to fill vacant positions in an organization.', 10.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An organization responsible for identifying and/or selecting prospective employees to fill vacant positions in an organization.', [SortOrder] = 10.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Recruiter' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EmployeeBenefitCarrier') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'EmployeeBenefitCarrier', 'Employee Benefit Carrier', 'An organization or institution that administers benefit plans or services to a staff member.', 12.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An organization or institution that administers benefit plans or services to a staff member.', [SortOrder] = 12.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EmployeeBenefitCarrier' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EmployeeBenefitContributor') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'EmployeeBenefitContributor', 'Employee Benefit Contributor', 'An individual or organization that contributes monetary, in kind, or other types of contributions to an employee''s benefit plan.', 14.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An individual or organization that contributes monetary, in kind, or other types of contributions to an employee''s benefit plan.', [SortOrder] = 14.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EmployeeBenefitContributor' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'ProfessionalMembershipOrganization') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'ProfessionalMembershipOrganization', 'Professional Membership Organization', 'An association or corporation established for the purpose of providing services on a nonprofit basis to its members.', 16.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An association or corporation established for the purpose of providing services on a nonprofit basis to its members.', [SortOrder] = 16.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'ProfessionalMembershipOrganization' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EducationInstitution') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'EducationInstitution', 'Education Institution', 'A public or private institution, organization, or agency that provides instructional or support services to students or staff at any level.', 18.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A public or private institution, organization, or agency that provides instructional or support services to students or staff at any level.', [SortOrder] = 18.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EducationInstitution' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'StaffDevelopmentProvider') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'StaffDevelopmentProvider', 'Staff Development Provider', 'An individual or organization who provides a planned, structured process through which an individual improves his or her job-related knowledge, skills, or attitudes. Such a process is deigned to enable a staff member to grow within a profession or organization or to attain an initial or additional credential.', 20.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An individual or organization who provides a planned, structured process through which an individual improves his or her job-related knowledge, skills, or attitudes. Such a process is deigned to enable a staff member to grow within a profession or organization or to attain an initial or additional credential.', [SortOrder] = 20.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'StaffDevelopmentProvider' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Facility') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'Facility', 'Facility', 'An installation in which an organization is housed; includes all buildings, structures, and other stationary items that are located on a single site or on contiguous or adjacent sites and that are used for district or system administrative purposes.', 22.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An installation in which an organization is housed; includes all buildings, structures, and other stationary items that are located on a single site or on contiguous or adjacent sites and that are used for district or system administrative purposes.', [SortOrder] = 22.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Facility' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Course') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'Course', 'Course', 'The organization of subject matter and related learning experiences provided for the instruction of students on a regular or systematic basis, usually for a predetermined period of time (e.g., a semester or two-week workshop) to an individual or group of students (e.g., a class).', 24.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'The organization of subject matter and related learning experiences provided for the instruction of students on a regular or systematic basis, usually for a predetermined period of time (e.g., a semester or two-week workshop) to an individual or group of students (e.g., a class).', [SortOrder] = 24.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Course' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CourseSection') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'CourseSection', 'Course Section', 'A setting in which organized instruction of course content is provided to one or more students for a given period of time.', 26.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A setting in which organized instruction of course content is provided to one or more students for a given period of time.', [SortOrder] = 26.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CourseSection' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Program') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'Program', 'Program', 'An organization that supplements the regular school program or serves as early childhood education and care for children prior to reaching school-attendance age. These programs and services are often, but not solely, available through federal, state, or local agencies, non-profit organizations and/or other community-based organizations (or assistance provided by these entities). Services may be instructional or non-instructional in nature, may be direct or in-direct, and may be provided within or outside of a school building.', 28.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An organization that supplements the regular school program or serves as early childhood education and care for children prior to reaching school-attendance age. These programs and services are often, but not solely, available through federal, state, or local agencies, non-profit organizations and/or other community-based organizations (or assistance provided by these entities). Services may be instructional or non-instructional in nature, may be direct or in-direct, and may be provided within or outside of a school building.', [SortOrder] = 28.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Program' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'PostsecondaryInstitution') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'PostsecondaryInstitution', 'Postsecondary Institution', 'An organization that provides educational programs for individuals who have completed or otherwise left educational programs in secondary school(s).', 30.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An organization that provides educational programs for individuals who have completed or otherwise left educational programs in secondary school(s).', [SortOrder] = 30.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'PostsecondaryInstitution' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'AdultEducationProvider') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'AdultEducationProvider', 'Adult Education Provider', 'An organization with information about programs that help adults get the basic skills they need to be productive workers, family members, and citizens.', 32.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An organization with information about programs that help adults get the basic skills they need to be productive workers, family members, and citizens.', [SortOrder] = 32.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'AdultEducationProvider' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'ServiceProvider') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'ServiceProvider', 'Service Provider', 'An organization responsible for administering services to an individual or organization participating in a program or receiving services.', 34.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An organization responsible for administering services to an individual or organization participating in a program or receiving services.', [SortOrder] = 34.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'ServiceProvider' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'AffiliatedInstitution') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'AffiliatedInstitution', 'Affiliated Institution', 'An institution that has an ongoing, functional relationship with the education institution in order to provide improved educational experiences to an individual and/or the school.', 36.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An institution that has an ongoing, functional relationship with the education institution in order to provide improved educational experiences to an individual and/or the school.', [SortOrder] = 36.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'AffiliatedInstitution' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'GoverningBoard') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'GoverningBoard', 'Governing Board', 'An institution that is responsible for the policy decisions of an educational entity.', 38.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An institution that is responsible for the policy decisions of an educational entity.', [SortOrder] = 38.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'GoverningBoard' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CredentialingOrganization') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'CredentialingOrganization', 'Credentialing Organization', 'An institution, organization, federation, or other such group that is responsible for accrediting or endorsing an individual''s preparation, skills, or performance.', 40.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An institution, organization, federation, or other such group that is responsible for accrediting or endorsing an individual''s preparation, skills, or performance.', [SortOrder] = 40.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CredentialingOrganization' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'AccreditingOrganization') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'AccreditingOrganization', 'Accrediting Organization', 'An authority that reviews an organization''s educational program and staff for quality, and certifies whether the organization meets a minimal set of standards.', 42.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An authority that reviews an organization''s educational program and staff for quality, and certifies whether the organization meets a minimal set of standards.', [SortOrder] = 42.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'AccreditingOrganization' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EducationOrganizationNetwork') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'EducationOrganizationNetwork', 'Education Organization Network', 'A self-organized membership network of peer-level educational organizations intended to provide shared services or collective procurement.', 44.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A self-organized membership network of peer-level educational organizations intended to provide shared services or collective procurement.', [SortOrder] = 44.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EducationOrganizationNetwork' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'IDEAPartCLeadAgency') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'IDEAPartCLeadAgency', ' IDEA Part C Lead Agency', 'The lead agency within a State/Jurisdiction responsible for administering IDEA Part C.', 46.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'The lead agency within a State/Jurisdiction responsible for administering IDEA Part C.', [SortOrder] = 46.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'IDEAPartCLeadAgency' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CharterSchoolManagementOrganization') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'CharterSchoolManagementOrganization', 'Charter School Management Organization', 'A separate legal entity that 1) contracts with one or more charter schools to manage, operate, and oversee the charter schools; or 2) holds a charter, or charters, to operate multiple charter schools. (see Charter School Management Organization Type)', 48.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A separate legal entity that 1) contracts with one or more charter schools to manage, operate, and oversee the charter schools; or 2) holds a charter, or charters, to operate multiple charter schools. (see Charter School Management Organization Type)', [SortOrder] = 48.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CharterSchoolManagementOrganization' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CharterSchoolAuthorizingOrganization') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'CharterSchoolAuthorizingOrganization', 'Charter School Authorizing Organization', 'An organization responsible for authorizing charter schools.', 50.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An organization responsible for authorizing charter schools.', [SortOrder] = 50.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'CharterSchoolAuthorizingOrganization' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EmergencyResponseAgency') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'EmergencyResponseAgency', 'Emergency Response Agency', 'The local, state, or federal agency that has primary responsibility for responding to an emergency situation.', 51.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'The local, state, or federal agency that has primary responsibility for responding to an emergency situation.', [SortOrder] = 51.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EmergencyResponseAgency' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EarlyCollege') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'EarlyCollege', 'Early College', 'An institution in which all students participate in a comprehensive plan that integrates their high school course of study and an intentionally designed authentic postsecondary experience leading to their regular high school diploma, an official college transcript and transferable college credit towards a recognized postsecondary degree or credential.', 52.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An institution in which all students participate in a comprehensive plan that integrates their high school course of study and an intentionally designed authentic postsecondary experience leading to their regular high school diploma, an official college transcript and transferable college credit towards a recognized postsecondary degree or credential.', [SortOrder] = 52.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EarlyCollege' END
+END
 
 PRINT N'Populate RefRoleStatus table'
 IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefRoleStatus]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
