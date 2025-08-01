@@ -47,34 +47,35 @@ Here is an example of how explicit versioning will occur.
 
 Assuming an official release of CEDS has just occurred:
 
-Data Warehouse (DW) version = 7.0.0.0
-Integrated Data Store (IDS) version = 7.0.0.0
-CEDS Elements = 7.0.0.0
+Ontology version = 13.0.0.0
+Data Warehouse (DW) version = 13.0.0.0
+Integrated Data Store (IDS) version = 13.0.0.0
+CEDS Elements = 13.0.0.0
 
 Use Case:
 Brand new elements are introduced to CEDS, because they are new, they represent no breaking change to any of the other CEDS elements:
 
-CEDS Elements version = 7.0.1.0
+CEDS Elements version = 13.0.1.0
 
 These new elements, however, result in a new understanding of how data is integrated in the IDS resulting in a restructuring of the IDS which is not backwards compatible.
 
-IDS version = 7.1.0.0
+IDS version = 13.1.0.0
 
 These elements are added to the DW structure and result in backwards compatibility, but a defect is identified in doing so that needs to be corrected.
 
-DW version = 7.0.1.1
+DW version = 13.0.1.1
 
 Throughout the remainder of the year, many changes occur in each of the different repositories. The changes prior to the annual release of CEDS results in the following:
 
-DW version = 7.27.1.6
-IDS version = 7.3.2.0
-CEDS Elements = 7.2.18.2
+DW version = 13.27.1.6
+IDS version = 13.3.2.0
+CEDS Elements = 13.2.18.2
 
 The annual official CEDS release occurs, typically around January/February of the calendar year. All resources are brought into version alignment (Note: no changes occurred to the resource, the annual release simply restarts/aligns the versioning):
 
-DW version = 8.0.0.0
-IDS version = 8.0.0.0
-CEDS Elements version = 8.0.0.0
+DW version = 14.0.0.0
+IDS version = 14.0.0.0
+CEDS Elements version = 14.0.0.0
 
 Note: The CEDS Collaborative Exchange contains resources contributed by stakeholders. These resources should contain the compatible version they were created under.  The versions are not changed for a resource unless a stakeholder updates them to function under a newer version.
 
