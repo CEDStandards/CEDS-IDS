@@ -1,0 +1,45 @@
+﻿CREATE TABLE [dbo].[RefEntityType] (
+    [RefEntityTypeId]     INT             IDENTITY (1, 1) NOT NULL,
+    [Description]         NVARCHAR (150)  NOT NULL,
+    [Code]                NVARCHAR (50)   NULL,
+    [Definition]          NVARCHAR (4000) NULL,
+    [RefJurisdictionId]   INT             NULL,
+    [SortOrder]           DECIMAL (5, 2)  NULL,
+    [RecordStartDateTime] DATETIME        NULL,
+    [RecordEndDateTime]   DATETIME        NULL,
+    CONSTRAINT [PK_RefAssociatedEntityType] PRIMARY KEY CLUSTERED ([RefEntityTypeId] ASC),
+    CONSTRAINT [FK_RefAssociatedEntityType_Organization] FOREIGN KEY ([RefJurisdictionId]) REFERENCES [dbo].[Organization] ([OrganizationId])
+);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'CEDS entities. Used when the relationship of data requires the associated entity to be specified.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Surrogate Key', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType', @level2type = N'COLUMN', @level2name = N'RefEntityTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'A description for the options in this option set.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType', @level2type = N'COLUMN', @level2name = N'Description';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'A code or abbreviation for the options in this option set.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType', @level2type = N'COLUMN', @level2name = N'Code';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_Def_Desc extended property.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType', @level2type = N'COLUMN', @level2name = N'Code';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The defintion for the options in this option set.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType', @level2type = N'COLUMN', @level2name = N'Definition';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Surrogate key from Organization identifying the publisher of the reference value.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType', @level2type = N'COLUMN', @level2name = N'RefJurisdictionId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The sequence the options in this option set should be ordered.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'RefEntityType', @level2type = N'COLUMN', @level2name = N'SortOrder';
+
