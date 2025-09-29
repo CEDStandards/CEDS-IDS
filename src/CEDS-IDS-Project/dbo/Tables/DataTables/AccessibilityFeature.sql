@@ -13,7 +13,7 @@
 	[RefAssessmentComponentTypeId] [int] NULL,
 	[AssessmentExtendedTimeDuration] [int] NULL,
 	[RefAssessmentExtendedTimeTypeId] [int] NULL,
-	[RefBrailleAcessTypeId]  [int] NULL,
+	[RefBrailleAccessTypeId]  [int] NULL,
 	[RefBrailleApplicationTypeId] [int] NULL,
 	[RefBrailleCodeTypeId] [int] NULL,
 	[RefBrailleVersionTypeId] [int] NULL,
@@ -144,11 +144,11 @@ GO
 ALTER TABLE [dbo].[AccessibilityFeature] CHECK CONSTRAINT [FK_AccessibilityFeature_RefAssessmentExtendedTimeType]
 GO
 
-ALTER TABLE [dbo].[AccessibilityFeature]  WITH CHECK ADD CONSTRAINT [FK_AccessibilityFeature_RefBrailleAcessType] FOREIGN KEY([RefBrailleAcessTypeId])
-REFERENCES [dbo].[RefBrailleAcessType] ([RefBrailleAcessTypeId])
+ALTER TABLE [dbo].[AccessibilityFeature]  WITH CHECK ADD CONSTRAINT [FK_AccessibilityFeature_RefBrailleAccessType] FOREIGN KEY([RefBrailleAccessTypeId])
+REFERENCES [dbo].[RefBrailleAccessType] ([RefBrailleAccessTypeId])
 GO
 
-ALTER TABLE [dbo].[AccessibilityFeature] CHECK CONSTRAINT [FK_AccessibilityFeature_RefBrailleAcessType]
+ALTER TABLE [dbo].[AccessibilityFeature] CHECK CONSTRAINT [FK_AccessibilityFeature_RefBrailleAccessType]
 GO
 
 ALTER TABLE [dbo].[AccessibilityFeature]  WITH CHECK ADD  CONSTRAINT [FK_AccessibilityFeature_RefBrailleApplicationType] FOREIGN KEY([RefBrailleApplicationTypeId])

@@ -319,7 +319,7 @@ CREATE TABLE [dbo].[AccessibilityFeature] (
     [RefAssessmentComponentTypeId]                          INT            NULL,
     [AssessmentExtendedTimeDuration]                        INT            NULL,
     [RefAssessmentExtendedTimeTypeId]                       INT            NULL,
-    [RefBrailleAcessTypeId]                                 INT            NULL,
+    [RefBrailleAccessTypeId]                                 INT            NULL,
     [RefBrailleApplicationTypeId]                           INT            NULL,
     [RefBrailleCodeTypeId]                                  INT            NULL,
     [RefBrailleVersionTypeId]                               INT            NULL,
@@ -10466,12 +10466,12 @@ CREATE TABLE [dbo].[RefBoardMembershipType] (
 
 
 GO
-PRINT N'Creating Table [dbo].[RefBrailleAcessType]...';
+PRINT N'Creating Table [dbo].[RefBrailleAccessType]...';
 
 
 GO
-CREATE TABLE [dbo].[RefBrailleAcessType] (
-    [RefBrailleAcessTypeId] INT             IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [dbo].[RefBrailleAccessType] (
+    [RefBrailleAccessTypeId] INT             IDENTITY (1, 1) NOT NULL,
     [Description]           NVARCHAR (150)  NOT NULL,
     [Code]                  NVARCHAR (50)   NULL,
     [Definition]            NVARCHAR (4000) NULL,
@@ -10479,7 +10479,7 @@ CREATE TABLE [dbo].[RefBrailleAcessType] (
     [SortOrder]             DECIMAL (5, 2)  NULL,
     [RecordStartDateTime]   DATETIME        NULL,
     [RecordEndDateTime]     DATETIME        NULL,
-    CONSTRAINT [PK_RefBrailleAcessType] PRIMARY KEY CLUSTERED ([RefBrailleAcessTypeId] ASC) ON [PRIMARY]
+    CONSTRAINT [PK_RefBrailleAccessType] PRIMARY KEY CLUSTERED ([RefBrailleAccessTypeId] ASC) ON [PRIMARY]
 ) ON [PRIMARY];
 
 
@@ -22405,12 +22405,12 @@ ALTER TABLE [dbo].[AccessibilityFeature]
 
 
 GO
-PRINT N'Creating Foreign Key [dbo].[FK_AccessibilityFeature_RefBrailleAcessType]...';
+PRINT N'Creating Foreign Key [dbo].[FK_AccessibilityFeature_RefBrailleAccessType]...';
 
 
 GO
 ALTER TABLE [dbo].[AccessibilityFeature]
-    ADD CONSTRAINT [FK_AccessibilityFeature_RefBrailleAcessType] FOREIGN KEY ([RefBrailleAcessTypeId]) REFERENCES [dbo].[RefBrailleAcessType] ([RefBrailleAcessTypeId]);
+    ADD CONSTRAINT [FK_AccessibilityFeature_RefBrailleAccessType] FOREIGN KEY ([RefBrailleAccessTypeId]) REFERENCES [dbo].[RefBrailleAccessType] ([RefBrailleAccessTypeId]);
 
 
 GO
@@ -41782,12 +41782,12 @@ ALTER TABLE [dbo].[RefBloomsTaxonomyDomain]
 
 
 GO
-PRINT N'Creating Foreign Key [dbo].[FK_RefBrailleAcessType_Organization]...';
+PRINT N'Creating Foreign Key [dbo].[FK_RefBrailleAccessType_Organization]...';
 
 
 GO
-ALTER TABLE [dbo].[RefBrailleAcessType]
-    ADD CONSTRAINT [FK_RefBrailleAcessType_Organization] FOREIGN KEY ([RefJurisdictionId]) REFERENCES [dbo].[Organization] ([OrganizationId]);
+ALTER TABLE [dbo].[RefBrailleAccessType]
+    ADD CONSTRAINT [FK_RefBrailleAccessType_Organization] FOREIGN KEY ([RefJurisdictionId]) REFERENCES [dbo].[Organization] ([OrganizationId]);
 
 
 GO

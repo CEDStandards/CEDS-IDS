@@ -1,5 +1,5 @@
-CREATE TABLE [dbo].[RefBrailleAcessType](
-	[RefBrailleAcessTypeId] [int] IDENTITY(1,1) NOT NULL,
+CREATE TABLE [dbo].[RefBrailleAccessType](
+	[RefBrailleAccessTypeId] [int] IDENTITY(1,1) NOT NULL,
 	[Description] [nvarchar](150) NOT NULL,
 	[Code] [nvarchar](50) NULL,
 	[Definition] [nvarchar](4000) NULL,
@@ -7,17 +7,17 @@ CREATE TABLE [dbo].[RefBrailleAcessType](
 	[SortOrder] [decimal](5, 2) NULL,
 	[RecordStartDateTime] [datetime] NULL,
 	[RecordEndDateTime] [datetime] NULL,
- CONSTRAINT [PK_RefBrailleAcessType] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_RefBrailleAcccessType] PRIMARY KEY CLUSTERED 
 (
-	[RefBrailleAcessTypeId] ASC
+	[RefBrailleAccessTypeId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[RefBrailleAcessType] WITH CHECK 
-ADD CONSTRAINT [FK_RefBrailleAcessType_Organization] FOREIGN KEY([RefJurisdictionId])
+ALTER TABLE [dbo].[RefBrailleAccessType] WITH CHECK 
+ADD CONSTRAINT [FK_RefBrailleAccessType_Organization] FOREIGN KEY([RefJurisdictionId])
 REFERENCES [dbo].[Organization] ([OrganizationId])
 GO
 
-ALTER TABLE [dbo].[RefBrailleAcessType] CHECK CONSTRAINT [FK_RefBrailleAcessType_Organization]
+ALTER TABLE [dbo].[RefBrailleAccessType] CHECK CONSTRAINT [FK_RefBrailleAccessType_Organization]
 GO
