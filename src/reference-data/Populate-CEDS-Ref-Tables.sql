@@ -1,6 +1,6 @@
 /*    
 
-	Copyright 2024 Common Education Data Standards
+	Copyright 2025 Common Education Data Standards
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 
 	
 	Common Education Data Standards (CEDS)
-    Version 12.0.0.0
+    Version 13.0.0.0
     Integration Data Store (IDS)
     
 	Model database ref table population script
 	
-    This script populates the reference tables in a IDS version 12.0.0.0 model database.  
+    This script populates the reference tables in a IDS version 13.0.0.0 model database.  
     
     WARNING!!!!
     This script is intended for use on a model database and should not 
@@ -38,9 +38,9 @@
       	  
 */ 
 
--- Uncomment next two lines to update a database named CEDS-IDS-V12_0_0_0 or specify appropriate DB name for your server.
---USE [CEDS-IDS-V12_0_0_0];
---GO
+--Update a database named CEDS-IDS-V13-0-0-0 or specify appropriate DB name for your server.
+USE [CEDS-IDS-V13-0-0-0];
+GO
 
 -- change @updateExisting to 1 to update all existing Ref table values matching Codes and for Ref tables that include a FK to other Ref tables (not RefJurisdictionId) matching Code and Description 
 
@@ -404,505 +404,6 @@ ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAcademicTermDesignator]
 SET [Description] = 'Other', [Definition] = 'Other is the academic term for which the data apply.', [SortOrder] = 16.00 WHERE [Code] = 'Other'  END
 END
 
-PRINT N'Populate RefAccommodationsNeededType table'
-
-IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccommodationsNeededType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-BEGIN
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '01') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('01', 'Materials in Braille', 'Materials in Braille is specified as a health accommodation for the student.', 2.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Materials in Braille', [Definition] = 'Materials in Braille is specified as a health accommodation for the student.', [SortOrder] = 2.00 WHERE [Code] = '01'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '02') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('02', 'Closed caption decoder', 'Closed caption decoder is specified as a health accommodation for the student.', 4.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Closed caption decoder', [Definition] = 'Closed caption decoder is specified as a health accommodation for the student.', [SortOrder] = 4.00 WHERE [Code] = '02'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '03') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03', 'Computer-based instruction or other assistive technological devices', 'Computer-based instruction or other assistive technological devices is specified as a health accommodation for the student.', 6.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Computer-based instruction or other assistive technological devices', [Definition] = 'Computer-based instruction or other assistive technological devices is specified as a health accommodation for the student.', [SortOrder] = 6.00 WHERE [Code] = '03'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '04') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('04', 'Listening devices', 'Listening devices is specified as a health accommodation for the student.', 8.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Listening devices', [Definition] = 'Listening devices is specified as a health accommodation for the student.', [SortOrder] = 8.00 WHERE [Code] = '04'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '05') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('05', 'Low vision readers', 'Low vision readers is specified as a health accommodation for the student.', 10.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Low vision readers', [Definition] = 'Low vision readers is specified as a health accommodation for the student.', [SortOrder] = 10.00 WHERE [Code] = '05'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '06') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('06', 'Notetakers', 'Note takers is specified as a health accommodation for the student.', 12.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Notetakers', [Definition] = 'Note takers is specified as a health accommodation for the student.', [SortOrder] = 12.00 WHERE [Code] = '06'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '07') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('07', 'Readers', 'Readers is specified as a health accommodation for the student.', 14.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Readers', [Definition] = 'Readers is specified as a health accommodation for the student.', [SortOrder] = 14.00 WHERE [Code] = '07'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '08') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('08', 'Sign language interpreters', 'Sign language interpreters is specified as a health accommodation for the student.', 16.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Sign language interpreters', [Definition] = 'Sign language interpreters is specified as a health accommodation for the student.', [SortOrder] = 16.00 WHERE [Code] = '08'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '09') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('09', 'Special housing accommodations', 'Special housing accommodations is specified as a health accommodation for the student.', 18.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Special housing accommodations', [Definition] = 'Special housing accommodations is specified as a health accommodation for the student.', [SortOrder] = 18.00 WHERE [Code] = '09'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '10') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('10', 'Recorded text', 'Recorded text is specified as a health accommodation for the student.', 20.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Recorded text', [Definition] = 'Recorded text is specified as a health accommodation for the student.', [SortOrder] = 20.00 WHERE [Code] = '10'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '11') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('11', 'Telecommunication Devices (TDDs) for Hearing Impaired', 'Telecommunication Devices (TDDs) for Hearing Impaired is specified as a health accommodation for the student.', 22.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Telecommunication Devices (TDDs) for Hearing Impaired', [Definition] = 'Telecommunication Devices (TDDs) for Hearing Impaired is specified as a health accommodation for the student.', [SortOrder] = 22.00 WHERE [Code] = '11'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '12') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('12', 'Telephone handset amplifiers', 'Telephone handset amplifiers is specified as a health accommodation for the student.', 24.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Telephone handset amplifiers', [Definition] = 'Telephone handset amplifiers is specified as a health accommodation for the student.', [SortOrder] = 24.00 WHERE [Code] = '12'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '13') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13', 'Test assistants', 'Test assistants is specified as a health accommodation for the student.', 26.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Test assistants', [Definition] = 'Test assistants is specified as a health accommodation for the student.', [SortOrder] = 26.00 WHERE [Code] = '13'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '14') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('14', 'Test modifications', 'Test modifications, such as alternative testing location, oral response to  taped questions,  exams read orally, or extra time to complete an exam, is specified as a health accommodation for the student.', 28.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Test modifications', [Definition] = 'Test modifications, such as alternative testing location, oral response to  taped questions,  exams read orally, or extra time to complete an exam, is specified as a health accommodation for the student.', [SortOrder] = 28.00 WHERE [Code] = '14'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '15') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('15', 'Transportation services (e.g., handicapped parking spaces)', 'Transportation services, such as handicapped parking spaces,  is specified as a health accommodation for the student.', 30.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Transportation services (e.g., handicapped parking spaces)', [Definition] = 'Transportation services, such as handicapped parking spaces,  is specified as a health accommodation for the student.', [SortOrder] = 30.00 WHERE [Code] = '15'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '16') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('16', 'Tutors', 'Tutors is specified as a health accommodation for the student.', 32.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Tutors', [Definition] = 'Tutors is specified as a health accommodation for the student.', [SortOrder] = 32.00 WHERE [Code] = '16'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '17') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('17', 'Voice synthesizer speech programs, equipment', 'Voice synthesizer speech programs, equipment is specified as a health accommodation for the student.', 34.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Voice synthesizer speech programs, equipment', [Definition] = 'Voice synthesizer speech programs, equipment is specified as a health accommodation for the student.', [SortOrder] = 34.00 WHERE [Code] = '17'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '18') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('18', 'Wheel chair accessibility', 'Wheel chair accessibility is specified as a health accommodation for the student.', 36.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Wheel chair accessibility', [Definition] = 'Wheel chair accessibility is specified as a health accommodation for the student.', [SortOrder] = 36.00 WHERE [Code] = '18'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '19') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('19', 'Wheel chair', 'Wheel chair is specified as a health accommodation for the student.', 38.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Wheel chair', [Definition] = 'Wheel chair is specified as a health accommodation for the student.', [SortOrder] = 38.00 WHERE [Code] = '19'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationsNeededType] WHERE [Code] = '99') BEGIN INSERT INTO dbo.[RefAccommodationsNeededType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('99', 'Other type of accommodation', 'Other type of accommodation is specified as a health accommodation for the student.', 198.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationsNeededType] 
-SET [Description] = 'Other type of accommodation', [Definition] = 'Other type of accommodation is specified as a health accommodation for the student.', [SortOrder] = 198.00 WHERE [Code] = '99'  END
-END
-
-PRINT N'Populate RefAccommodationType table'
-
-IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccommodationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-BEGIN
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03513') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03513', 'Additional example items/tasks', 'Additional example items/tasks is specified as the specific accommodation necessary for assessment or instruction.', 1.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Additional example items/tasks', [Definition] = 'Additional example items/tasks is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 1.00 WHERE [Code] = '03513'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00461') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00461', 'Adjustable swivel arm', 'Adjustable swivel arm is specified as the specific accommodation necessary for assessment or instruction.', 2.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Adjustable swivel arm', [Definition] = 'Adjustable swivel arm is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 2.00 WHERE [Code] = '00461'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00462') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00462', 'Adjustable table height', 'Adjustable table height is specified as the specific accommodation necessary for assessment or instruction.', 3.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Adjustable table height', [Definition] = 'Adjustable table height is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 3.00 WHERE [Code] = '00462'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03514') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03514', 'Administration in several sessions', 'Administration in several sessions is specified as the specific accommodation necessary for assessment.', 4.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Administration in several sessions', [Definition] = 'Administration in several sessions is specified as the specific accommodation necessary for assessment.', [SortOrder] = 4.00 WHERE [Code] = '03514'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13803') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13803', 'Alternate representation', 'Alternate representation is specified as the specific accommodation necessary for assessment or instruction.', 5.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Alternate representation', [Definition] = 'Alternate representation is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 5.00 WHERE [Code] = '13803'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13793') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13793', 'Answer masking', 'Answer masking is specified as the specific accommodation necessary for assessment or instruction.', 6.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Answer masking', [Definition] = 'Answer masking is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 6.00 WHERE [Code] = '13793'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03515') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03515', 'Answers written directly in test booklet', 'Answers written directly in test booklet is specified as the specific accommodation necessary for assessment.', 7.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Answers written directly in test booklet', [Definition] = 'Answers written directly in test booklet is specified as the specific accommodation necessary for assessment.', [SortOrder] = 7.00 WHERE [Code] = '03515'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03517') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03517', 'Arithmetic table (math or science)', 'Arithmetic table (math or science) is specified as the specific accommodation necessary for assessment or instruction.', 8.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Arithmetic table (math or science)', [Definition] = 'Arithmetic table (math or science) is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 8.00 WHERE [Code] = '03517'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75005') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75005', 'Native language', 'Native language is specified as the specific accommodation necessary for assessment or instruction.', 9.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Native language', [Definition] = 'Native language is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 9.00 WHERE [Code] = '75005'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03519') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03519', 'Assistive device that does interfere with independent work of the student', 'Assistive device that does interfere with independent work of the student is specified as the specific accommodation necessary for assessment or instruction.', 10.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Assistive device that does interfere with independent work of the student', [Definition] = 'Assistive device that does interfere with independent work of the student is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 10.00 WHERE [Code] = '03519'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03518') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03518', 'Assistive device that does not interfere with independent work of the student', 'Assistive device that does not interfere with independent work of the student is specified as the specific accommodation necessary for assessment or instruction.', 11.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Assistive device that does not interfere with independent work of the student', [Definition] = 'Assistive device that does not interfere with independent work of the student is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 11.00 WHERE [Code] = '03518'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75006') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75006', 'Audio recordings', 'Audio recordings is specified as the specific accommodation necessary for assessment or instruction.', 13.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Audio recordings', [Definition] = 'Audio recordings is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 13.00 WHERE [Code] = '75006'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13791') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13791', 'Auditory calming', 'Auditory calming is specified as the specific accommodation necessary for assessment or instruction.', 14.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Auditory calming', [Definition] = 'Auditory calming is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 14.00 WHERE [Code] = '13791'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00463') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00463', 'Braille', 'Braille is specified as the specific accommodation necessary for assessment or instruction.', 15.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Braille', [Definition] = 'Braille is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 15.00 WHERE [Code] = '00463'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03522') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03522', 'Braille writer, no thesaurus, spell- or grammar-checker', 'Braille writer, no thesaurus, spell- or grammar-checker is specified as the specific accommodation necessary for assessment or instruction.', 16.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Braille writer, no thesaurus, spell- or grammar-checker', [Definition] = 'Braille writer, no thesaurus, spell- or grammar-checker is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 16.00 WHERE [Code] = '03522'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75007') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75007', 'Breaks', 'Breaks is specified as the specific accommodation necessary for assessment or instruction.', 17.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Breaks', [Definition] = 'Breaks is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 17.00 WHERE [Code] = '75007'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03524') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03524', 'Calculator (math or science)', 'Calculator (math or science) is specified as the specific accommodation necessary for assessment or instruction.', 18.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Calculator (math or science)', [Definition] = 'Calculator (math or science) is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 18.00 WHERE [Code] = '03524'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13800') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13800', 'Chunking', 'Chunking is specified as the specific accommodation necessary for assessment or instruction.', 19.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Chunking', [Definition] = 'Chunking is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 19.00 WHERE [Code] = '13800'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03525') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03525', 'Clarify directions', 'Clarify directions is specified as the specific accommodation necessary for assessment or instruction.', 20.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Clarify directions', [Definition] = 'Clarify directions is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 20.00 WHERE [Code] = '03525'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03526') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03526', 'Colored lenses', 'Colored lenses is specified as the specific accommodation necessary for assessment or instruction.', 21.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Colored lenses', [Definition] = 'Colored lenses is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 21.00 WHERE [Code] = '03526'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03527') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03527', 'Computer administration', 'Computer administration is specified as the specific accommodation necessary for assessment or instruction.', 22.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Computer administration', [Definition] = 'Computer administration is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 22.00 WHERE [Code] = '03527'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03528') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03528', 'Cranmer abacus', 'Cranmer abacus is specified as the specific accommodation necessary for assessment or instruction.', 23.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Cranmer abacus', [Definition] = 'Cranmer abacus is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 23.00 WHERE [Code] = '03528'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03529') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03529', 'Cueing', 'Cueing is specified as the specific accommodation necessary for assessment or instruction.', 24.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Cueing', [Definition] = 'Cueing is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 24.00 WHERE [Code] = '03529'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75008') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75008', 'Dictated oral response', 'Dictated oral response is specified as the specific accommodation necessary for assessment or instruction.', 25.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Dictated oral response', [Definition] = 'Dictated oral response is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 25.00 WHERE [Code] = '75008'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03530') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03530', 'Dictionary in English', 'Dictionary in English is specified as the specific accommodation necessary for assessment or instruction.', 26.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Dictionary in English', [Definition] = 'Dictionary in English is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 26.00 WHERE [Code] = '03530'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03531') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03531', 'Dictionary in native language', 'Dictionary in native language is specified as the specific accommodation necessary for assessment or instruction.', 27.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Dictionary in native language', [Definition] = 'Dictionary in native language is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 27.00 WHERE [Code] = '03531'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03533') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03533', 'Directions read aloud or explained', 'Directions read aloud or explained is specified as the specific accommodation necessary for assessment or instruction.', 28.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Directions read aloud or explained', [Definition] = 'Directions read aloud or explained is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 28.00 WHERE [Code] = '03533'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13795') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13795', 'Encouraging prompts', 'Encouraging prompts is specified as the specific accommodation necessary for assessment or instruction.', 29.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Encouraging prompts', [Definition] = 'Encouraging prompts is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 29.00 WHERE [Code] = '13795'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00937') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00937', 'Enlarged keyboard', 'Enlarged keyboard is specified as the specific accommodation necessary for assessment or instruction.', 30.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Enlarged keyboard', [Definition] = 'Enlarged keyboard is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 30.00 WHERE [Code] = '00937'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00464') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00464', 'Enlarged monitor view', 'Enlarged monitor view is specified as the specific accommodation necessary for assessment or instruction.', 31.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Enlarged monitor view', [Definition] = 'Enlarged monitor view is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 31.00 WHERE [Code] = '00464'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03534') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03534', 'Examiner familiarity', 'Examiner familiarity is specified as the specific accommodation necessary for assessment.', 32.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Examiner familiarity', [Definition] = 'Examiner familiarity is specified as the specific accommodation necessary for assessment.', [SortOrder] = 32.00 WHERE [Code] = '03534'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00465') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00465', 'Extra time', 'Extra time is specified as the specific accommodation necessary for assessment or instruction.', 33.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Extra time', [Definition] = 'Extra time is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 33.00 WHERE [Code] = '00465'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13797') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13797', 'Flagging', 'Flagging is specified as the specific accommodation necessary for assessment or instruction.', 34.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Flagging', [Definition] = 'Flagging is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 34.00 WHERE [Code] = '13797'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03535') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03535', 'Font enlarged beyond print version requirements', 'Font enlarged beyond print version requirements is specified as the specific accommodation necessary for assessment or instruction.', 35.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Font enlarged beyond print version requirements', [Definition] = 'Font enlarged beyond print version requirements is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 35.00 WHERE [Code] = '03535'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13789') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13789', 'Foreground/Background colors', 'Foreground/Background colors is specified as the specific accommodation necessary for assessment or instruction.', 36.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Foreground/Background colors', [Definition] = 'Foreground/Background colors is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 36.00 WHERE [Code] = '13789'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03536') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03536', 'Foreign language interpreter', 'Foreign language interpreter is specified as the specific accommodation necessary for assessment or instruction.', 37.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Foreign language interpreter', [Definition] = 'Foreign language interpreter is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 37.00 WHERE [Code] = '03536'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03537') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03537', 'Foreign language interpreter for instructions, ask questions', 'Foreign language interpreter for instructions, ask questions is specified as the specific accommodation necessary for assessment or instruction.', 38.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Foreign language interpreter for instructions, ask questions', [Definition] = 'Foreign language interpreter for instructions, ask questions is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 38.00 WHERE [Code] = '03537'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03538') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03538', 'Format', 'Format is specified as the specific accommodation necessary for assessment or instruction.', 39.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Format', [Definition] = 'Format is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 39.00 WHERE [Code] = '03538'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03539') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03539', 'Hospital/home testing', 'Hospital/home testing is specified as the specific accommodation necessary for assessment.', 40.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Hospital/home testing', [Definition] = 'Hospital/home testing is specified as the specific accommodation necessary for assessment.', [SortOrder] = 40.00 WHERE [Code] = '03539'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13790') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13790', 'Increase white space', 'Increase white space is specified as the specific accommodation necessary for assessment or instruction.', 41.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Increase white space', [Definition] = 'Increase white space is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 41.00 WHERE [Code] = '13790'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13805') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13805', 'Item translation', 'Item translation is specified as the specific accommodation necessary for assessment items or instructional items.', 42.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Item translation', [Definition] = 'Item translation is specified as the specific accommodation necessary for assessment items or instructional items.', [SortOrder] = 42.00 WHERE [Code] = '13805'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13798') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13798', 'Keyword highlighting', 'Keyword highlighting is specified as the specific accommodation necessary for assessment or instruction.', 43.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Keyword highlighting', [Definition] = 'Keyword highlighting is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 43.00 WHERE [Code] = '13798'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13804') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13804', 'Keyword translation', 'Keyword translation is specified as the specific accommodation necessary for assessment or instruction.', 44.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Keyword translation', [Definition] = 'Keyword translation is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 44.00 WHERE [Code] = '13804'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75009') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75009', 'Large print', 'Large print is specified as the specific accommodation necessary for assessment or instruction.', 45.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Large print', [Definition] = 'Large print is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 45.00 WHERE [Code] = '75009'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13796') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13796', 'Line reader', 'Line reader is specified as the specific accommodation necessary for assessment or instruction.', 46.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Line reader', [Definition] = 'Line reader is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 46.00 WHERE [Code] = '13796'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75010') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75010', 'Linguistic modification of directions', 'Linguistic modification of directions is specified as the specific accommodation necessary for assessment or instruction.', 47.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Linguistic modification of directions', [Definition] = 'Linguistic modification of directions is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 47.00 WHERE [Code] = '75010'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03541') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03541', 'Magnification device', 'Magnification device is specified as the specific accommodation necessary for assessment or instruction.', 48.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Magnification device', [Definition] = 'Magnification device is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 48.00 WHERE [Code] = '03541'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75011') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75011', 'Manually coded English or American Sign Language to present questions', 'Manually coded English or American Sign Language to present questions is specified as the specific accommodation necessary for assessment or instruction.', 49.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Manually coded English or American Sign Language to present questions', [Definition] = 'Manually coded English or American Sign Language to present questions is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 49.00 WHERE [Code] = '75011'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13792') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13792', 'Masking', 'Masking is specified as the specific accommodation necessary for assessment or instruction.', 50.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Masking', [Definition] = 'Masking is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 50.00 WHERE [Code] = '13792'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03543') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03543', 'Math manipulatives (math or science)', 'Math manipulative (math or science) is specified as the specific accommodation necessary for assessment or instruction.', 51.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Math manipulatives (math or science)', [Definition] = 'Math manipulative (math or science) is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 51.00 WHERE [Code] = '03543'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03544') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03544', 'Modification of linguistic complexity', 'Modification of linguistic complexity is specified as the specific accommodation necessary for assessment or instruction.', 52.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Modification of linguistic complexity', [Definition] = 'Modification of linguistic complexity is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 52.00 WHERE [Code] = '03544'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00469') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00469', 'Multi-day administration', 'Multi-day administration is specified as the specific accommodation necessary for assessment.', 53.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Multi-day administration', [Definition] = 'Multi-day administration is specified as the specific accommodation necessary for assessment.', [SortOrder] = 53.00 WHERE [Code] = '00469'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03545') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03545', 'Multiple test sessions', 'Multiple test sessions is specified as the specific accommodation necessary for assessment.', 54.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Multiple test sessions', [Definition] = 'Multiple test sessions is specified as the specific accommodation necessary for assessment.', [SortOrder] = 54.00 WHERE [Code] = '03545'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13802') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13802', 'Negatives removed', 'Negatives removed is specified as the specific accommodation necessary for assessment or instruction.', 55.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Negatives removed', [Definition] = 'Negatives removed is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 55.00 WHERE [Code] = '13802'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03546') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03546', 'Oral directions in the native language', 'Oral directions in the native language is specified as the specific accommodation necessary for assessment or instruction.', 56.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Oral directions in the native language', [Definition] = 'Oral directions in the native language is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 56.00 WHERE [Code] = '03546'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '09999') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('09999', 'Other', 'Other is specified as the specific accommodation necessary for assessment or instruction.', 57.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Other', [Definition] = 'Other is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 57.00 WHERE [Code] = '09999'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03547') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03547', 'Paraphrasing', 'Paraphrasing is specified as the specific accommodation necessary for assessment or instruction.', 58.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Paraphrasing', [Definition] = 'Paraphrasing is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 58.00 WHERE [Code] = '03547'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03548') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03548', 'Physical supports', 'Physical supports is specified as the specific accommodation necessary for assessment or instruction.', 59.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Physical supports', [Definition] = 'Physical supports is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 59.00 WHERE [Code] = '03548'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00471') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00471', 'Recorder or amanuensis', 'Recorder or amanuensis is specified as the specific accommodation necessary for assessment or instruction.', 60.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Recorder or amanuensis', [Definition] = 'Recorder or amanuensis is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 60.00 WHERE [Code] = '00471'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13801') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13801', 'Reduced answer choices', 'Reduced answer choices is specified as the specific accommodation necessary for assessment or instruction.', 61.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Reduced answer choices', [Definition] = 'Reduced answer choices is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 61.00 WHERE [Code] = '13801'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03549') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03549', 'Response dictated in American Sign Language', 'Response dictated in American Sign Language is specified as the specific accommodation necessary for assessment or instruction.', 62.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Response dictated in American Sign Language', [Definition] = 'Response dictated in American Sign Language is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 62.00 WHERE [Code] = '03549'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03550') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03550', 'Response in native language', 'Response in native language is specified as the specific accommodation necessary for assessment or instruction.', 63.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Response in native language', [Definition] = 'Response in native language is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 63.00 WHERE [Code] = '03550'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13788') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13788', 'Reverse contrast', 'Reverse contrast is specified as the specific accommodation necessary for assessment or instruction.', 64.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Reverse contrast', [Definition] = 'Reverse contrast is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 64.00 WHERE [Code] = '13788'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13799') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13799', 'Scaffolding', 'Scaffolding is specified as the specific accommodation necessary for assessment or instruction.', 65.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Scaffolding', [Definition] = 'Scaffolding is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 65.00 WHERE [Code] = '13799'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03551') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03551', 'Scheduled extended time', 'Scheduled extended time is specified as the specific accommodation necessary for assessment or instruction.', 66.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Scheduled extended time', [Definition] = 'Scheduled extended time is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 66.00 WHERE [Code] = '03551'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00473') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00473', 'Separate room', 'Separate room is specified as the specific accommodation necessary for assessment or instruction.', 67.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Separate room', [Definition] = 'Separate room is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 67.00 WHERE [Code] = '00473'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03552') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03552', 'Separate room with other English Learners under supervision of district employee', 'Separate room with other English Learners under supervision of district employee is specified as the specific accommodation necessary for assessment or instruction.', 68.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Separate room with other English Learners under supervision of district employee', [Definition] = 'Separate room with other English Learners under supervision of district employee is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 68.00 WHERE [Code] = '03552'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '73070') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('73070', 'Sign Language Video', 'Sign Language Video is specified as the specific accommodation necessary for assessment or instruction.', 68.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Sign Language Video', [Definition] = 'Sign Language Video is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 68.00 WHERE [Code] = '73070'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03553') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03553', 'Signer/sign language for instructions, ask questions', 'Signer/sign language for instructions, ask questions is specified as the specific accommodation necessary for assessment or instruction.', 69.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Signer/sign language for instructions, ask questions', [Definition] = 'Signer/sign language for instructions, ask questions is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 69.00 WHERE [Code] = '03553'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00474') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00474', 'Signer/sign language interpreter', 'Signer/sign language interpreter is specified as the specific accommodation necessary for assessment or instruction.', 70.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Signer/sign language interpreter', [Definition] = 'Signer/sign language interpreter is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 70.00 WHERE [Code] = '00474'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03554') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03554', 'Simplified language', 'Simplified language is specified as the specific accommodation necessary for assessment or instruction.', 71.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Simplified language', [Definition] = 'Simplified language is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 71.00 WHERE [Code] = '03554'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03555') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03555', 'Small-group or individual administration', 'Small-group or individual administration is specified as the specific accommodation necessary for assessment or instruction.', 72.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Small-group or individual administration', [Definition] = 'Small-group or individual administration is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 72.00 WHERE [Code] = '03555'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00475') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00475', 'Special furniture', 'Special furniture is specified as the specific accommodation necessary for assessment or instruction.', 73.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Special furniture', [Definition] = 'Special furniture is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 73.00 WHERE [Code] = '00475'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00476') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00476', 'Special lighting', 'Special lighting is specified as the specific accommodation necessary for assessment or instruction.', 74.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Special lighting', [Definition] = 'Special lighting is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 74.00 WHERE [Code] = '00476'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03558') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03558', 'Specialized setting', 'Specialized setting is specified as the specific accommodation necessary for assessment or instruction.', 75.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Specialized setting', [Definition] = 'Specialized setting is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 75.00 WHERE [Code] = '03558'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03556') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03556', 'Speech recognition system', 'Speech recognition system is specified as the specific accommodation necessary for assessment or instruction.', 76.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Speech recognition system', [Definition] = 'Speech recognition system is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 76.00 WHERE [Code] = '03556'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03557') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03557', 'Spell-checker', 'Spell-checker is specified as the specific accommodation necessary for assessment or instruction.', 77.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Spell-checker', [Definition] = 'Spell-checker is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 77.00 WHERE [Code] = '03557'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13794') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13794', 'Structured masking', 'Structured masking is specified as the specific accommodation necessary for assessment or instruction.', 78.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Structured masking', [Definition] = 'Structured masking is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 78.00 WHERE [Code] = '13794'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03559') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03559', 'Student read aloud', 'Student read aloud is specified as the specific accommodation necessary for assessment or instruction.', 79.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Student read aloud', [Definition] = 'Student read aloud is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 79.00 WHERE [Code] = '03559'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03560') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03560', 'Student-requested extended time', 'Student-requested extended time is specified as the specific accommodation necessary for assessment or instruction.', 80.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Student-requested extended time', [Definition] = 'Student-requested extended time is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 80.00 WHERE [Code] = '03560'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75012') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75012', 'Supervised breaks', 'Supervised breaks is specified as the specific accommodation necessary for assessment or instruction.', 81.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Supervised breaks', [Definition] = 'Supervised breaks is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 81.00 WHERE [Code] = '75012'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '13806') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('13806', 'Tactile', 'Tactile is specified as the specific accommodation necessary for assessment or instruction.', 82.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Tactile', [Definition] = 'Tactile is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 82.00 WHERE [Code] = '13806'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03562') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03562', 'Technological aid', 'Technological aid is specified as the specific accommodation necessary for assessment or instruction.', 83.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Technological aid', [Definition] = 'Technological aid is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 83.00 WHERE [Code] = '03562'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75013') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75013', 'Test administered at best time of day for student', 'Test administered at best time of day for student is specified as the specific accommodation necessary for assessment.', 84.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Test administered at best time of day for student', [Definition] = 'Test administered at best time of day for student is specified as the specific accommodation necessary for assessment.', [SortOrder] = 84.00 WHERE [Code] = '75013'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03563') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03563', 'Test administrator marked / wrote test at student''s direction', 'Test administrator marked / wrote test at student''s direction is specified as the specific accommodation necessary for assessment.', 85.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Test administrator marked / wrote test at student''s direction', [Definition] = 'Test administrator marked / wrote test at student''s direction is specified as the specific accommodation necessary for assessment.', [SortOrder] = 85.00 WHERE [Code] = '03563'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03564') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03564', 'Test administrator read questions aloud', 'Test administrator read questions aloud is specified as the specific accommodation necessary for assessment.', 86.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Test administrator read questions aloud', [Definition] = 'Test administrator read questions aloud is specified as the specific accommodation necessary for assessment.', [SortOrder] = 86.00 WHERE [Code] = '03564'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03566') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03566', 'Text changes in vocabulary', 'Text changes in vocabulary is specified as the specific accommodation necessary for assessment or instruction.', 87.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Text changes in vocabulary', [Definition] = 'Text changes in vocabulary is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 87.00 WHERE [Code] = '03566'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00477') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00477', 'Track ball', 'Track ball is specified as the specific accommodation necessary for assessment or instruction.', 88.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Track ball', [Definition] = 'Track ball is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 88.00 WHERE [Code] = '00477'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03567') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03567', 'Translation dictionary', 'Translation dictionary is specified as the specific accommodation necessary for assessment or instruction.', 89.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Translation dictionary', [Definition] = 'Translation dictionary is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 89.00 WHERE [Code] = '03567'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '09997') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('09997', 'Unknown', 'Unknown accommodation is used for assessment.', 90.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Unknown', [Definition] = 'Unknown accommodation is used for assessment.', [SortOrder] = 90.00 WHERE [Code] = '09997'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '00479') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('00479', 'Untimed', 'Untimed is specified as the specific accommodation necessary for assessment or instruction.', 91.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Untimed', [Definition] = 'Untimed is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 91.00 WHERE [Code] = '00479'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03568') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03568', 'Verbalized problem-solving', 'Verbalized problem-solving is specified as the specific accommodation necessary for assessment or instruction.', 92.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Verbalized problem-solving', [Definition] = 'Verbalized problem-solving is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 92.00 WHERE [Code] = '03568'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75014') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75014', 'Video recordings', 'Video recordings is specified as the specific accommodation necessary for assessment or instruction.', 93.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Video recordings', [Definition] = 'Video recordings is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 93.00 WHERE [Code] = '75014'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03570') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03570', 'Visual cues', 'Visual cues is specified as the specific accommodation necessary for assessment or instruction.', 94.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Visual cues', [Definition] = 'Visual cues is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 94.00 WHERE [Code] = '03570'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03571') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03571', 'Word processor', 'Word processor is specified as the specific accommodation necessary for assessment or instruction.', 95.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Word processor', [Definition] = 'Word processor is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 95.00 WHERE [Code] = '03571'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03572') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03572', 'Word processor - grammar-checker turned off', 'Word processor / typewriter / computer with thesaurus / spell-checker / grammar-checker turned off is specified as the specific accommodation necessary for assessment or instruction.', 96.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Word processor - grammar-checker turned off', [Definition] = 'Word processor / typewriter / computer with thesaurus / spell-checker / grammar-checker turned off is specified as the specific accommodation necessary for assessment or instruction.', [SortOrder] = 96.00 WHERE [Code] = '03572'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '03573') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('03573', 'Word processor - grammar-checker enabled on essay response portion of test', 'Word processor / typewriter / computer with thesaurus/ spell-checker/ grammar-checker enabled on essay response portion of test is specified as the specific accommodation necessary for assessment.', 97.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Word processor - grammar-checker enabled on essay response portion of test', [Definition] = 'Word processor / typewriter / computer with thesaurus/ spell-checker/ grammar-checker enabled on essay response portion of test is specified as the specific accommodation necessary for assessment.', [SortOrder] = 97.00 WHERE [Code] = '03573'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75015') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75015', 'Alternate assignments or goals', 'Alternate assignments or goals is specified as the specific accommodation necessary for instruction.', 97.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Alternate assignments or goals', [Definition] = 'Alternate assignments or goals is specified as the specific accommodation necessary for instruction.', [SortOrder] = 97.00 WHERE [Code] = '75015'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75016') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75016', 'Behavior management program', 'Behavior management program is specified as the specific accommodation necessary for instruction.', 97.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Behavior management program', [Definition] = 'Behavior management program is specified as the specific accommodation necessary for instruction.', [SortOrder] = 97.00 WHERE [Code] = '75016'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75017') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75017', 'Check for understanding', 'Check for understanding is specified as the specific accommodation necessary for instruction.', 97.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Check for understanding', [Definition] = 'Check for understanding is specified as the specific accommodation necessary for instruction.', [SortOrder] = 97.00 WHERE [Code] = '75017'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75018') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75018', 'Frequent feedback', 'Frequent feedback is specified as the specific accommodation necessary for instruction.', 97.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Frequent feedback', [Definition] = 'Frequent feedback is specified as the specific accommodation necessary for instruction.', [SortOrder] = 97.00 WHERE [Code] = '75018'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccommodationType] WHERE [Code] = '75019') BEGIN INSERT INTO dbo.[RefAccommodationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('75019', 'Peer support', 'Peer support is specified as the specific accommodation necessary for instruction.', 97.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccommodationType] 
-SET [Description] = 'Peer support', [Definition] = 'Peer support is specified as the specific accommodation necessary for instruction.', [SortOrder] = 97.00 WHERE [Code] = '75019'  END
-END
 
 PRINT N'Populate RefAccreditationAgency table'
 
@@ -3291,9 +2792,9 @@ VALUES ('doi', 'Dogri', NULL, 111.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentNeedLanguageLearnerType] 
 SET [Description] = 'Dogri', [Definition] = NULL, [SortOrder] = 111.00 WHERE [Code] = 'doi'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentNeedLanguageLearnerType] WHERE [Code] = 'dgr') BEGIN INSERT INTO dbo.[RefAssessmentNeedLanguageLearnerType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('dgr', 'Dogrib', NULL, 112.00) END
+VALUES ('dgr', 'Tlicho; Dogrib', NULL, 112.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentNeedLanguageLearnerType] 
-SET [Description] = 'Dogrib', [Definition] = NULL, [SortOrder] = 112.00 WHERE [Code] = 'dgr'  END
+SET [Description] = 'Tlicho; Dogrib', [Definition] = NULL, [SortOrder] = 112.00 WHERE [Code] = 'dgr'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentNeedLanguageLearnerType] WHERE [Code] = 'dra') BEGIN INSERT INTO dbo.[RefAssessmentNeedLanguageLearnerType]([Code], [Description], [Definition], [SortOrder])
 VALUES ('dra', 'Dravidian languages', NULL, 113.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentNeedLanguageLearnerType] 
@@ -8407,11 +7908,11 @@ PRINT N'Populate RefCharterSchoolManagementOrganizationType table'
 IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefCharterSchoolManagementOrganizationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 BEGIN
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefCharterSchoolManagementOrganizationType] WHERE [Code] = 'CMO') BEGIN INSERT INTO dbo.[RefCharterSchoolManagementOrganizationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('CMO', 'Charter Management Organization', 'A non-profit organization that operates or manages multiple charter schools (i.e., either through a contract with the charter schools or as the charter holder) linked by centralized support, operations, and oversight.', 1.00) END
+VALUES ('CMO', 'Charter Management Organization', 'A non-profit organization that operates or manages a network of charter schools (either through a contract with the charter schools or as the charter holder) linked by centralized support, operations, and oversight.', 1.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCharterSchoolManagementOrganizationType] 
 SET [Description] = 'Charter Management Organization', [Definition] = 'A non-profit organization that operates or manages multiple charter schools (i.e., either through a contract with the charter schools or as the charter holder) linked by centralized support, operations, and oversight.', [SortOrder] = 1.00 WHERE [Code] = 'CMO'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefCharterSchoolManagementOrganizationType] WHERE [Code] = 'EMO') BEGIN INSERT INTO dbo.[RefCharterSchoolManagementOrganizationType]([Code], [Description], [Definition], [SortOrder])
-VALUES ('EMO', 'Education Management Organization', 'A for-profit entity that contracts with new or existing public school districts, charter school districts, and charter schools to manage charter schools by centralizing support, operations, and oversight.  ', 2.00) END
+VALUES ('EMO', 'Education Management Organization', 'A for-profit organization that operates or manages a network of charter schools (either through a contract with the charter schools or as the charter holder) linked by centralized support, operations, and oversight.', 2.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCharterSchoolManagementOrganizationType] 
 SET [Description] = 'Education Management Organization', [Definition] = 'A for-profit entity that contracts with new or existing public school districts, charter school districts, and charter schools to manage charter schools by centralizing support, operations, and oversight.  ', [SortOrder] = 2.00 WHERE [Code] = 'EMO'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefCharterSchoolManagementOrganizationType] WHERE [Code] = 'SMFP') BEGIN INSERT INTO dbo.[RefCharterSchoolManagementOrganizationType]([Code], [Description], [Definition], [SortOrder])
@@ -11318,6 +10819,13 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialType] WHERE [Code] = 'HighSchoolD
 VALUES ('HighSchoolDiplomaDistinction', 'High School Diploma Distinction', 'High School Diploma Distinction is specified as the category of credential a person holds.', 7.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialType] 
 SET [Description] = 'High School Diploma Distinction', [Definition] = 'High School Diploma Distinction is specified as the category of credential a person holds.', [SortOrder] = 7.00 WHERE [Code] = 'HighSchoolDiplomaDistinction'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialType] WHERE [Code] = 'HighSchoolDiplomaDistinction') BEGIN INSERT INTO dbo.[RefCredentialType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('LicensureDistinction', 'Licensure distinction', 'Licensure distinction is specified as the category of credential a person holds. ', 8.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialType] 
+SET [Description] = 'Licensure distinction', [Definition] = 'Licensure distinction is specified as the category of credential a person holds. ', [SortOrder] = 8.00 WHERE [Code] = 'LicensureDistinction'  END
+
+
+
 END
 
 PRINT N'Populate RefCreditHoursAppliedOtherProgram table'
@@ -20092,6 +19600,10 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndividualizedProgramLocation] WHERE [Code]
 VALUES ('09999', 'Other', 'The place in which a child''s service plan meeting was held is in a category not yet defined in CEDS.', 24.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndividualizedProgramLocation] 
 SET [Description] = 'Other', [Definition] = 'The place in which a child''s service plan meeting was held is in a category not yet defined in CEDS.', [SortOrder] = 24.00 WHERE [Code] = '09999'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndividualizedProgramLocation] WHERE [Code] = '06020') BEGIN INSERT INTO dbo.[RefIndividualizedProgramLocation]([Code], [Description], [Definition], [SortOrder])
+VALUES ('06020', 'Virtual', 'Virtual is the location in which a child’s service plan meeting was held.', 25.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndividualizedProgramLocation] 
+SET [Description] = 'Virtual', [Definition] = 'Virtual is the location in which a child’s service plan meeting was held.', [SortOrder] = 25.00 WHERE [Code] = '06020'  END
 END
 
 PRINT N'Populate RefIndividualizedProgramPlannedServiceType table'
@@ -20236,6 +19748,10 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndividualizedProgramType] WHERE [Code] = '
 VALUES ('09999', 'Other', 'This type of individualized program developed for the student is in a category not yet defined in CEDS.', 10.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndividualizedProgramType] 
 SET [Description] = 'Other', [Definition] = 'This type of individualized program developed for the student is in a category not yet defined in CEDS.', [SortOrder] = 10.00 WHERE [Code] = '09999'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndividualizedProgramType] WHERE [Code] = '75019') BEGIN INSERT INTO dbo.[RefIndividualizedProgramType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('75019', 'Behavior Intervention Plan (BIP)', 'The type of individualized program developed for the student is a Behavior Intervention Plan (BIP).', 1.20) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndividualizedProgramType] 
+SET [Description] = 'Behavior Intervention Plan (BIP)', [Definition] = 'The type of individualized program developed for the student is a Behavior Intervention Plan (BIP).', [SortOrder] = 1.20 WHERE [Code] = '75019'  END
 END
 
 PRINT N'Populate RefInstitutionTelephoneType table'
@@ -20443,41 +19959,41 @@ PRINT N'Populate RefInternetAccessTypeInResidence table'
 IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefInternetAccessTypeInResidence]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 BEGIN
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'CellularNetwork') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('CellularNetwork', 'Cellular Network', 'The type of internet service used in the student''s primary place of residence is a cellular network that creates a hot spot using a cell phone for additional device access or access to the internet is only available through a cellular device.', 1.00) END
+VALUES ('CellularNetwork', 'Cellular Network', 'The type of internet service used in the individual''s primary place of residence is a cellular network that creates a hot spot using a cell phone for additional device access or access to the internet is only available through a cellular device.', 1.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Cellular Network', [Definition] = 'The type of internet service used in the student''s primary place of residence is a cellular network that creates a hot spot using a cell phone for additional device access or access to the internet is only available through a cellular device.', [SortOrder] = 1.00 WHERE [Code] = 'CellularNetwork'  END
+SET [Description] = 'Cellular Network', [Definition] = 'The type of internet service used in the individual''s primary place of residence is a cellular network that creates a hot spot using a cell phone for additional device access or access to the internet is only available through a cellular device.', [SortOrder] = 1.00 WHERE [Code] = 'CellularNetwork'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'CommunityProvidedWi-Fi') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('CommunityProvidedWi-Fi', 'Community Provided Wi-Fi', 'The type of internet service used in the student''s primary place of residence is community provided Wi-Fi.', 2.00) END
+VALUES ('CommunityProvidedWi-Fi', 'Community Provided Wi-Fi', 'The type of internet service used in the individual''s primary place of residence is community provided Wi-Fi.', 2.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Community Provided Wi-Fi', [Definition] = 'The type of internet service used in the student''s primary place of residence is community provided Wi-Fi.', [SortOrder] = 2.00 WHERE [Code] = 'CommunityProvidedWi-Fi'  END
+SET [Description] = 'Community Provided Wi-Fi', [Definition] = 'The type of internet service used in the individual''s primary place of residence is community provided Wi-Fi.', [SortOrder] = 2.00 WHERE [Code] = 'CommunityProvidedWi-Fi'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'Dialup') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('Dialup', 'Dial-up', 'The type of internet service used in the student''s primary place of residence is dial-up.', 3.00) END
+VALUES ('Dialup', 'Dial-up', 'The type of internet service used in the individual''s primary place of residence is dial-up.', 3.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Dial-up', [Definition] = 'The type of internet service used in the student''s primary place of residence is dial-up.', [SortOrder] = 3.00 WHERE [Code] = 'Dialup'  END
+SET [Description] = 'Dial-up', [Definition] = 'The type of internet service used in the individual''s primary place of residence is dial-up.', [SortOrder] = 3.00 WHERE [Code] = 'Dialup'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'HotSpot') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('HotSpot', 'Hot Spot', 'The type of internet service used in the student''s primary place of residence is a standalone hot spot device that is not a cell phone that allows for additional device access.', 4.00) END
+VALUES ('HotSpot', 'Hot Spot', 'The type of internet service used in the individual''s primary place of residence is a standalone hot spot device that is not a cell phone that allows for additional device access.', 4.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Hot Spot', [Definition] = 'The type of internet service used in the student''s primary place of residence is a standalone hot spot device that is not a cell phone that allows for additional device access.', [SortOrder] = 4.00 WHERE [Code] = 'HotSpot'  END
+SET [Description] = 'Hot Spot', [Definition] = 'The type of internet service used in the individual''s primary place of residence is a standalone hot spot device that is not a cell phone that allows for additional device access.', [SortOrder] = 4.00 WHERE [Code] = 'HotSpot'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'None') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('None', 'None', 'There is no internet service in the student''s primary place of residence.', 5.00) END
+VALUES ('None', 'None', 'There is no internet service in the individual''s primary place of residence.', 5.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'None', [Definition] = 'There is no internet service in the student''s primary place of residence.', [SortOrder] = 5.00 WHERE [Code] = 'None'  END
+SET [Description] = 'None', [Definition] = 'There is no internet service in the individual''s primary place of residence.', [SortOrder] = 5.00 WHERE [Code] = 'None'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'ResidentialBroadband') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('ResidentialBroadband', 'Residential Broadband', 'The type of internet service used in the student''s primary place of residence is residential broadband.', 6.00) END
+VALUES ('ResidentialBroadband', 'Residential Broadband', 'The type of internet service used in the individual''s primary place of residence is residential broadband.', 6.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Residential Broadband', [Definition] = 'The type of internet service used in the student''s primary place of residence is residential broadband.', [SortOrder] = 6.00 WHERE [Code] = 'ResidentialBroadband'  END
+SET [Description] = 'Residential Broadband', [Definition] = 'The type of internet service used in the individual''s primary place of residence is residential broadband.', [SortOrder] = 6.00 WHERE [Code] = 'ResidentialBroadband'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'Satellite') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('Satellite', 'Satellite', 'The type of internet service used in the student''s primary place of residence is satellite.', 7.00) END
+VALUES ('Satellite', 'Satellite', 'The type of internet service used in the individual''s primary place of residence is satellite.', 7.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Satellite', [Definition] = 'The type of internet service used in the student''s primary place of residence is satellite.', [SortOrder] = 7.00 WHERE [Code] = 'Satellite'  END
+SET [Description] = 'Satellite', [Definition] = 'The type of internet service used in the individual''s primary place of residence is satellite.', [SortOrder] = 7.00 WHERE [Code] = 'Satellite'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'Unknown') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('Unknown', 'Unknown', 'It is not known whether there is internet service in the student''s primary place of residence.', 8.00) END
+VALUES ('Unknown', 'Unknown', 'It is not known whether there is internet service in the individual''s primary place of residence.', 8.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Unknown', [Definition] = 'It is not known whether there is internet service in the student''s primary place of residence.', [SortOrder] = 8.00 WHERE [Code] = 'Unknown'  END
+SET [Description] = 'Unknown', [Definition] = 'It is not known whether there is internet service in the individual''s primary place of residence.', [SortOrder] = 8.00 WHERE [Code] = 'Unknown'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefInternetAccessTypeInResidence] WHERE [Code] = 'Other') BEGIN INSERT INTO dbo.[RefInternetAccessTypeInResidence]([Code], [Description], [Definition], [SortOrder])
-VALUES ('Other', 'Other', 'The type of internet service used in the student''s primary place of residence is not yet defined.', 99.00) END
+VALUES ('Other', 'Other', 'The type of internet service used in the individual''s primary place of residence is not yet defined.', 99.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefInternetAccessTypeInResidence] 
-SET [Description] = 'Other', [Definition] = 'The type of internet service used in the student''s primary place of residence is not yet defined.', [SortOrder] = 99.00 WHERE [Code] = 'Other'  END
+SET [Description] = 'Other', [Definition] = 'The type of internet service used in the individual''s primary place of residence is not yet defined.', [SortOrder] = 99.00 WHERE [Code] = 'Other'  END
 END
 
 PRINT N'Populate RefInternetPerformanceInResidence table'
@@ -21713,9 +21229,9 @@ VALUES ('doi', 'Dogri', NULL, 111.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6392Language] 
 SET [Description] = 'Dogri', [Definition] = NULL, [SortOrder] = 111.00 WHERE [Code] = 'doi'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6392Language] WHERE [Code] = 'dgr') BEGIN INSERT INTO dbo.[RefISO6392Language]([Code], [Description], [Definition], [SortOrder])
-VALUES ('dgr', 'Dogrib', NULL, 112.00) END
+VALUES ('dgr', 'Tlicho; Dogrib', NULL, 112.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6392Language] 
-SET [Description] = 'Dogrib', [Definition] = NULL, [SortOrder] = 112.00 WHERE [Code] = 'dgr'  END
+SET [Description] = 'Tlicho; Dogrib', [Definition] = NULL, [SortOrder] = 112.00 WHERE [Code] = 'dgr'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6392Language] WHERE [Code] = 'dra') BEGIN INSERT INTO dbo.[RefISO6392Language]([Code], [Description], [Definition], [SortOrder])
 VALUES ('dra', 'Dravidian languages', NULL, 113.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6392Language] 
@@ -23212,6 +22728,10 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6392Language] WHERE [Code] = 'zun') BEGI
 VALUES ('zun', 'Zuni', NULL, 486.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6392Language] 
 SET [Description] = 'Zuni', [Definition] = NULL, [SortOrder] = 486.00 WHERE [Code] = 'zun'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6392Language] WHERE [Code] = 'zlu') BEGIN INSERT INTO dbo.[RefISO6392Language]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zlu', 'Zul', NULL, 486.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6392Language] 
+SET [Description] = 'Zul', [Definition] = NULL, [SortOrder] = 486.00 WHERE [Code] = 'zlu'  END
 END
 
 PRINT N'Populate RefISO6393Language table'
@@ -29358,10 +28878,6 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'deh') BEGI
 VALUES ('deh', 'Dehwari', NULL, 1535.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
 SET [Description] = 'Dehwari', [Definition] = NULL, [SortOrder] = 1535.00 WHERE [Code] = 'deh'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'dek') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
-VALUES ('dek', 'Dek', NULL, 1536.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
-SET [Description] = 'Dek', [Definition] = NULL, [SortOrder] = 1536.00 WHERE [Code] = 'dek'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'row') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
 VALUES ('row', 'Dela-Oenale', NULL, 1537.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
@@ -41831,9 +41347,9 @@ VALUES ('mmq', 'Musak', NULL, 4653.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
 SET [Description] = 'Musak', [Definition] = NULL, [SortOrder] = 4653.00 WHERE [Code] = 'mmq'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'mmi') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
-VALUES ('mmi', 'Musar', NULL, 4654.00) END
+VALUES ('mmi', 'Amben, Hember Avu, Musar', NULL, 4654.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
-SET [Description] = 'Musar', [Definition] = NULL, [SortOrder] = 4654.00 WHERE [Code] = 'mmi'  END
+SET [Description] = 'Amben, Hember Avu, Musar', [Definition] = NULL, [SortOrder] = 4654.00 WHERE [Code] = 'mmi'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'smm') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
 VALUES ('smm', 'Musasa', NULL, 4655.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
@@ -42270,10 +41786,6 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'ntm') BEGI
 VALUES ('ntm', 'Nateni', NULL, 4763.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
 SET [Description] = 'Nateni', [Definition] = NULL, [SortOrder] = 4763.00 WHERE [Code] = 'ntm'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'nte') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
-VALUES ('nte', 'Nathembo', NULL, 4764.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
-SET [Description] = 'Nathembo', [Definition] = NULL, [SortOrder] = 4764.00 WHERE [Code] = 'nte'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'nti') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
 VALUES ('nti', 'Natioro', NULL, 4765.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
@@ -45786,10 +45298,6 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'pld') BEGI
 VALUES ('pld', 'Polari', NULL, 5642.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
 SET [Description] = 'Polari', [Definition] = NULL, [SortOrder] = 5642.00 WHERE [Code] = 'pld'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'plj') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
-VALUES ('plj', 'Polci', NULL, 5643.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
-SET [Description] = 'Polci', [Definition] = NULL, [SortOrder] = 5643.00 WHERE [Code] = 'plj'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'pol') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
 VALUES ('pol', 'Polish', NULL, 5644.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
@@ -48082,10 +47590,6 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'shs') BEGI
 VALUES ('shs', 'Shuswap', NULL, 6216.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
 SET [Description] = 'Shuswap', [Definition] = NULL, [SortOrder] = 6216.00 WHERE [Code] = 'shs'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'ksa') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
-VALUES ('ksa', 'Shuwa-Zamani', NULL, 6217.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
-SET [Description] = 'Shuwa-Zamani', [Definition] = NULL, [SortOrder] = 6217.00 WHERE [Code] = 'ksa'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'shw') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
 VALUES ('shw', 'Shwai', NULL, 6218.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
@@ -54730,10 +54234,6 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'jaj') BEGI
 VALUES ('jaj', 'Zazao', NULL, 7878.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
 SET [Description] = 'Zazao', [Definition] = NULL, [SortOrder] = 7878.00 WHERE [Code] = 'jaj'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'zua') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
-VALUES ('zua', 'Zeem', NULL, 7879.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
-SET [Description] = 'Zeem', [Definition] = NULL, [SortOrder] = 7879.00 WHERE [Code] = 'zua'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefISO6393Language] WHERE [Code] = 'zem') BEGIN INSERT INTO dbo.[RefISO6393Language]([Code], [Description], [Definition], [SortOrder])
 VALUES ('zem', 'Zeem', NULL, 7880.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefISO6393Language] 
@@ -55604,7 +55104,32 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'Sch
 VALUES ('SchoolPsychologist', 'School Psychologist', 'Professional staff member who provides direct and indirect support, including prevention and intervention, to evaluate and address student''s intellectual development, academic success, social-emotional learning, and mental and behavioral health.', 55.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefK12StaffClassification] 
 SET [Description] = 'School Psychologist', [Definition] = 'Professional staff member who provides direct and indirect support, including prevention and intervention, to evaluate and address student''s intellectual development, academic success, social-emotional learning, and mental and behavioral health.', [SortOrder] = 55.00 WHERE [Code] = 'SchoolPsychologist'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'ElementarySchoolCounselors') BEGIN INSERT INTO dbo.[RefK12StaffClassification]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ElementarySchoolCounselors', 'Elementary School Counselors', 'Professional staff members assigned specific duties and school time for any of the following activities: counseling with students and parents, consulting with other staff members on learning problems, evaluating student abilities, assisting students in making education and career choices, assisting students in personal and social development, providing referral assistance, and/or working with other staff members in planning and conducting guidance programs for students. Classified by state and local practice as elementary and composed of any span of grades not above grade 8.', 55.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefK12StaffClassification] 
+SET [Description] = 'Elementary School Counselors', [Definition] = 'Professional staff members assigned specific duties and school time for any of the following activities: counseling with students and parents, consulting with other staff members on learning problems, evaluating student abilities, assisting students in making education and career choices, assisting students in personal and social development, providing referral assistance, and/or working with other staff members in planning and conducting guidance programs for students. Classified by state and local practice as elementary and composed of any span of grades not above grade 8.', [SortOrder] = 55.00 WHERE [Code] = 'ElementarySchoolCounselors'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'SecondarySchoolCounselors') BEGIN INSERT INTO dbo.[RefK12StaffClassification]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SecondarySchoolCounselors', 'Secondary School Counselors', 'Professional staff members assigned specific duties and school time for any of the following activities: counseling with students and parents, consulting with other staff members on learning problems, evaluating student abilities, assisting students in making education and career choices, assisting students in personal and social development, providing referral assistance, and/or working with other staff members in planning and conducting guidance programs for students. Classified by state and local practice as secondary.', 55.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefK12StaffClassification] 
+SET [Description] = 'Secondary School Counselors', [Definition] = 'Professional staff members assigned specific duties and school time for any of the following activities: counseling with students and parents, consulting with other staff members on learning problems, evaluating student abilities, assisting students in making education and career choices, assisting students in personal and social development, providing referral assistance, and/or working with other staff members in planning and conducting guidance programs for students. Classified by state and local practice as secondary.', [SortOrder] = 55.00 WHERE [Code] = 'SecondarySchoolCounselors'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'LeaAdministrators') BEGIN INSERT INTO dbo.[RefK12StaffClassification]([Code], [Description], [Definition], [SortOrder])
+VALUES ('LeaAdministrators', 'LEA Administrators', 'Chief executive officers of education agencies including superintendents, deputies, and assistant superintendents; other persons with district-wide responsibilities, e.g., accountants, auditors, business managers, facilities managers, technology or information system administrators, or supervisors of transportation, food services, or security.', 55.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefK12StaffClassification] 
+SET [Description] = 'LEA Administrators', [Definition] = 'Chief executive officers of education agencies including superintendents, deputies, and assistant superintendents; other persons with district-wide responsibilities, e.g., accountants, auditors, business managers, facilities managers, technology or information system administrators, or supervisors of transportation, food services, or security.', [SortOrder] = 55.00 WHERE [Code] = 'LeaAdministrators'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'LeaAdministrativeSupportStaff') BEGIN INSERT INTO dbo.[RefK12StaffClassification]([Code], [Description], [Definition], [SortOrder])
+VALUES ('LeaAdministrativeSupportStaff', 'LEA Administrative Support Staff', 'Staff members providing direct support to LEA administrators, business office support, data processing, secretarial and other clerical staff; staff implementing software solutions and staff providing hardware and software maintenance and data user support.', 55.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefK12StaffClassification] 
+SET [Description] = 'LEA Administrative Support Staff', [Definition] = 'Staff members providing direct support to LEA administrators, business office support, data processing, secretarial and other clerical staff; staff implementing software solutions and staff providing hardware and software maintenance and data user support.', [SortOrder] = 55.00 WHERE [Code] = 'LeaAdministrativeSupportStaff'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'SchoolAdministrators') BEGIN INSERT INTO dbo.[RefK12StaffClassification]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SchoolAdministrators', 'School Administrators', 'Staff members whose activities are concerned with directing and managing the operation of a particular school.', 55.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefK12StaffClassification] 
+SET [Description] = 'School Administrators', [Definition] = 'Staff members whose activities are concerned with directing and managing the operation of a particular school.', [SortOrder] = 55.00 WHERE [Code] = 'SchoolAdministrators'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'SchoolAdministrativeSupportStaff') BEGIN INSERT INTO dbo.[RefK12StaffClassification]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SchoolAdministrativeSupportStaff', 'School Administrative Support Staff', 'Staff whose activities are concerned with support of the teaching and administrative duties of the office of the principal or department chairpersons.', 55.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefK12StaffClassification] 
+SET [Description] = 'School Administrative Support Staff', [Definition] = 'Staff whose activities are concerned with support of the teaching and administrative duties of the office of the principal or department chairpersons.', [SortOrder] = 55.00 WHERE [Code] = 'SchoolAdministrativeSupportStaff'  END
 END
+
 
 PRINT N'Populate RefLanguage table'
 
@@ -56055,9 +55580,9 @@ VALUES ('doi', 'Dogri', NULL, 111.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLanguage] 
 SET [Description] = 'Dogri', [Definition] = NULL, [SortOrder] = 111.00 WHERE [Code] = 'doi'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefLanguage] WHERE [Code] = 'dgr') BEGIN INSERT INTO dbo.[RefLanguage]([Code], [Description], [Definition], [SortOrder])
-VALUES ('dgr', 'Dogrib', NULL, 112.00) END
+VALUES ('dgr', 'Tlicho; Dogrib', NULL, 112.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLanguage] 
-SET [Description] = 'Dogrib', [Definition] = NULL, [SortOrder] = 112.00 WHERE [Code] = 'dgr'  END
+SET [Description] = 'Tlicho; Dogrib', [Definition] = NULL, [SortOrder] = 112.00 WHERE [Code] = 'dgr'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefLanguage] WHERE [Code] = 'dra') BEGIN INSERT INTO dbo.[RefLanguage]([Code], [Description], [Definition], [SortOrder])
 VALUES ('dra', 'Dravidian languages', NULL, 113.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLanguage] 
@@ -62051,21 +61576,21 @@ PRINT N'Populate RefRole table'
 IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefRole]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 BEGIN
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'AEStaff') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('AEStaff', 'AE Staff', 'A person for whom instruction and/or services are provided in an Adult Education program.', 1.00) END
+VALUES ('AEStaff', 'AE Staff', 'A person who is employed by an Adult Education program.', 1.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'AE Staff', [Definition] = 'A person for whom instruction and/or services are provided in an Adult Education program.', [SortOrder] = 1.00 WHERE [Code] = 'AEStaff'  END
+SET [Description] = 'AE Staff', [Definition] = 'A person who is employed by an Adult Education program.', [SortOrder] = 1.00 WHERE [Code] = 'AEStaff'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'AEStudent') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('AEStudent', 'AE Student', 'An individual who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff in a Career and Technical Education program.', 2.00) END
+VALUES ('AEStudent', 'AE Student', 'A person for whom instruction and/or services are provided in an Adult Education program.', 2.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'AE Student', [Definition] = 'An individual who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff in a Career and Technical Education program.', [SortOrder] = 2.00 WHERE [Code] = 'AEStudent'  END
+SET [Description] = 'AE Student', [Definition] = 'A person for whom instruction and/or services are provided in an Adult Education program.', [SortOrder] = 2.00 WHERE [Code] = 'AEStudent'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'CTEStaff') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('CTEStaff', 'CTE Staff', 'A person for whom instruction, services, and/or care are provided in a Career and Technical Education program and who has met the state-defined threshold of Career and Technical Education participation.', 3.00) END
+VALUES ('CTEStaff', 'CTE Staff', 'An individual who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff in a Career and Technical Education program.', 3.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'CTE Staff', [Definition] = 'A person for whom instruction, services, and/or care are provided in a Career and Technical Education program and who has met the state-defined threshold of Career and Technical Education participation.', [SortOrder] = 3.00 WHERE [Code] = 'CTEStaff'  END
+SET [Description] = 'CTE Staff', [Definition] = 'An individual who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff in a Career and Technical Education program.', [SortOrder] = 3.00 WHERE [Code] = 'CTEStaff'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'CTEStudent') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('CTEStudent', 'CTE Student', 'An individual who is an applicant of a postsecondary institution.', 4.00) END
+VALUES ('CTEStudent', 'CTE Student', 'A person for whom instruction, services, and/or care are provided in a Career and Technical Education program and who has met the state-defined threshold of Career and Technical Education participation.', 4.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'CTE Student', [Definition] = 'An individual who is an applicant of a postsecondary institution.', [SortOrder] = 4.00 WHERE [Code] = 'CTEStudent'  END
+SET [Description] = 'CTE Student', [Definition] = 'A person for whom instruction, services, and/or care are provided in a Career and Technical Education program and who has met the state-defined threshold of Career and Technical Education participation.', [SortOrder] = 4.00 WHERE [Code] = 'CTEStudent'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'ELChild') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
 VALUES ('ELChild', 'EL Child', 'A person for whom instruction, services, and/or care are provided in an early childhood program under the jurisdiction of a school, education agency, or other institution or program.', 5.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
@@ -62087,21 +61612,21 @@ VALUES ('ParentGuardian', 'Parent/Guardian', 'A person having parental or legal 
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
 SET [Description] = 'Parent/Guardian', [Definition] = 'A person having parental or legal guardianship responsibility for a learner.', [SortOrder] = 9.00 WHERE [Code] = 'ParentGuardian'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'PSApplicant') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('PSApplicant', 'PS Applicant', 'A person who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff at the postsecondary level.', 10.00) END
+VALUES ('PSApplicant', 'PS Applicant', 'An individual who is an applicant of a postsecondary institution.', 10.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'PS Applicant', [Definition] = 'A person who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff at the postsecondary level.', [SortOrder] = 10.00 WHERE [Code] = 'PSApplicant'  END
+SET [Description] = 'PS Applicant', [Definition] = 'An individual who is an applicant of a postsecondary institution.', [SortOrder] = 10.00 WHERE [Code] = 'PSApplicant'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'PSStaff') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('PSStaff', 'PS Staff', 'An individual who is a prospect, applicant, admitted student, enrolled student, or alum of a postsecondary institution.', 11.00) END
+VALUES ('PSStaff', 'PS Staff', 'A person who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff at the postsecondary level.', 11.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'PS Staff', [Definition] = 'An individual who is a prospect, applicant, admitted student, enrolled student, or alum of a postsecondary institution.', [SortOrder] = 11.00 WHERE [Code] = 'PSStaff'  END
+SET [Description] = 'PS Staff', [Definition] = 'A person who performs specified activities for any public or private education institution, agency, or household that provides instructional and/or support services to students or staff at the postsecondary level.', [SortOrder] = 11.00 WHERE [Code] = 'PSStaff'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'PSStudent') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('PSStudent', 'PS Student', NULL, 12.00) END
+VALUES ('PSStudent', 'PS Student', 'An individual who is a prospect, applicant, admitted student, enrolled student, or alum of a postsecondary institution.', 12.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'PS Student', [Definition] = NULL, [SortOrder] = 12.00 WHERE [Code] = 'PSStudent'  END
+SET [Description] = 'PS Student', [Definition] = 'An individual who is a prospect, applicant, admitted student, enrolled student, or alum of a postsecondary institution.', [SortOrder] = 12.00 WHERE [Code] = 'PSStudent'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'WorkforceProgramParticipant') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
-VALUES ('WorkforceProgramParticipant', 'Workforce Program Participant', 'A person who is employed by an Adult Education program.', 13.00) END
+VALUES ('WorkforceProgramParticipant', 'Workforce Program Participant', 'A person for whom instruction and/or services are provided in a workforce and/or an employment development program.', 13.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
-SET [Description] = 'Workforce Program Participant', [Definition] = 'A person who is employed by an Adult Education program.', [SortOrder] = 13.00 WHERE [Code] = 'WorkforceProgramParticipant'  END
+SET [Description] = 'Workforce Program Participant', [Definition] = 'A person for whom instruction and/or services are provided in a workforce and/or an employment development program.', [SortOrder] = 13.00 WHERE [Code] = 'WorkforceProgramParticipant'  END
 IF NOT EXISTS (SELECT 1 FROM dbo.[RefRole] WHERE [Code] = 'ChiefStateSchoolOfficer') BEGIN INSERT INTO dbo.[RefRole]([Code], [Description], [Definition], [SortOrder])
 VALUES ('ChiefStateSchoolOfficer', 'Chief State School Officer', 'A public official who heads the department of elementary and secondary education in either a state, the District of Columbia, the Department of Defense Education Activity, the Bureau of Indian Education or one of the U.S. extra-state jurisdictions.', 14.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRole] 
@@ -64192,10 +63717,6 @@ IF NOT EXISTS (SELECT 1 FROM dbo.[RefTargetedSupportAndImprovementStatus] WHERE 
 VALUES ('TSI', 'Targeted support and improvement', 'Targeted support and improvement is the designation given to a school by the state for targeted support and improvement as part of its statewide system of annual meaningful differentiation.', 2.00) END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTargetedSupportAndImprovementStatus] 
 SET [Description] = 'Targeted support and improvement', [Definition] = 'Targeted support and improvement is the designation given to a school by the state for targeted support and improvement as part of its statewide system of annual meaningful differentiation.', [SortOrder] = 2.00 WHERE [Code] = 'TSI'  END
-IF NOT EXISTS (SELECT 1 FROM dbo.[RefTargetedSupportAndImprovementStatus] WHERE [Code] = 'TSIEXIT') BEGIN INSERT INTO dbo.[RefTargetedSupportAndImprovementStatus]([Code], [Description], [Definition], [SortOrder])
-VALUES ('TSIEXIT', 'Targeted support and improvement - exit status', 'Targeted support and improvement - exit status is the designation given to a school by the state for targeted support and improvement as part of its statewide system of annual meaningful differentiation.', 3.00) END
-ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTargetedSupportAndImprovementStatus] 
-SET [Description] = 'Targeted support and improvement - exit status', [Definition] = 'Targeted support and improvement - exit status is the designation given to a school by the state for targeted support and improvement as part of its statewide system of annual meaningful differentiation.', [SortOrder] = 3.00 WHERE [Code] = 'TSIEXIT'  END
 END
 
 PRINT N'Populate RefTeacherEducationCredentialExam table'
@@ -71509,6 +71030,34 @@ END
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
 SET [Definition] = 'An institution in which all students participate in a comprehensive plan that integrates their high school course of study and an intentionally designed authentic postsecondary experience leading to their regular high school diploma, an official college transcript and transferable college credit towards a recognized postsecondary degree or credential.', [SortOrder] = 52.00
 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'EarlyCollege' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'PostsecondarySystem') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'PostsecondarySystem', 'Postsecondary System', 'A network of peer-level educational organizations intended to provide shared services or collective procurement.', 54.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A network of peer-level educational organizations intended to provide shared services or collective procurement.', [SortOrder] = 54.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'PostsecondarySystem' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Campus') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'Campus', 'Campus', 'A location where the postsecondary institution provides services (admin, residential, education). May be virtual or physical. May be called by other terms (e.g., branch, location site regional campus).', 53.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'A location where the postsecondary institution provides services (admin, residential, education). May be virtual or physical. May be called by other terms (e.g., branch, location site regional campus).', [SortOrder] = 53.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Campus' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'SHEEOAgency') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'SHEEOAgency', 'SHEEO Agency', 'An entity tasked with overseeing higher education in its state and is led by a state higher education executive officer.', 55.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An entity tasked with overseeing higher education in its state and is led by a state higher education executive officer.', [SortOrder] = 55.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'SHEEOAgency' END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Region') BEGIN INSERT INTO dbo.[RefOrganizationType]([Code], [Description], [Definition], [SortOrder], [RefOrganizationElementTypeId])
+SELECT 'Region', 'Region', 'An area or other organizational construct that is identified by defined characteristics and is typically used to group other related organizations.', 56.00, [RefOrganizationElementTypeId] 
+FROM dbo.RefOrganizationElementType WHERE Description = 'Organization Type' 
+END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefOrganizationType] 
+SET [Definition] = 'An area or other organizational construct that is identified by defined characteristics and is typically used to group other related organizations.', [SortOrder] = 56.00
+FROM dbo.[RefOrganizationType] r INNER JOIN dbo.RefOrganizationElementType t ON t.RefOrganizationElementTypeId = r.RefOrganizationElementTypeId WHERE t.[Description] = 'Organization Type' AND r.[Code] = 'Region' END
 END
 
 PRINT N'Populate RefRoleStatus table'
@@ -71809,5 +71358,2966 @@ VALUES ('28', 'Bonus', 'Bonus is offered by a program/facility/employer.', 28.00
 ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEmployeeBenefit] 
 SET [Description] = 'Bonus', [Definition] = 'Bonus is offered by a program/facility/employer.', [SortOrder] = 28.00 WHERE [Code] = '28'  END
 END
-GO
+
+----V13 -- New Tables--
+
+PRINT N'Populate RefAccessibilityFeatureApplicationType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibilityFeatureApplicationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureApplicationType] WHERE [Code] = 'Universal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureApplicationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Universal', 'Universal feature', 'An accessibility feature that is provided to all individuals.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureApplicationType] 
+SET [Description] = 'Universal feature', [Definition] = 'An accessibility feature that is provided to all individuals.', [SortOrder] = 4.00 WHERE [Code] = 'Universal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureApplicationType] WHERE [Code] = 'Designated') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureApplicationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Designated', 'Designated feature', 'An accessibility feature that is provided to individuals based on individual educational needs identified by an authorized adult or team of adults and intended to ensure equitable access to the assessment.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureApplicationType] 
+SET [Description] = 'Designated feature', [Definition] = 'An accessibility feature that is provided to individuals based on individual educational needs identified by an authorized adult or team of adults and intended to ensure equitable access to the assessment.', [SortOrder] = 3.00 WHERE [Code] = 'Designated'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureApplicationType] WHERE [Code] = 'Administrative') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureApplicationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Administrative', 'Administrative consideration', 'An accessibility feature provided to address unique circumstances or logistical needs during testing, such as environmental adjustments or timing flexibility, which may be provided at the discretion of administrators or educators, except when required by a person’s individualized program.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureApplicationType] 
+SET [Description] = 'Administrative consideration', [Definition] = 'An accessibility feature provided to address unique circumstances or logistical needs during testing, such as environmental adjustments or timing flexibility, which may be provided at the discretion of administrators or educators, except when required by a person’s individualized program.', [SortOrder] = 2.00 WHERE [Code] = 'Administrative'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureApplicationType] WHERE [Code] = 'Accommodation') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureApplicationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Accommodation', 'Accommodation', 'An accessibility feature provided only to individuals with disabilities and English learners for content assessments, and only for English learners with disabilities for English language proficiency assessments.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureApplicationType] 
+SET [Description] = 'Accommodation', [Definition] = 'An accessibility feature provided only to individuals with disabilities and English learners for content assessments, and only for English learners with disabilities for English language proficiency assessments.', [SortOrder] = 1.00 WHERE [Code] = 'Accommodation'  END
+END
+
+PRINT N'RefAccessibilityFeatureCategory'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibilityFeatureCategory]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureCategory] WHERE [Code] = 'Timing') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureCategory]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Timing', 'Timing', 'Timing is the category of features implemented to enhance accessibility.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureCategory] 
+SET [Description] = 'Timing', [Definition] = 'Timing is the category of features implemented to enhance accessibility.', [SortOrder] = 4.00 WHERE [Code] = 'Timing'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureCategory] WHERE [Code] = 'Setting') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureCategory]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Setting', 'Setting', 'Setting is the category of features implemented to enhance accessibility.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureCategory] 
+SET [Description] = 'Setting', [Definition] = 'Setting is the category of features implemented to enhance accessibility.', [SortOrder] = 3.00 WHERE [Code] = 'Setting'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureCategory] WHERE [Code] = 'Response') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureCategory]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Response', 'Response', 'Response is the category of features implemented to enhance accessibility.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureCategory] 
+SET [Description] = 'Response', [Definition] = 'Response is the category of features implemented to enhance accessibility.', [SortOrder] = 2.00 WHERE [Code] = 'Response'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureCategory] WHERE [Code] = 'Presentation') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureCategory]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Presentation', 'Presentation', 'Presentation is the category of features implemented to enhance accessibility.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureCategory] 
+SET [Description] = 'Presentation', [Definition] = 'Presentation is the category of features implemented to enhance accessibility.', [SortOrder] = 1.00 WHERE [Code] = 'Presentation'  END
+END
+
+
+PRINT N'RefAccessibilityFeatureDeliveryMethod'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibilityFeatureDeliveryMethod]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureDeliveryMethod] WHERE [Code] = 'HandHeld') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureDeliveryMethod]([Code], [Description], [Definition], [SortOrder])
+VALUES ('HandHeld', 'Hand-held', 'The device is an accessibility feature that can be held in the person’s hand and can function without any other resource attached to it.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureDeliveryMethod] 
+SET [Description] = 'Hand-held', [Definition] = 'The device is an accessibility feature that can be held in the person’s hand and can function without any other resource attached to it.', [SortOrder] = 1.00 WHERE [Code] = 'HandHeld'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureDeliveryMethod] WHERE [Code] = 'OnScreen') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureDeliveryMethod]([Code], [Description], [Definition], [SortOrder])
+VALUES ('OnScreen', 'On screen', 'The accessibility feature is a document or software that is manipulated and/or viewed on a computer or tablet screen.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureDeliveryMethod] 
+SET [Description] = 'On screen', [Definition] = 'The accessibility feature is a document or software that is manipulated and/or viewed on a computer or tablet screen.', [SortOrder] = 2.00 WHERE [Code] = 'OnScreen'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureDeliveryMethod] WHERE [Code] = 'Printed') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureDeliveryMethod]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Printed', 'Printed', 'The accessibility feature is a paper copy that is provided to the person.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureDeliveryMethod] 
+SET [Description] = 'Printed', [Definition] = 'The accessibility feature is a paper copy that is provided to the person.', [SortOrder] = 3.00 WHERE [Code] = 'Printed'  END
+END
+
+
+PRINT N'RefAccessibilityFeatureEmbeddedIndicator'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibilityFeatureEmbeddedIndicator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureEmbeddedIndicator] WHERE [Code] = 'NotEmbedded') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureEmbeddedIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('NotEmbedded', 'Not embedded', 'The accessibility feature is not embedded.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureEmbeddedIndicator] 
+SET [Description] = 'Not embedded', [Definition] = 'The accessibility feature is not embedded.', [SortOrder] = 2.00 WHERE [Code] = 'NotEmbedded'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureEmbeddedIndicator] WHERE [Code] = 'Embedded') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureEmbeddedIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Embedded', 'Embedded', 'The accessibility feature is embedded.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureEmbeddedIndicator] 
+SET [Description] = 'Embedded', [Definition] = 'The accessibility feature is embedded.', [SortOrder] = 1.00 WHERE [Code] = 'Embedded'  END
+END
+
+
+PRINT N'RefAccessibilityFeatureLanguageType'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibilityFeatureLanguageType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zap') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zap', 'Zapotec', '', 482.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Zapotec', [Definition] = '', [SortOrder] = 482.00 WHERE [Code] = 'zap'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ger') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ger', 'German', '', 154.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'German', [Definition] = '', [SortOrder] = 154.00 WHERE [Code] = 'ger'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sag') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sag', 'Sango', '', 371.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sango', [Definition] = '', [SortOrder] = 371.00 WHERE [Code] = 'sag'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'goh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('goh', 'German, Old High (ca.750-1050)', '', 156.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'German, Old High (ca.750-1050)', [Definition] = '', [SortOrder] = 156.00 WHERE [Code] = 'goh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bem') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bem', 'Bemba', '', 50.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bemba', [Definition] = '', [SortOrder] = 50.00 WHERE [Code] = 'bem'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fon') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fon', 'Fon', '', 139.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Fon', [Definition] = '', [SortOrder] = 139.00 WHERE [Code] = 'fon'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bat') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bat', 'Baltic languages', '', 38.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Baltic languages', [Definition] = '', [SortOrder] = 38.00 WHERE [Code] = 'bat'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mas') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mas', 'Masai', '', 287.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Masai', [Definition] = '', [SortOrder] = 287.00 WHERE [Code] = 'mas'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'elx') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('elx', 'Elamite', '', 123.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Elamite', [Definition] = '', [SortOrder] = 123.00 WHERE [Code] = 'elx'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'aym') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('aym', 'Aymara', '', 35.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Aymara', [Definition] = '', [SortOrder] = 35.00 WHERE [Code] = 'aym'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'men') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('men', 'Mende', '', 289.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mende', [Definition] = '', [SortOrder] = 289.00 WHERE [Code] = 'men'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tah') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tah', 'Tahitian', '', 419.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tahitian', [Definition] = '', [SortOrder] = 419.00 WHERE [Code] = 'tah'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'que') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('que', 'Quechua', '', 356.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Quechua', [Definition] = '', [SortOrder] = 356.00 WHERE [Code] = 'que'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kha') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kha', 'Khasi', '', 223.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Khasi', [Definition] = '', [SortOrder] = 223.00 WHERE [Code] = 'kha'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'war') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('war', 'Waray', '', 468.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Waray', [Definition] = '', [SortOrder] = 468.00 WHERE [Code] = 'war'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'spa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('spa', 'Spanish; Castilian', '', 406.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Spanish; Castilian', [Definition] = '', [SortOrder] = 406.00 WHERE [Code] = 'spa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chm', 'Mari', '', 284.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mari', [Definition] = '', [SortOrder] = 284.00 WHERE [Code] = 'chm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nai', 'North American Indian languages', '', 319.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'North American Indian languages', [Definition] = '', [SortOrder] = 319.00 WHERE [Code] = 'nai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ewe') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ewe', 'Ewe', '', 130.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ewe', [Definition] = '', [SortOrder] = 130.00 WHERE [Code] = 'ewe'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'new') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('new', 'Nepal Bhasa; Newari', '', 310.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nepal Bhasa; Newari', [Definition] = '', [SortOrder] = 310.00 WHERE [Code] = 'new'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ukr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ukr', 'Ukrainian', '', 454.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ukrainian', [Definition] = '', [SortOrder] = 454.00 WHERE [Code] = 'ukr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ina') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ina', 'Interlingua (International Auxiliary Language Association)', '', 193.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Interlingua (International Auxiliary Language Association)', [Definition] = '', [SortOrder] = 193.00 WHERE [Code] = 'ina'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lao') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lao', 'Lao', '', 247.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lao', [Definition] = '', [SortOrder] = 247.00 WHERE [Code] = 'lao'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tgk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tgk', 'Tajik', '', 421.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tajik', [Definition] = '', [SortOrder] = 421.00 WHERE [Code] = 'tgk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'egy') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('egy', 'Egyptian (Ancient)', '', 121.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Egyptian (Ancient)', [Definition] = '', [SortOrder] = 121.00 WHERE [Code] = 'egy'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mar') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mar', 'Marathi', '', 283.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Marathi', [Definition] = '', [SortOrder] = 283.00 WHERE [Code] = 'mar'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'rup') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('rup', 'Aromanian; Arumanian; Macedo-Romanian', '', 25.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Aromanian; Arumanian; Macedo-Romanian', [Definition] = '', [SortOrder] = 25.00 WHERE [Code] = 'rup'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sot') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sot', 'Sotho, Southern', '', 402.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sotho, Southern', [Definition] = '', [SortOrder] = 402.00 WHERE [Code] = 'sot'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'uig') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('uig', 'Uighur; Uyghur', '', 453.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Uighur; Uyghur', [Definition] = '', [SortOrder] = 453.00 WHERE [Code] = 'uig'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'phn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('phn', 'Phoenician', '', 349.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Phoenician', [Definition] = '', [SortOrder] = 349.00 WHERE [Code] = 'phn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kpe') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kpe', 'Kpelle', '', 236.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kpelle', [Definition] = '', [SortOrder] = 236.00 WHERE [Code] = 'kpe'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chr', 'Cherokee', '', 79.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Cherokee', [Definition] = '', [SortOrder] = 79.00 WHERE [Code] = 'chr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mag') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mag', 'Magahi', '', 268.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Magahi', [Definition] = '', [SortOrder] = 268.00 WHERE [Code] = 'mag'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'srr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('srr', 'Serer', '', 380.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Serer', [Definition] = '', [SortOrder] = 380.00 WHERE [Code] = 'srr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'son') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('son', 'Songhai languages', '', 399.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Songhai languages', [Definition] = '', [SortOrder] = 399.00 WHERE [Code] = 'son'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nso') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nso', 'Pedi; Sepedi; Northern Sotho', '', 345.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Pedi; Sepedi; Northern Sotho', [Definition] = '', [SortOrder] = 345.00 WHERE [Code] = 'nso'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'wol') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('wol', 'Wolof', '', 473.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Wolof', [Definition] = '', [SortOrder] = 473.00 WHERE [Code] = 'wol'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kho') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kho', 'Khotanese; Sakan', '', 225.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Khotanese; Sakan', [Definition] = '', [SortOrder] = 225.00 WHERE [Code] = 'kho'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nap') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nap', 'Neapolitan', '', 309.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Neapolitan', [Definition] = '', [SortOrder] = 309.00 WHERE [Code] = 'nap'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'din') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('din', 'Dinka', '', 109.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dinka', [Definition] = '', [SortOrder] = 109.00 WHERE [Code] = 'din'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ben') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ben', 'Bengali', '', 51.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bengali', [Definition] = '', [SortOrder] = 51.00 WHERE [Code] = 'ben'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nyo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nyo', 'Nyoro', '', 327.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nyoro', [Definition] = '', [SortOrder] = 327.00 WHERE [Code] = 'nyo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mno') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mno', 'Manobo languages', '', 279.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Manobo languages', [Definition] = '', [SortOrder] = 279.00 WHERE [Code] = 'mno'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kom') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kom', 'Komi', '', 231.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Komi', [Definition] = '', [SortOrder] = 231.00 WHERE [Code] = 'kom'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kaw') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kaw', 'Kawi', '', 221.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kawi', [Definition] = '', [SortOrder] = 221.00 WHERE [Code] = 'kaw'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gba') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gba', 'Gbaya', '', 151.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gbaya', [Definition] = '', [SortOrder] = 151.00 WHERE [Code] = 'gba'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'anp') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('anp', 'Angika', '', 18.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Angika', [Definition] = '', [SortOrder] = 18.00 WHERE [Code] = 'anp'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'rus') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('rus', 'Russian', '', 365.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Russian', [Definition] = '', [SortOrder] = 365.00 WHERE [Code] = 'rus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'smi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('smi', 'Sami languages', '', 368.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sami languages', [Definition] = '', [SortOrder] = 368.00 WHERE [Code] = 'smi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dsb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dsb', 'Lower Sorbian', '', 256.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lower Sorbian', [Definition] = '', [SortOrder] = 256.00 WHERE [Code] = 'dsb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'iii') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('iii', 'Sichuan Yi; Nuosu', '', 383.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sichuan Yi; Nuosu', [Definition] = '', [SortOrder] = 383.00 WHERE [Code] = 'iii'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ita') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ita', 'Italian', '', 202.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Italian', [Definition] = '', [SortOrder] = 202.00 WHERE [Code] = 'ita'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tog') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tog', 'Tonga (Nyasa)', '', 438.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tonga (Nyasa)', [Definition] = '', [SortOrder] = 438.00 WHERE [Code] = 'tog'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tmh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tmh', 'Tamashek', '', 422.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tamashek', [Definition] = '', [SortOrder] = 422.00 WHERE [Code] = 'tmh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nia') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nia', 'Nias', '', 312.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nias', [Definition] = '', [SortOrder] = 312.00 WHERE [Code] = 'nia'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'jbo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('jbo', 'Lojban', '', 254.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lojban', [Definition] = '', [SortOrder] = 254.00 WHERE [Code] = 'jbo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mis') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mis', 'Uncoded languages', '', 456.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Uncoded languages', [Definition] = '', [SortOrder] = 456.00 WHERE [Code] = 'mis'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'vol') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('vol', 'Volapük', '', 464.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Volapük', [Definition] = '', [SortOrder] = 464.00 WHERE [Code] = 'vol'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kam') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kam', 'Kamba', '', 212.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kamba', [Definition] = '', [SortOrder] = 212.00 WHERE [Code] = 'kam'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tsn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tsn', 'Tswana', '', 442.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tswana', [Definition] = '', [SortOrder] = 442.00 WHERE [Code] = 'tsn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lez') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lez', 'Lezghian', '', 250.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lezghian', [Definition] = '', [SortOrder] = 250.00 WHERE [Code] = 'lez'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'wln') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('wln', 'Walloon', '', 467.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Walloon', [Definition] = '', [SortOrder] = 467.00 WHERE [Code] = 'wln'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zen') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zen', 'Zenaga', '', 484.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Zenaga', [Definition] = '', [SortOrder] = 484.00 WHERE [Code] = 'zen'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cos') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cos', 'Corsican', '', 94.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Corsican', [Definition] = '', [SortOrder] = 94.00 WHERE [Code] = 'cos'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'yid') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('yid', 'Yiddish', '', 478.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Yiddish', [Definition] = '', [SortOrder] = 478.00 WHERE [Code] = 'yid'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bis') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bis', 'Bislama', '', 57.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bislama', [Definition] = '', [SortOrder] = 57.00 WHERE [Code] = 'bis'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ath') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ath', 'Athapascan languages', '', 29.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Athapascan languages', [Definition] = '', [SortOrder] = 29.00 WHERE [Code] = 'ath'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hat') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hat', 'Haitian; Haitian Creole', '', 169.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Haitian; Haitian Creole', [Definition] = '', [SortOrder] = 169.00 WHERE [Code] = 'hat'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gwi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gwi', 'Gwich''in', '', 167.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gwich''in', [Definition] = '', [SortOrder] = 167.00 WHERE [Code] = 'gwi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'man') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('man', 'Mandingo', '', 277.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mandingo', [Definition] = '', [SortOrder] = 277.00 WHERE [Code] = 'man'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mwr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mwr', 'Marwari', '', 286.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Marwari', [Definition] = '', [SortOrder] = 286.00 WHERE [Code] = 'mwr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bej') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bej', 'Beja; Bedawiyet', '', 48.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Beja; Bedawiyet', [Definition] = '', [SortOrder] = 48.00 WHERE [Code] = 'bej'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'vot') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('vot', 'Votic', '', 465.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Votic', [Definition] = '', [SortOrder] = 465.00 WHERE [Code] = 'vot'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sga') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sga', 'Irish, Old (to 900)', '', 200.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Irish, Old (to 900)', [Definition] = '', [SortOrder] = 200.00 WHERE [Code] = 'sga'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bak') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bak', 'Bashkir', '', 45.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bashkir', [Definition] = '', [SortOrder] = 45.00 WHERE [Code] = 'bak'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cmc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cmc', 'Chamic languages', '', 76.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chamic languages', [Definition] = '', [SortOrder] = 76.00 WHERE [Code] = 'cmc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tiv') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tiv', 'Tiv', '', 433.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tiv', [Definition] = '', [SortOrder] = 433.00 WHERE [Code] = 'tiv'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'syr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('syr', 'Syriac', '', 417.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Syriac', [Definition] = '', [SortOrder] = 417.00 WHERE [Code] = 'syr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'krl') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('krl', 'Karelian', '', 217.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Karelian', [Definition] = '', [SortOrder] = 217.00 WHERE [Code] = 'krl'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cnr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cnr', 'Montenegrin', '', 298.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Montenegrin', [Definition] = '', [SortOrder] = 298.00 WHERE [Code] = 'cnr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tha') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tha', 'Thai', '', 428.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Thai', [Definition] = '', [SortOrder] = 428.00 WHERE [Code] = 'tha'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'wen') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('wen', 'Sorbian languages', '', 401.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sorbian languages', [Definition] = '', [SortOrder] = 401.00 WHERE [Code] = 'wen'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'moh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('moh', 'Mohawk', '', 293.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mohawk', [Definition] = '', [SortOrder] = 293.00 WHERE [Code] = 'moh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ada') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ada', 'Adangme', '', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Adangme', [Definition] = '', [SortOrder] = 4.00 WHERE [Code] = 'ada'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sit') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sit', 'Sino-Tibetan languages', '', 390.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sino-Tibetan languages', [Definition] = '', [SortOrder] = 390.00 WHERE [Code] = 'sit'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nbl') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nbl', 'Ndebele, South; South Ndebele', '', 307.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ndebele, South; South Ndebele', [Definition] = '', [SortOrder] = 307.00 WHERE [Code] = 'nbl'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ice') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ice', 'Icelandic', '', 183.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Icelandic', [Definition] = '', [SortOrder] = 183.00 WHERE [Code] = 'ice'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sna') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sna', 'Shona', '', 382.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Shona', [Definition] = '', [SortOrder] = 382.00 WHERE [Code] = 'sna'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sio') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sio', 'Siouan languages', '', 391.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Siouan languages', [Definition] = '', [SortOrder] = 391.00 WHERE [Code] = 'sio'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'arn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('arn', 'Mapudungun; Mapuche', '', 282.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mapudungun; Mapuche', [Definition] = '', [SortOrder] = 282.00 WHERE [Code] = 'arn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fao') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fao', 'Faroese', '', 134.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Faroese', [Definition] = '', [SortOrder] = 134.00 WHERE [Code] = 'fao'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cre') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cre', 'Cree', '', 95.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Cree', [Definition] = '', [SortOrder] = 95.00 WHERE [Code] = 'cre'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mad') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mad', 'Madurese', '', 267.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Madurese', [Definition] = '', [SortOrder] = 267.00 WHERE [Code] = 'mad'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'car') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('car', 'Galibi Carib', '', 147.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Galibi Carib', [Definition] = '', [SortOrder] = 147.00 WHERE [Code] = 'car'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tuk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tuk', 'Turkmen', '', 447.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Turkmen', [Definition] = '', [SortOrder] = 447.00 WHERE [Code] = 'tuk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bos') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bos', 'Bosnian', '', 61.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bosnian', [Definition] = '', [SortOrder] = 61.00 WHERE [Code] = 'bos'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sad') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sad', 'Sandawe', '', 370.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sandawe', [Definition] = '', [SortOrder] = 370.00 WHERE [Code] = 'sad'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sgn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sgn', 'Sign Languages', '', 386.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sign Languages', [Definition] = '', [SortOrder] = 386.00 WHERE [Code] = 'sgn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'guj') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('guj', 'Gujarati', '', 166.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gujarati', [Definition] = '', [SortOrder] = 166.00 WHERE [Code] = 'guj'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'oci') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('oci', 'Occitan (post 1500)', '', 329.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Occitan (post 1500)', [Definition] = '', [SortOrder] = 329.00 WHERE [Code] = 'oci'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hin') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hin', 'Hindi', '', 176.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hindi', [Definition] = '', [SortOrder] = 176.00 WHERE [Code] = 'hin'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kir') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kir', 'Kirghiz; Kyrgyz', '', 229.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kirghiz; Kyrgyz', [Definition] = '', [SortOrder] = 229.00 WHERE [Code] = 'kir'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pam') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pam', 'Pampanga; Kapampangan', '', 340.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Pampanga; Kapampangan', [Definition] = '', [SortOrder] = 340.00 WHERE [Code] = 'pam'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'alb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('alb', 'Albanian', '', 13.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Albanian', [Definition] = '', [SortOrder] = 13.00 WHERE [Code] = 'alb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nwc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nwc', 'Classical Newari; Old Newari; Classical Nepal Bhasa', '', 90.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Classical Newari; Old Newari; Classical Nepal Bhasa', [Definition] = '', [SortOrder] = 90.00 WHERE [Code] = 'nwc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'yao') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('yao', 'Yao', '', 476.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Yao', [Definition] = '', [SortOrder] = 476.00 WHERE [Code] = 'yao'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'san') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('san', 'Sanskrit', '', 372.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sanskrit', [Definition] = '', [SortOrder] = 372.00 WHERE [Code] = 'san'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ewo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ewo', 'Ewondo', '', 131.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ewondo', [Definition] = '', [SortOrder] = 131.00 WHERE [Code] = 'ewo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'snk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('snk', 'Soninke', '', 400.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Soninke', [Definition] = '', [SortOrder] = 400.00 WHERE [Code] = 'snk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dan') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dan', 'Danish', '', 106.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Danish', [Definition] = '', [SortOrder] = 106.00 WHERE [Code] = 'dan'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sux') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sux', 'Sumerian', '', 410.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sumerian', [Definition] = '', [SortOrder] = 410.00 WHERE [Code] = 'sux'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tir') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tir', 'Tigrinya', '', 431.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tigrinya', [Definition] = '', [SortOrder] = 431.00 WHERE [Code] = 'tir'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sah') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sah', 'Yakut', '', 475.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Yakut', [Definition] = '', [SortOrder] = 475.00 WHERE [Code] = 'sah'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'afh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('afh', 'Afrihili', '', 7.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Afrihili', [Definition] = '', [SortOrder] = 7.00 WHERE [Code] = 'afh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cat') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cat', 'Catalan; Valencian', '', 69.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Catalan; Valencian', [Definition] = '', [SortOrder] = 69.00 WHERE [Code] = 'cat'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kut') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kut', 'Kutenai', '', 242.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kutenai', [Definition] = '', [SortOrder] = 242.00 WHERE [Code] = 'kut'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gil') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gil', 'Gilbertese', '', 158.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gilbertese', [Definition] = '', [SortOrder] = 158.00 WHERE [Code] = 'gil'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chp') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chp', 'Chipewyan; Dene Suline', '', 85.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chipewyan; Dene Suline', [Definition] = '', [SortOrder] = 85.00 WHERE [Code] = 'chp'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'afa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('afa', 'Afro-Asiatic languages', '', 9.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Afro-Asiatic languages', [Definition] = '', [SortOrder] = 9.00 WHERE [Code] = 'afa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tam') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tam', 'Tamil', '', 423.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tamil', [Definition] = '', [SortOrder] = 423.00 WHERE [Code] = 'tam'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sid') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sid', 'Sidamo', '', 385.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sidamo', [Definition] = '', [SortOrder] = 385.00 WHERE [Code] = 'sid'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ain') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ain', 'Ainu', '', 10.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ainu', [Definition] = '', [SortOrder] = 10.00 WHERE [Code] = 'ain'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cho') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cho', 'Choctaw', '', 86.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Choctaw', [Definition] = '', [SortOrder] = 86.00 WHERE [Code] = 'cho'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sun') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sun', 'Sundanese', '', 411.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sundanese', [Definition] = '', [SortOrder] = 411.00 WHERE [Code] = 'sun'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'roh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('roh', 'Romansh', '', 362.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Romansh', [Definition] = '', [SortOrder] = 362.00 WHERE [Code] = 'roh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hmn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hmn', 'Hmong; Mong', '', 179.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hmong; Mong', [Definition] = '', [SortOrder] = 179.00 WHERE [Code] = 'hmn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'wel') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('wel', 'Welsh', '', 470.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Welsh', [Definition] = '', [SortOrder] = 470.00 WHERE [Code] = 'wel'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ach') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ach', 'Acoli', '', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Acoli', [Definition] = '', [SortOrder] = 3.00 WHERE [Code] = 'ach'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nya') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nya', 'Chichewa; Chewa; Nyanja', '', 82.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chichewa; Chewa; Nyanja', [Definition] = '', [SortOrder] = 82.00 WHERE [Code] = 'nya'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cai', 'Central American Indian languages', '', 73.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Central American Indian languages', [Definition] = '', [SortOrder] = 73.00 WHERE [Code] = 'cai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nau') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nau', 'Nauru', '', 304.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nauru', [Definition] = '', [SortOrder] = 304.00 WHERE [Code] = 'nau'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mdf') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mdf', 'Moksha', '', 294.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Moksha', [Definition] = '', [SortOrder] = 294.00 WHERE [Code] = 'mdf'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nog') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nog', 'Nogai', '', 317.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nogai', [Definition] = '', [SortOrder] = 317.00 WHERE [Code] = 'nog'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gsw') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gsw', 'Swiss German; Alemannic; Alsatian', '', 416.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Swiss German; Alemannic; Alsatian', [Definition] = '', [SortOrder] = 416.00 WHERE [Code] = 'gsw'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'jpn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('jpn', 'Japanese', '', 203.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Japanese', [Definition] = '', [SortOrder] = 203.00 WHERE [Code] = 'jpn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'twi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('twi', 'Twi', '', 450.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Twi', [Definition] = '', [SortOrder] = 450.00 WHERE [Code] = 'twi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'rum') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('rum', 'Romanian; Moldavian; Moldovan', '', 361.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Romanian; Moldavian; Moldovan', [Definition] = '', [SortOrder] = 361.00 WHERE [Code] = 'rum'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lua') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lua', 'Luba-Lulua', '', 259.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Luba-Lulua', [Definition] = '', [SortOrder] = 259.00 WHERE [Code] = 'lua'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sin') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sin', 'Sinhala; Sinhalese', '', 389.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sinhala; Sinhalese', [Definition] = '', [SortOrder] = 389.00 WHERE [Code] = 'sin'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pon') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pon', 'Pohnpeian', '', 350.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Pohnpeian', [Definition] = '', [SortOrder] = 350.00 WHERE [Code] = 'pon'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lav') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lav', 'Latvian', '', 249.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Latvian', [Definition] = '', [SortOrder] = 249.00 WHERE [Code] = 'lav'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fro') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fro', 'French, Old (842-ca.1400)', '', 142.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'French, Old (842-ca.1400)', [Definition] = '', [SortOrder] = 142.00 WHERE [Code] = 'fro'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mak') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mak', 'Makasar', '', 270.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Makasar', [Definition] = '', [SortOrder] = 270.00 WHERE [Code] = 'mak'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'crh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('crh', 'Crimean Tatar; Crimean Turkish', '', 101.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Crimean Tatar; Crimean Turkish', [Definition] = '', [SortOrder] = 101.00 WHERE [Code] = 'crh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'yor') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('yor', 'Yoruba', '', 479.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Yoruba', [Definition] = '', [SortOrder] = 479.00 WHERE [Code] = 'yor'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'iba') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('iba', 'Iban', '', 182.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Iban', [Definition] = '', [SortOrder] = 182.00 WHERE [Code] = 'iba'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'srd') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('srd', 'Sardinian', '', 374.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sardinian', [Definition] = '', [SortOrder] = 374.00 WHERE [Code] = 'srd'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chy') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chy', 'Cheyenne', '', 80.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Cheyenne', [Definition] = '', [SortOrder] = 80.00 WHERE [Code] = 'chy'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bal', 'Baluchi', '', 39.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Baluchi', [Definition] = '', [SortOrder] = 39.00 WHERE [Code] = 'bal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kor') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kor', 'Korean', '', 234.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Korean', [Definition] = '', [SortOrder] = 234.00 WHERE [Code] = 'kor'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'vai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('vai', 'Vai', '', 461.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Vai', [Definition] = '', [SortOrder] = 461.00 WHERE [Code] = 'vai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bam') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bam', 'Bambara', '', 40.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bambara', [Definition] = '', [SortOrder] = 40.00 WHERE [Code] = 'bam'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pli') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pli', 'Pali', '', 339.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Pali', [Definition] = '', [SortOrder] = 339.00 WHERE [Code] = 'pli'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sme') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sme', 'Northern Sami', '', 321.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Northern Sami', [Definition] = '', [SortOrder] = 321.00 WHERE [Code] = 'sme'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'inh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('inh', 'Ingush', '', 192.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ingush', [Definition] = '', [SortOrder] = 192.00 WHERE [Code] = 'inh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lat') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lat', 'Latin', '', 248.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Latin', [Definition] = '', [SortOrder] = 248.00 WHERE [Code] = 'lat'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'peo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('peo', 'Persian, Old (ca.600-400 B.C.)', '', 347.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Persian, Old (ca.600-400 B.C.)', [Definition] = '', [SortOrder] = 347.00 WHERE [Code] = 'peo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bre') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bre', 'Breton', '', 63.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Breton', [Definition] = '', [SortOrder] = 63.00 WHERE [Code] = 'bre'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bho') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bho', 'Bhojpuri', '', 53.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bhojpuri', [Definition] = '', [SortOrder] = 53.00 WHERE [Code] = 'bho'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cpe') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cpe', 'Creoles and pidgins, English based', '', 98.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Creoles and pidgins, English based', [Definition] = '', [SortOrder] = 98.00 WHERE [Code] = 'cpe'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kau') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kau', 'Kanuri', '', 214.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kanuri', [Definition] = '', [SortOrder] = 214.00 WHERE [Code] = 'kau'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'alg') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('alg', 'Algonquian languages', '', 15.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Algonquian languages', [Definition] = '', [SortOrder] = 15.00 WHERE [Code] = 'alg'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ota') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ota', 'Turkish, Ottoman (1500-1928)', '', 446.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Turkish, Ottoman (1500-1928)', [Definition] = '', [SortOrder] = 446.00 WHERE [Code] = 'ota'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'aka') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('aka', 'Akan', '', 11.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Akan', [Definition] = '', [SortOrder] = 11.00 WHERE [Code] = 'aka'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'byn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('byn', 'Blin; Bilin', '', 58.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Blin; Bilin', [Definition] = '', [SortOrder] = 58.00 WHERE [Code] = 'byn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ceb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ceb', 'Cebuano', '', 71.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Cebuano', [Definition] = '', [SortOrder] = 71.00 WHERE [Code] = 'ceb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kru') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kru', 'Kurukh', '', 241.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kurukh', [Definition] = '', [SortOrder] = 241.00 WHERE [Code] = 'kru'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bad') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bad', 'Banda languages', '', 42.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Banda languages', [Definition] = '', [SortOrder] = 42.00 WHERE [Code] = 'bad'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dzo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dzo', 'Dzongkha', '', 118.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dzongkha', [Definition] = '', [SortOrder] = 118.00 WHERE [Code] = 'dzo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lah') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lah', 'Lahnda', '', 244.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lahnda', [Definition] = '', [SortOrder] = 244.00 WHERE [Code] = 'lah'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cus') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cus', 'Cushitic languages', '', 103.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Cushitic languages', [Definition] = '', [SortOrder] = 103.00 WHERE [Code] = 'cus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mos') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mos', 'Mossi', '', 299.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mossi', [Definition] = '', [SortOrder] = 299.00 WHERE [Code] = 'mos'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mac') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mac', 'Macedonian', '', 266.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Macedonian', [Definition] = '', [SortOrder] = 266.00 WHERE [Code] = 'mac'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nyn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nyn', 'Nyankole', '', 326.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nyankole', [Definition] = '', [SortOrder] = 326.00 WHERE [Code] = 'nyn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pag') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pag', 'Pangasinan', '', 341.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Pangasinan', [Definition] = '', [SortOrder] = 341.00 WHERE [Code] = 'pag'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'frs') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('frs', 'Eastern Frisian', '', 119.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Eastern Frisian', [Definition] = '', [SortOrder] = 119.00 WHERE [Code] = 'frs'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sel') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sel', 'Selkup', '', 377.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Selkup', [Definition] = '', [SortOrder] = 377.00 WHERE [Code] = 'sel'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dar') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dar', 'Dargwa', '', 107.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dargwa', [Definition] = '', [SortOrder] = 107.00 WHERE [Code] = 'dar'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lit') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lit', 'Lithuanian', '', 253.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lithuanian', [Definition] = '', [SortOrder] = 253.00 WHERE [Code] = 'lit'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hit') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hit', 'Hittite', '', 178.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hittite', [Definition] = '', [SortOrder] = 178.00 WHERE [Code] = 'hit'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kro') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kro', 'Kru languages', '', 237.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kru languages', [Definition] = '', [SortOrder] = 237.00 WHERE [Code] = 'kro'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'del') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('del', 'Delaware', '', 108.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Delaware', [Definition] = '', [SortOrder] = 108.00 WHERE [Code] = 'del'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'awa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('awa', 'Awadhi', '', 34.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Awadhi', [Definition] = '', [SortOrder] = 34.00 WHERE [Code] = 'awa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'udm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('udm', 'Udmurt', '', 451.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Udmurt', [Definition] = '', [SortOrder] = 451.00 WHERE [Code] = 'udm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fij') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fij', 'Fijian', '', 135.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Fijian', [Definition] = '', [SortOrder] = 135.00 WHERE [Code] = 'fij'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hai', 'Haida', '', 168.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Haida', [Definition] = '', [SortOrder] = 168.00 WHERE [Code] = 'hai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'grb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('grb', 'Grebo', '', 162.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Grebo', [Definition] = '', [SortOrder] = 162.00 WHERE [Code] = 'grb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ace') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ace', 'Achinese', '', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Achinese', [Definition] = '', [SortOrder] = 2.00 WHERE [Code] = 'ace'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ind') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ind', 'Indonesian', '', 191.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Indonesian', [Definition] = '', [SortOrder] = 191.00 WHERE [Code] = 'ind'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'jav') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('jav', 'Javanese', '', 204.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Javanese', [Definition] = '', [SortOrder] = 204.00 WHERE [Code] = 'jav'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'osa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('osa', 'Osage', '', 334.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Osage', [Definition] = '', [SortOrder] = 334.00 WHERE [Code] = 'osa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tel') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tel', 'Telugu', '', 425.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Telugu', [Definition] = '', [SortOrder] = 425.00 WHERE [Code] = 'tel'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dgr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dgr', 'Tlicho; Dogrib', '', 112.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tlicho; Dogrib', [Definition] = '', [SortOrder] = 112.00 WHERE [Code] = 'dgr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bur') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bur', 'Burmese', '', 67.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Burmese', [Definition] = '', [SortOrder] = 67.00 WHERE [Code] = 'bur'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'swe') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('swe', 'Swedish', '', 415.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Swedish', [Definition] = '', [SortOrder] = 415.00 WHERE [Code] = 'swe'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lin') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lin', 'Lingala', '', 252.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lingala', [Definition] = '', [SortOrder] = 252.00 WHERE [Code] = 'lin'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mun') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mun', 'Munda languages', '', 301.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Munda languages', [Definition] = '', [SortOrder] = 301.00 WHERE [Code] = 'mun'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ady') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ady', 'Adyghe; Adygei', '', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Adyghe; Adygei', [Definition] = '', [SortOrder] = 5.00 WHERE [Code] = 'ady'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'glg') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('glg', 'Galician', '', 148.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Galician', [Definition] = '', [SortOrder] = 148.00 WHERE [Code] = 'glg'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'krc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('krc', 'Karachay-Balkar', '', 216.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Karachay-Balkar', [Definition] = '', [SortOrder] = 216.00 WHERE [Code] = 'krc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nde') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nde', 'Ndebele, North; North Ndebele', '', 306.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ndebele, North; North Ndebele', [Definition] = '', [SortOrder] = 306.00 WHERE [Code] = 'nde'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'heb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('heb', 'Hebrew', '', 172.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hebrew', [Definition] = '', [SortOrder] = 172.00 WHERE [Code] = 'heb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chi', 'Chinese', '', 83.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chinese', [Definition] = '', [SortOrder] = 83.00 WHERE [Code] = 'chi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'asm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('asm', 'Assamese', '', 27.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Assamese', [Definition] = '', [SortOrder] = 27.00 WHERE [Code] = 'asm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'csb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('csb', 'Kashubian', '', 220.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kashubian', [Definition] = '', [SortOrder] = 220.00 WHERE [Code] = 'csb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hrv') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hrv', 'Croatian', '', 102.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Croatian', [Definition] = '', [SortOrder] = 102.00 WHERE [Code] = 'hrv'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bug') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bug', 'Buginese', '', 64.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Buginese', [Definition] = '', [SortOrder] = 64.00 WHERE [Code] = 'bug'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sma') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sma', 'Southern Sami', '', 405.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Southern Sami', [Definition] = '', [SortOrder] = 405.00 WHERE [Code] = 'sma'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lad') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lad', 'Ladino', '', 243.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ladino', [Definition] = '', [SortOrder] = 243.00 WHERE [Code] = 'lad'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nob') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nob', 'Bokmål, Norwegian; Norwegian Bokmål', '', 60.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bokmål, Norwegian; Norwegian Bokmål', [Definition] = '', [SortOrder] = 60.00 WHERE [Code] = 'nob'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'iro') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('iro', 'Iroquoian languages', '', 201.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Iroquoian languages', [Definition] = '', [SortOrder] = 201.00 WHERE [Code] = 'iro'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pal', 'Pahlavi', '', 337.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Pahlavi', [Definition] = '', [SortOrder] = 337.00 WHERE [Code] = 'pal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cop') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cop', 'Coptic', '', 92.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Coptic', [Definition] = '', [SortOrder] = 92.00 WHERE [Code] = 'cop'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mnc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mnc', 'Manchu', '', 275.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Manchu', [Definition] = '', [SortOrder] = 275.00 WHERE [Code] = 'mnc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'vie') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('vie', 'Vietnamese', '', 463.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Vietnamese', [Definition] = '', [SortOrder] = 463.00 WHERE [Code] = 'vie'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pus') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pus', 'Pushto; Pashto', '', 355.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Pushto; Pashto', [Definition] = '', [SortOrder] = 355.00 WHERE [Code] = 'pus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tig') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tig', 'Tigre', '', 430.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tigre', [Definition] = '', [SortOrder] = 430.00 WHERE [Code] = 'tig'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pau') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pau', 'Palauan', '', 338.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Palauan', [Definition] = '', [SortOrder] = 338.00 WHERE [Code] = 'pau'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lui') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lui', 'Luiseno', '', 260.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Luiseno', [Definition] = '', [SortOrder] = 260.00 WHERE [Code] = 'lui'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ban') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ban', 'Balinese', '', 37.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Balinese', [Definition] = '', [SortOrder] = 37.00 WHERE [Code] = 'ban'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lim') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lim', 'Limburgan; Limburger; Limburgish', '', 251.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Limburgan; Limburger; Limburgish', [Definition] = '', [SortOrder] = 251.00 WHERE [Code] = 'lim'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'arg') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('arg', 'Aragonese', '', 21.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Aragonese', [Definition] = '', [SortOrder] = 21.00 WHERE [Code] = 'arg'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zun') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zun', 'Zuni', '', 487.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Zuni', [Definition] = '', [SortOrder] = 487.00 WHERE [Code] = 'zun'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mai', 'Maithili', '', 269.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Maithili', [Definition] = '', [SortOrder] = 269.00 WHERE [Code] = 'mai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ssa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ssa', 'Nilo-Saharan languages', '', 314.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nilo-Saharan languages', [Definition] = '', [SortOrder] = 314.00 WHERE [Code] = 'ssa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nub') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nub', 'Nubian languages', '', 324.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nubian languages', [Definition] = '', [SortOrder] = 324.00 WHERE [Code] = 'nub'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'slo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('slo', 'Slovak', '', 395.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Slovak', [Definition] = '', [SortOrder] = 395.00 WHERE [Code] = 'slo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kab') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kab', 'Kabyle', '', 208.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kabyle', [Definition] = '', [SortOrder] = 208.00 WHERE [Code] = 'kab'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hmo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hmo', 'Hiri Motu', '', 177.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hiri Motu', [Definition] = '', [SortOrder] = 177.00 WHERE [Code] = 'hmo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'yap') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('yap', 'Yapese', '', 477.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Yapese', [Definition] = '', [SortOrder] = 477.00 WHERE [Code] = 'yap'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'akk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('akk', 'Akkadian', '', 12.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Akkadian', [Definition] = '', [SortOrder] = 12.00 WHERE [Code] = 'akk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'grc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('grc', 'Greek, Ancient (to 1453)', '', 163.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Greek, Ancient (to 1453)', [Definition] = '', [SortOrder] = 163.00 WHERE [Code] = 'grc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kar') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kar', 'Karen languages', '', 218.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Karen languages', [Definition] = '', [SortOrder] = 218.00 WHERE [Code] = 'kar'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tet') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tet', 'Tetum', '', 427.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tetum', [Definition] = '', [SortOrder] = 427.00 WHERE [Code] = 'tet'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'btk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('btk', 'Batak languages', '', 47.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Batak languages', [Definition] = '', [SortOrder] = 47.00 WHERE [Code] = 'btk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'scn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('scn', 'Sicilian', '', 384.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sicilian', [Definition] = '', [SortOrder] = 384.00 WHERE [Code] = 'scn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'luo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('luo', 'Luo (Kenya and Tanzania)', '', 263.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Luo (Kenya and Tanzania)', [Definition] = '', [SortOrder] = 263.00 WHERE [Code] = 'luo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tup') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tup', 'Tupi languages', '', 444.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tupi languages', [Definition] = '', [SortOrder] = 444.00 WHERE [Code] = 'tup'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dum') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dum', 'Dutch, Middle (ca.1050-1350)', '', 115.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dutch, Middle (ca.1050-1350)', [Definition] = '', [SortOrder] = 115.00 WHERE [Code] = 'dum'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kac') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kac', 'Kachin; Jingpho', '', 209.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kachin; Jingpho', [Definition] = '', [SortOrder] = 209.00 WHERE [Code] = 'kac'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'myv') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('myv', 'Erzya', '', 127.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Erzya', [Definition] = '', [SortOrder] = 127.00 WHERE [Code] = 'myv'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'umb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('umb', 'Umbundu', '', 455.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Umbundu', [Definition] = '', [SortOrder] = 455.00 WHERE [Code] = 'umb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'jpr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('jpr', 'Judeo-Persian', '', 206.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Judeo-Persian', [Definition] = '', [SortOrder] = 206.00 WHERE [Code] = 'jpr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ven') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ven', 'Venda', '', 462.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Venda', [Definition] = '', [SortOrder] = 462.00 WHERE [Code] = 'ven'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'arw') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('arw', 'Arawak', '', 23.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Arawak', [Definition] = '', [SortOrder] = 23.00 WHERE [Code] = 'arw'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kok') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kok', 'Konkani', '', 233.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Konkani', [Definition] = '', [SortOrder] = 233.00 WHERE [Code] = 'kok'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'slv') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('slv', 'Slovenian', '', 396.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Slovenian', [Definition] = '', [SortOrder] = 396.00 WHERE [Code] = 'slv'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'iku') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('iku', 'Inuktitut', '', 195.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Inuktitut', [Definition] = '', [SortOrder] = 195.00 WHERE [Code] = 'iku'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mga') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mga', 'Irish, Middle (900-1200)', '', 199.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Irish, Middle (900-1200)', [Definition] = '', [SortOrder] = 199.00 WHERE [Code] = 'mga'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'znd') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('znd', 'Zande languages', '', 481.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Zande languages', [Definition] = '', [SortOrder] = 481.00 WHERE [Code] = 'znd'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mul') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mul', 'Multiple languages', '', 300.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Multiple languages', [Definition] = '', [SortOrder] = 300.00 WHERE [Code] = 'mul'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dak') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dak', 'Dakota', '', 105.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dakota', [Definition] = '', [SortOrder] = 105.00 WHERE [Code] = 'dak'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gon') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gon', 'Gondi', '', 159.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gondi', [Definition] = '', [SortOrder] = 159.00 WHERE [Code] = 'gon'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fat') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fat', 'Fanti', '', 133.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Fanti', [Definition] = '', [SortOrder] = 133.00 WHERE [Code] = 'fat'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pap') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pap', 'Papiamento', '', 343.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Papiamento', [Definition] = '', [SortOrder] = 343.00 WHERE [Code] = 'pap'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ipk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ipk', 'Inupiaq', '', 196.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Inupiaq', [Definition] = '', [SortOrder] = 196.00 WHERE [Code] = 'ipk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tum') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tum', 'Tumbuka', '', 443.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tumbuka', [Definition] = '', [SortOrder] = 443.00 WHERE [Code] = 'tum'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chb', 'Chibcha', '', 81.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chibcha', [Definition] = '', [SortOrder] = 81.00 WHERE [Code] = 'chb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'non') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('non', 'Norse, Old', '', 318.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Norse, Old', [Definition] = '', [SortOrder] = 318.00 WHERE [Code] = 'non'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'smo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('smo', 'Samoan', '', 369.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Samoan', [Definition] = '', [SortOrder] = 369.00 WHERE [Code] = 'smo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'apa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('apa', 'Apache languages', '', 19.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Apache languages', [Definition] = '', [SortOrder] = 19.00 WHERE [Code] = 'apa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fan') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fan', 'Fang', '', 132.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Fang', [Definition] = '', [SortOrder] = 132.00 WHERE [Code] = 'fan'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'wak') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('wak', 'Wakashan languages', '', 466.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Wakashan languages', [Definition] = '', [SortOrder] = 466.00 WHERE [Code] = 'wak'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cze') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cze', 'Czech', '', 104.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Czech', [Definition] = '', [SortOrder] = 104.00 WHERE [Code] = 'cze'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pra') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pra', 'Prakrit languages', '', 353.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Prakrit languages', [Definition] = '', [SortOrder] = 353.00 WHERE [Code] = 'pra'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nzi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nzi', 'Nzima', '', 328.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nzima', [Definition] = '', [SortOrder] = 328.00 WHERE [Code] = 'nzi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kan') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kan', 'Kannada', '', 213.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kannada', [Definition] = '', [SortOrder] = 213.00 WHERE [Code] = 'kan'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lub') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lub', 'Luba-Katanga', '', 258.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Luba-Katanga', [Definition] = '', [SortOrder] = 258.00 WHERE [Code] = 'lub'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'may') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('may', 'Malay', '', 272.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Malay', [Definition] = '', [SortOrder] = 272.00 WHERE [Code] = 'may'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chu') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chu', 'Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic', '', 87.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic', [Definition] = '', [SortOrder] = 87.00 WHERE [Code] = 'chu'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'aze') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('aze', 'Azerbaijani', '', 36.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Azerbaijani', [Definition] = '', [SortOrder] = 36.00 WHERE [Code] = 'aze'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'epo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('epo', 'Esperanto', '', 128.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Esperanto', [Definition] = '', [SortOrder] = 128.00 WHERE [Code] = 'epo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nqo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nqo', 'N''Ko', '', 302.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'N''Ko', [Definition] = '', [SortOrder] = 302.00 WHERE [Code] = 'nqo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nah') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nah', 'Nahuatl languages', '', 303.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nahuatl languages', [Definition] = '', [SortOrder] = 303.00 WHERE [Code] = 'nah'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mlg') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mlg', 'Malagasy', '', 271.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Malagasy', [Definition] = '', [SortOrder] = 271.00 WHERE [Code] = 'mlg'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'eng') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('eng', 'English', '', 124.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'English', [Definition] = '', [SortOrder] = 124.00 WHERE [Code] = 'eng'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gla') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gla', 'Gaelic; Scottish Gaelic', '', 146.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gaelic; Scottish Gaelic', [Definition] = '', [SortOrder] = 146.00 WHERE [Code] = 'gla'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'khi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('khi', 'Khoisan languages', '', 224.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Khoisan languages', [Definition] = '', [SortOrder] = 224.00 WHERE [Code] = 'khi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'div') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('div', 'Divehi; Dhivehi; Maldivian', '', 110.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Divehi; Dhivehi; Maldivian', [Definition] = '', [SortOrder] = 110.00 WHERE [Code] = 'div'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ine') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ine', 'Indo-European languages', '', 190.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Indo-European languages', [Definition] = '', [SortOrder] = 190.00 WHERE [Code] = 'ine'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mao') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mao', 'Maori', '', 281.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Maori', [Definition] = '', [SortOrder] = 281.00 WHERE [Code] = 'mao'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gem') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gem', 'Germanic languages', '', 157.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Germanic languages', [Definition] = '', [SortOrder] = 157.00 WHERE [Code] = 'gem'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ton') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ton', 'Tonga (Tonga Islands)', '', 439.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tonga (Tonga Islands)', [Definition] = '', [SortOrder] = 439.00 WHERE [Code] = 'ton'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nor') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nor', 'Norwegian', '', 322.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Norwegian', [Definition] = '', [SortOrder] = 322.00 WHERE [Code] = 'nor'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mkh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mkh', 'Mon-Khmer languages', '', 295.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mon-Khmer languages', [Definition] = '', [SortOrder] = 295.00 WHERE [Code] = 'mkh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mic') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mic', 'Mi''kmaq; Micmac', '', 290.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mi''kmaq; Micmac', [Definition] = '', [SortOrder] = 290.00 WHERE [Code] = 'mic'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'day') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('day', 'Land Dayak languages', '', 246.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Land Dayak languages', [Definition] = '', [SortOrder] = 246.00 WHERE [Code] = 'day'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bel') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bel', 'Belarusian', '', 49.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Belarusian', [Definition] = '', [SortOrder] = 49.00 WHERE [Code] = 'bel'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lus') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lus', 'Lushai', '', 264.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lushai', [Definition] = '', [SortOrder] = 264.00 WHERE [Code] = 'lus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fur') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fur', 'Friulian', '', 143.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Friulian', [Definition] = '', [SortOrder] = 143.00 WHERE [Code] = 'fur'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'oji') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('oji', 'Ojibwa', '', 331.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ojibwa', [Definition] = '', [SortOrder] = 331.00 WHERE [Code] = 'oji'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'niu') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('niu', 'Niuean', '', 315.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Niuean', [Definition] = '', [SortOrder] = 315.00 WHERE [Code] = 'niu'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nic') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nic', 'Niger-Kordofanian languages', '', 313.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Niger-Kordofanian languages', [Definition] = '', [SortOrder] = 313.00 WHERE [Code] = 'nic'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lun') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lun', 'Lunda', '', 262.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lunda', [Definition] = '', [SortOrder] = 262.00 WHERE [Code] = 'lun'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mon') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mon', 'Mongolian', '', 297.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mongolian', [Definition] = '', [SortOrder] = 297.00 WHERE [Code] = 'mon'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ile') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ile', 'Interlingue; Occidental', '', 194.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Interlingue; Occidental', [Definition] = '', [SortOrder] = 194.00 WHERE [Code] = 'ile'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kin') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kin', 'Kinyarwanda', '', 228.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kinyarwanda', [Definition] = '', [SortOrder] = 228.00 WHERE [Code] = 'kin'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pol') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pol', 'Polish', '', 351.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Polish', [Definition] = '', [SortOrder] = 351.00 WHERE [Code] = 'pol'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sog') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sog', 'Sogdian', '', 397.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sogdian', [Definition] = '', [SortOrder] = 397.00 WHERE [Code] = 'sog'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lug') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lug', 'Ganda', '', 149.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ganda', [Definition] = '', [SortOrder] = 149.00 WHERE [Code] = 'lug'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'arm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('arm', 'Armenian', '', 24.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Armenian', [Definition] = '', [SortOrder] = 24.00 WHERE [Code] = 'arm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kur') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kur', 'Kurdish', '', 240.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kurdish', [Definition] = '', [SortOrder] = 240.00 WHERE [Code] = 'kur'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zza') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zza', 'Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki', '', 483.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki', [Definition] = '', [SortOrder] = 483.00 WHERE [Code] = 'zza'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fil') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fil', 'Filipino; Pilipino', '', 136.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Filipino; Pilipino', [Definition] = '', [SortOrder] = 136.00 WHERE [Code] = 'fil'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nep') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nep', 'Nepali', '', 311.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nepali', [Definition] = '', [SortOrder] = 311.00 WHERE [Code] = 'nep'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cpp') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cpp', 'Creoles and pidgins, Portuguese-based', '', 100.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Creoles and pidgins, Portuguese-based', [Definition] = '', [SortOrder] = 100.00 WHERE [Code] = 'cpp'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'xho') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('xho', 'Xhosa', '', 474.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Xhosa', [Definition] = '', [SortOrder] = 474.00 WHERE [Code] = 'xho'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gor') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gor', 'Gorontalo', '', 160.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gorontalo', [Definition] = '', [SortOrder] = 160.00 WHERE [Code] = 'gor'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'haw') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('haw', 'Hawaiian', '', 171.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hawaiian', [Definition] = '', [SortOrder] = 171.00 WHERE [Code] = 'haw'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bin') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bin', 'Bini; Edo', '', 56.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bini; Edo', [Definition] = '', [SortOrder] = 56.00 WHERE [Code] = 'bin'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kua') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kua', 'Kuanyama; Kwanyama', '', 238.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kuanyama; Kwanyama', [Definition] = '', [SortOrder] = 238.00 WHERE [Code] = 'kua'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zxx') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zxx', 'No linguistic content; Not applicable', '', 316.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'No linguistic content; Not applicable', [Definition] = '', [SortOrder] = 316.00 WHERE [Code] = 'zxx'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chg') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chg', 'Chagatai', '', 75.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chagatai', [Definition] = '', [SortOrder] = 75.00 WHERE [Code] = 'chg'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'got') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('got', 'Gothic', '', 161.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gothic', [Definition] = '', [SortOrder] = 161.00 WHERE [Code] = 'got'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tli') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tli', 'Tlingit', '', 435.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tlingit', [Definition] = '', [SortOrder] = 435.00 WHERE [Code] = 'tli'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ave') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ave', 'Avestan', '', 33.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Avestan', [Definition] = '', [SortOrder] = 33.00 WHERE [Code] = 'ave'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'srn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('srn', 'Sranan Tongo', '', 407.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sranan Tongo', [Definition] = '', [SortOrder] = 407.00 WHERE [Code] = 'srn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cel') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cel', 'Celtic languages', '', 72.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Celtic languages', [Definition] = '', [SortOrder] = 72.00 WHERE [Code] = 'cel'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'rap') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('rap', 'Rapanui', '', 358.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Rapanui', [Definition] = '', [SortOrder] = 358.00 WHERE [Code] = 'rap'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ter') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ter', 'Tereno', '', 426.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tereno', [Definition] = '', [SortOrder] = 426.00 WHERE [Code] = 'ter'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dra') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dra', 'Dravidian languages', '', 113.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dravidian languages', [Definition] = '', [SortOrder] = 113.00 WHERE [Code] = 'dra'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'khm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('khm', 'Central Khmer', '', 74.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Central Khmer', [Definition] = '', [SortOrder] = 74.00 WHERE [Code] = 'khm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pan') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pan', 'Panjabi; Punjabi', '', 342.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Panjabi; Punjabi', [Definition] = '', [SortOrder] = 342.00 WHERE [Code] = 'pan'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sai', 'South American Indian languages', '', 403.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'South American Indian languages', [Definition] = '', [SortOrder] = 403.00 WHERE [Code] = 'sai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ltz') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ltz', 'Luxembourgish; Letzeburgesch', '', 265.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Luxembourgish; Letzeburgesch', [Definition] = '', [SortOrder] = 265.00 WHERE [Code] = 'ltz'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tpi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tpi', 'Tok Pisin', '', 436.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tok Pisin', [Definition] = '', [SortOrder] = 436.00 WHERE [Code] = 'tpi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'eka') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('eka', 'Ekajuk', '', 122.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ekajuk', [Definition] = '', [SortOrder] = 122.00 WHERE [Code] = 'eka'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ijo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ijo', 'Ijo languages', '', 186.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ijo languages', [Definition] = '', [SortOrder] = 186.00 WHERE [Code] = 'ijo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ful') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ful', 'Fulah', '', 144.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Fulah', [Definition] = '', [SortOrder] = 144.00 WHERE [Code] = 'ful'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ara') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ara', 'Arabic', '', 20.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Arabic', [Definition] = '', [SortOrder] = 20.00 WHERE [Code] = 'ara'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'efi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('efi', 'Efik', '', 120.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Efik', [Definition] = '', [SortOrder] = 120.00 WHERE [Code] = 'efi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'per') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('per', 'Persian', '', 346.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Persian', [Definition] = '', [SortOrder] = 346.00 WHERE [Code] = 'per'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ilo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ilo', 'Iloko', '', 187.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Iloko', [Definition] = '', [SortOrder] = 187.00 WHERE [Code] = 'ilo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sas') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sas', 'Sasak', '', 375.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sasak', [Definition] = '', [SortOrder] = 375.00 WHERE [Code] = 'sas'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'den') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('den', 'Slave (Athapascan)', '', 393.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Slave (Athapascan)', [Definition] = '', [SortOrder] = 393.00 WHERE [Code] = 'den'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'orm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('orm', 'Oromo', '', 333.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Oromo', [Definition] = '', [SortOrder] = 333.00 WHERE [Code] = 'orm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'aus') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('aus', 'Australian languages', '', 30.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Australian languages', [Definition] = '', [SortOrder] = 30.00 WHERE [Code] = 'aus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'rom') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('rom', 'Romany', '', 363.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Romany', [Definition] = '', [SortOrder] = 363.00 WHERE [Code] = 'rom'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chk', 'Chuukese', '', 88.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chuukese', [Definition] = '', [SortOrder] = 88.00 WHERE [Code] = 'chk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kon') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kon', 'Kongo', '', 232.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kongo', [Definition] = '', [SortOrder] = 232.00 WHERE [Code] = 'kon'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ori') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ori', 'Oriya', '', 332.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Oriya', [Definition] = '', [SortOrder] = 332.00 WHERE [Code] = 'ori'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'rar') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('rar', 'Rarotongan; Cook Islands Maori', '', 359.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Rarotongan; Cook Islands Maori', [Definition] = '', [SortOrder] = 359.00 WHERE [Code] = 'rar'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'arp') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('arp', 'Arapaho', '', 22.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Arapaho', [Definition] = '', [SortOrder] = 22.00 WHERE [Code] = 'arp'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'paa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('paa', 'Papuan languages', '', 344.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Papuan languages', [Definition] = '', [SortOrder] = 344.00 WHERE [Code] = 'paa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nds') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nds', 'Low German; Low Saxon; German, Low; Saxon, Low', '', 255.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Low German; Low Saxon; German, Low; Saxon, Low', [Definition] = '', [SortOrder] = 255.00 WHERE [Code] = 'nds'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'him') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('him', 'Himachali languages; Western Pahari languages', '', 175.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Himachali languages; Western Pahari languages', [Definition] = '', [SortOrder] = 175.00 WHERE [Code] = 'him'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chn', 'Chinook jargon', '', 84.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chinook jargon', [Definition] = '', [SortOrder] = 84.00 WHERE [Code] = 'chn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mah') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mah', 'Marshallese', '', 285.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Marshallese', [Definition] = '', [SortOrder] = 285.00 WHERE [Code] = 'mah'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'enm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('enm', 'English, Middle (1100-1500)', '', 125.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'English, Middle (1100-1500)', [Definition] = '', [SortOrder] = 125.00 WHERE [Code] = 'enm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lol') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lol', 'Mongo', '', 296.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mongo', [Definition] = '', [SortOrder] = 296.00 WHERE [Code] = 'lol'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gaa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gaa', 'Ga', '', 145.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ga', [Definition] = '', [SortOrder] = 145.00 WHERE [Code] = 'gaa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gay') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gay', 'Gayo', '', 150.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Gayo', [Definition] = '', [SortOrder] = 150.00 WHERE [Code] = 'gay'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dyu') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dyu', 'Dyula', '', 117.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dyula', [Definition] = '', [SortOrder] = 117.00 WHERE [Code] = 'dyu'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kal', 'Kalaallisut; Greenlandic', '', 210.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kalaallisut; Greenlandic', [Definition] = '', [SortOrder] = 210.00 WHERE [Code] = 'kal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hau') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hau', 'Hausa', '', 170.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hausa', [Definition] = '', [SortOrder] = 170.00 WHERE [Code] = 'hau'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tat') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tat', 'Tatar', '', 424.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tatar', [Definition] = '', [SortOrder] = 424.00 WHERE [Code] = 'tat'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sms') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sms', 'Skolt Sami', '', 392.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Skolt Sami', [Definition] = '', [SortOrder] = 392.00 WHERE [Code] = 'sms'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'smn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('smn', 'Inari Sami', '', 188.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Inari Sami', [Definition] = '', [SortOrder] = 188.00 WHERE [Code] = 'smn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zgh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zgh', 'Standard Moroccan Tamazight', '', 408.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Standard Moroccan Tamazight', [Definition] = '', [SortOrder] = 408.00 WHERE [Code] = 'zgh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'amh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('amh', 'Amharic', '', 17.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Amharic', [Definition] = '', [SortOrder] = 17.00 WHERE [Code] = 'amh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tlh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tlh', 'Klingon; tlhIngan-Hol', '', 230.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Klingon; tlhIngan-Hol', [Definition] = '', [SortOrder] = 230.00 WHERE [Code] = 'tlh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'aar') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('aar', 'Afar', '', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Afar', [Definition] = '', [SortOrder] = 6.00 WHERE [Code] = 'aar'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'afr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('afr', 'Afrikaans', '', 8.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Afrikaans', [Definition] = '', [SortOrder] = 8.00 WHERE [Code] = 'afr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'swa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('swa', 'Swahili', '', 413.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Swahili', [Definition] = '', [SortOrder] = 413.00 WHERE [Code] = 'swa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kaz') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kaz', 'Kazakh', '', 222.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kazakh', [Definition] = '', [SortOrder] = 222.00 WHERE [Code] = 'kaz'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tvl') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tvl', 'Tuvalu', '', 448.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tuvalu', [Definition] = '', [SortOrder] = 448.00 WHERE [Code] = 'tvl'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'inc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('inc', 'Indic languages', '', 189.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Indic languages', [Definition] = '', [SortOrder] = 189.00 WHERE [Code] = 'inc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sus') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sus', 'Susu', '', 412.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Susu', [Definition] = '', [SortOrder] = 412.00 WHERE [Code] = 'sus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'arc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('arc', 'Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)', '', 330.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)', [Definition] = '', [SortOrder] = 330.00 WHERE [Code] = 'arc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fre') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fre', 'French', '', 140.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'French', [Definition] = '', [SortOrder] = 140.00 WHERE [Code] = 'fre'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'oto') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('oto', 'Otomian languages', '', 336.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Otomian languages', [Definition] = '', [SortOrder] = 336.00 WHERE [Code] = 'oto'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nav') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nav', 'Navajo; Navaho', '', 305.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Navajo; Navaho', [Definition] = '', [SortOrder] = 305.00 WHERE [Code] = 'nav'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kum') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kum', 'Kumyk', '', 239.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kumyk', [Definition] = '', [SortOrder] = 239.00 WHERE [Code] = 'kum'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cpf') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cpf', 'Creoles and pidgins, French-based', '', 99.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Creoles and pidgins, French-based', [Definition] = '', [SortOrder] = 99.00 WHERE [Code] = 'cpf'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nno') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nno', 'Norwegian Nynorsk; Nynorsk, Norwegian', '', 323.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Norwegian Nynorsk; Nynorsk, Norwegian', [Definition] = '', [SortOrder] = 323.00 WHERE [Code] = 'nno'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'che') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('che', 'Chechen', '', 78.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chechen', [Definition] = '', [SortOrder] = 78.00 WHERE [Code] = 'che'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kas') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kas', 'Kashmiri', '', 219.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kashmiri', [Definition] = '', [SortOrder] = 219.00 WHERE [Code] = 'kas'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'suk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('suk', 'Sukuma', '', 409.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sukuma', [Definition] = '', [SortOrder] = 409.00 WHERE [Code] = 'suk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hsb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hsb', 'Upper Sorbian', '', 458.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Upper Sorbian', [Definition] = '', [SortOrder] = 458.00 WHERE [Code] = 'hsb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zha') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zha', 'Zhuang; Chuang', '', 485.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Zhuang; Chuang', [Definition] = '', [SortOrder] = 485.00 WHERE [Code] = 'zha'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zul') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zul', 'Zulu', '', 486.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Zulu', [Definition] = '', [SortOrder] = 486.00 WHERE [Code] = 'zul'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sem') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sem', 'Semitic languages', '', 378.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Semitic languages', [Definition] = '', [SortOrder] = 378.00 WHERE [Code] = 'sem'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bik') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bik', 'Bikol', '', 55.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bikol', [Definition] = '', [SortOrder] = 55.00 WHERE [Code] = 'bik'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hil') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hil', 'Hiligaynon', '', 174.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hiligaynon', [Definition] = '', [SortOrder] = 174.00 WHERE [Code] = 'hil'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'phi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('phi', 'Philippine languages', '', 348.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Philippine languages', [Definition] = '', [SortOrder] = 348.00 WHERE [Code] = 'phi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sal', 'Salishan languages', '', 366.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Salishan languages', [Definition] = '', [SortOrder] = 366.00 WHERE [Code] = 'sal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'grn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('grn', 'Guarani', '', 165.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Guarani', [Definition] = '', [SortOrder] = 165.00 WHERE [Code] = 'grn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'syc') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('syc', 'Classical Syriac', '', 91.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Classical Syriac', [Definition] = '', [SortOrder] = 91.00 WHERE [Code] = 'syc'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'crp') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('crp', 'Creoles and pidgins', '', 97.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Creoles and pidgins', [Definition] = '', [SortOrder] = 97.00 WHERE [Code] = 'crp'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ira') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ira', 'Iranian languages', '', 197.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Iranian languages', [Definition] = '', [SortOrder] = 197.00 WHERE [Code] = 'ira'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sat') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sat', 'Santali', '', 373.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Santali', [Definition] = '', [SortOrder] = 373.00 WHERE [Code] = 'sat'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'oss') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('oss', 'Ossetian; Ossetic', '', 335.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ossetian; Ossetic', [Definition] = '', [SortOrder] = 335.00 WHERE [Code] = 'oss'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'pro') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('pro', 'Provençal, Old (to 1500); Occitan, Old (to 1500)', '', 354.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Provençal, Old (to 1500); Occitan, Old (to 1500)', [Definition] = '', [SortOrder] = 354.00 WHERE [Code] = 'pro'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ang') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ang', 'English, Old (ca.450-1100)', '', 126.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'English, Old (ca.450-1100)', [Definition] = '', [SortOrder] = 126.00 WHERE [Code] = 'ang'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'urd') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('urd', 'Urdu', '', 459.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Urdu', [Definition] = '', [SortOrder] = 459.00 WHERE [Code] = 'urd'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'was') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('was', 'Washo', '', 469.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Washo', [Definition] = '', [SortOrder] = 469.00 WHERE [Code] = 'was'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'snd') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('snd', 'Sindhi', '', 388.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Sindhi', [Definition] = '', [SortOrder] = 388.00 WHERE [Code] = 'snd'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ido') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ido', 'Ido', '', 184.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ido', [Definition] = '', [SortOrder] = 184.00 WHERE [Code] = 'ido'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dut') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dut', 'Dutch; Flemish', '', 116.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dutch; Flemish', [Definition] = '', [SortOrder] = 116.00 WHERE [Code] = 'dut'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'nym') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('nym', 'Nyamwezi', '', 325.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Nyamwezi', [Definition] = '', [SortOrder] = 325.00 WHERE [Code] = 'nym'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'smj') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('smj', 'Lule Sami', '', 261.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lule Sami', [Definition] = '', [SortOrder] = 261.00 WHERE [Code] = 'smj'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cau') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cau', 'Caucasian languages', '', 70.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Caucasian languages', [Definition] = '', [SortOrder] = 70.00 WHERE [Code] = 'cau'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fiu') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fiu', 'Finno-Ugrian languages', '', 138.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Finno-Ugrian languages', [Definition] = '', [SortOrder] = 138.00 WHERE [Code] = 'fiu'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ndo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ndo', 'Ndonga', '', 308.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ndonga', [Definition] = '', [SortOrder] = 308.00 WHERE [Code] = 'ndo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'dua') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('dua', 'Duala', '', 114.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Duala', [Definition] = '', [SortOrder] = 114.00 WHERE [Code] = 'dua'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ssw') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ssw', 'Swati', '', 414.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Swati', [Definition] = '', [SortOrder] = 414.00 WHERE [Code] = 'ssw'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'art') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('art', 'Artificial languages', '', 26.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Artificial languages', [Definition] = '', [SortOrder] = 26.00 WHERE [Code] = 'art'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'und') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('und', 'Undetermined', '', 457.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Undetermined', [Definition] = '', [SortOrder] = 457.00 WHERE [Code] = 'und'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tut') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tut', 'Altaic languages', '', 16.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Altaic languages', [Definition] = '', [SortOrder] = 16.00 WHERE [Code] = 'tut'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'frr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('frr', 'Northern Frisian', '', 320.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Northern Frisian', [Definition] = '', [SortOrder] = 320.00 WHERE [Code] = 'frr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'raj') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('raj', 'Rajasthani', '', 357.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Rajasthani', [Definition] = '', [SortOrder] = 357.00 WHERE [Code] = 'raj'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bas') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bas', 'Basa', '', 44.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Basa', [Definition] = '', [SortOrder] = 44.00 WHERE [Code] = 'bas'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bul') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bul', 'Bulgarian', '', 65.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bulgarian', [Definition] = '', [SortOrder] = 65.00 WHERE [Code] = 'bul'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'uzb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('uzb', 'Uzbek', '', 460.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Uzbek', [Definition] = '', [SortOrder] = 460.00 WHERE [Code] = 'uzb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ast') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ast', 'Asturian; Bable; Leonese; Asturleonese', '', 28.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Asturian; Bable; Leonese; Asturleonese', [Definition] = '', [SortOrder] = 28.00 WHERE [Code] = 'ast'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'baq') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('baq', 'Basque', '', 46.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Basque', [Definition] = '', [SortOrder] = 46.00 WHERE [Code] = 'baq'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gre') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gre', 'Greek, Modern (1453-)', '', 164.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Greek, Modern (1453-)', [Definition] = '', [SortOrder] = 164.00 WHERE [Code] = 'gre'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'jrb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('jrb', 'Judeo-Arabic', '', 205.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Judeo-Arabic', [Definition] = '', [SortOrder] = 205.00 WHERE [Code] = 'jrb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mni') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mni', 'Manipuri', '', 278.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Manipuri', [Definition] = '', [SortOrder] = 278.00 WHERE [Code] = 'mni'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'wal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('wal', 'Wolaitta; Wolaytta', '', 472.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Wolaitta; Wolaytta', [Definition] = '', [SortOrder] = 472.00 WHERE [Code] = 'wal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'geo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('geo', 'Georgian', '', 153.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Georgian', [Definition] = '', [SortOrder] = 153.00 WHERE [Code] = 'geo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'glv') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('glv', 'Manx', '', 280.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Manx', [Definition] = '', [SortOrder] = 280.00 WHERE [Code] = 'glv'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cor') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cor', 'Cornish', '', 93.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Cornish', [Definition] = '', [SortOrder] = 93.00 WHERE [Code] = 'cor'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bra') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bra', 'Braj', '', 62.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Braj', [Definition] = '', [SortOrder] = 62.00 WHERE [Code] = 'bra'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bih') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bih', 'Bihari languages', '', 54.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bihari languages', [Definition] = '', [SortOrder] = 54.00 WHERE [Code] = 'bih'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sam') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sam', 'Samaritan Aramaic', '', 367.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Samaritan Aramaic', [Definition] = '', [SortOrder] = 367.00 WHERE [Code] = 'sam'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'roa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('roa', 'Romance languages', '', 360.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Romance languages', [Definition] = '', [SortOrder] = 360.00 WHERE [Code] = 'roa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tgl') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tgl', 'Tagalog', '', 418.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tagalog', [Definition] = '', [SortOrder] = 418.00 WHERE [Code] = 'tgl'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'abk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('abk', 'Abkhazian', '', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Abkhazian', [Definition] = '', [SortOrder] = 1.00 WHERE [Code] = 'abk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'srp') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('srp', 'Serbian', '', 379.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Serbian', [Definition] = '', [SortOrder] = 379.00 WHERE [Code] = 'srp'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'loz') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('loz', 'Lozi', '', 257.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lozi', [Definition] = '', [SortOrder] = 257.00 WHERE [Code] = 'loz'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ber') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ber', 'Berber languages', '', 52.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Berber languages', [Definition] = '', [SortOrder] = 52.00 WHERE [Code] = 'ber'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kbd') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kbd', 'Kabardian', '', 207.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kabardian', [Definition] = '', [SortOrder] = 207.00 WHERE [Code] = 'kbd'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'lam') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('lam', 'Lamba', '', 245.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Lamba', [Definition] = '', [SortOrder] = 245.00 WHERE [Code] = 'lam'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bua') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bua', 'Buriat', '', 66.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Buriat', [Definition] = '', [SortOrder] = 66.00 WHERE [Code] = 'bua'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tai', 'Tai languages', '', 420.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tai languages', [Definition] = '', [SortOrder] = 420.00 WHERE [Code] = 'tai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'por') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('por', 'Portuguese', '', 352.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Portuguese', [Definition] = '', [SortOrder] = 352.00 WHERE [Code] = 'por'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ypk') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ypk', 'Yupik languages', '', 480.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Yupik languages', [Definition] = '', [SortOrder] = 480.00 WHERE [Code] = 'ypk'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gmh') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gmh', 'German, Middle High (ca.1050-1500)', '', 155.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'German, Middle High (ca.1050-1500)', [Definition] = '', [SortOrder] = 155.00 WHERE [Code] = 'gmh'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mal', 'Malayalam', '', 273.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Malayalam', [Definition] = '', [SortOrder] = 273.00 WHERE [Code] = 'mal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gle') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gle', 'Irish', '', 198.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Irish', [Definition] = '', [SortOrder] = 198.00 WHERE [Code] = 'gle'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kos') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kos', 'Kosraean', '', 235.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kosraean', [Definition] = '', [SortOrder] = 235.00 WHERE [Code] = 'kos'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sco') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sco', 'Scots', '', 376.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Scots', [Definition] = '', [SortOrder] = 376.00 WHERE [Code] = 'sco'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ava') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ava', 'Avaric', '', 32.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Avaric', [Definition] = '', [SortOrder] = 32.00 WHERE [Code] = 'ava'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'alt') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('alt', 'Southern Altai', '', 404.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Southern Altai', [Definition] = '', [SortOrder] = 404.00 WHERE [Code] = 'alt'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tsi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tsi', 'Tsimshian', '', 440.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tsimshian', [Definition] = '', [SortOrder] = 440.00 WHERE [Code] = 'tsi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kik') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kik', 'Kikuyu; Gikuyu', '', 226.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kikuyu; Gikuyu', [Definition] = '', [SortOrder] = 226.00 WHERE [Code] = 'kik'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'sla') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('sla', 'Slavic languages', '', 394.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Slavic languages', [Definition] = '', [SortOrder] = 394.00 WHERE [Code] = 'sla'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'uga') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('uga', 'Ugaritic', '', 452.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Ugaritic', [Definition] = '', [SortOrder] = 452.00 WHERE [Code] = 'uga'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mwl') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mwl', 'Mirandese', '', 292.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mirandese', [Definition] = '', [SortOrder] = 292.00 WHERE [Code] = 'mwl'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'xal') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('xal', 'Kalmyk; Oirat', '', 211.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kalmyk; Oirat', [Definition] = '', [SortOrder] = 211.00 WHERE [Code] = 'xal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'est') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('est', 'Estonian', '', 129.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Estonian', [Definition] = '', [SortOrder] = 129.00 WHERE [Code] = 'est'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mdr') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mdr', 'Mandar', '', 276.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mandar', [Definition] = '', [SortOrder] = 276.00 WHERE [Code] = 'mdr'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hup') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hup', 'Hupa', '', 181.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hupa', [Definition] = '', [SortOrder] = 181.00 WHERE [Code] = 'hup'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ale') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ale', 'Aleut', '', 14.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Aleut', [Definition] = '', [SortOrder] = 14.00 WHERE [Code] = 'ale'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'gez') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('gez', 'Geez', '', 152.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Geez', [Definition] = '', [SortOrder] = 152.00 WHERE [Code] = 'gez'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'zbl') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('zbl', 'Blissymbols; Blissymbolics; Bliss', '', 59.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Blissymbols; Blissymbolics; Bliss', [Definition] = '', [SortOrder] = 59.00 WHERE [Code] = 'zbl'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bla') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bla', 'Siksika', '', 387.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Siksika', [Definition] = '', [SortOrder] = 387.00 WHERE [Code] = 'bla'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'shn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('shn', 'Shan', '', 381.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Shan', [Definition] = '', [SortOrder] = 381.00 WHERE [Code] = 'shn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mlt') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mlt', 'Maltese', '', 274.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Maltese', [Definition] = '', [SortOrder] = 274.00 WHERE [Code] = 'mlt'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'myn') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('myn', 'Mayan languages', '', 288.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Mayan languages', [Definition] = '', [SortOrder] = 288.00 WHERE [Code] = 'myn'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tib') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tib', 'Tibetan', '', 429.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tibetan', [Definition] = '', [SortOrder] = 429.00 WHERE [Code] = 'tib'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'hun') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('hun', 'Hungarian', '', 180.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Hungarian', [Definition] = '', [SortOrder] = 180.00 WHERE [Code] = 'hun'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tem') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tem', 'Timne', '', 432.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Timne', [Definition] = '', [SortOrder] = 432.00 WHERE [Code] = 'tem'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cha') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cha', 'Chamorro', '', 77.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chamorro', [Definition] = '', [SortOrder] = 77.00 WHERE [Code] = 'cha'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'som') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('som', 'Somali', '', 398.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Somali', [Definition] = '', [SortOrder] = 398.00 WHERE [Code] = 'som'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'mus') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('mus', 'Creek', '', 96.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Creek', [Definition] = '', [SortOrder] = 96.00 WHERE [Code] = 'mus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tso') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tso', 'Tsonga', '', 441.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tsonga', [Definition] = '', [SortOrder] = 441.00 WHERE [Code] = 'tso'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'cad') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('cad', 'Caddo', '', 68.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Caddo', [Definition] = '', [SortOrder] = 68.00 WHERE [Code] = 'cad'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bai') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bai', 'Bamileke languages', '', 41.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bamileke languages', [Definition] = '', [SortOrder] = 41.00 WHERE [Code] = 'bai'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tkl') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tkl', 'Tokelau', '', 437.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tokelau', [Definition] = '', [SortOrder] = 437.00 WHERE [Code] = 'tkl'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'chv') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('chv', 'Chuvash', '', 89.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Chuvash', [Definition] = '', [SortOrder] = 89.00 WHERE [Code] = 'chv'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tyv') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tyv', 'Tuvinian', '', 449.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Tuvinian', [Definition] = '', [SortOrder] = 449.00 WHERE [Code] = 'tyv'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'her') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('her', 'Herero', '', 173.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Herero', [Definition] = '', [SortOrder] = 173.00 WHERE [Code] = 'her'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fin') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fin', 'Finnish', '', 137.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Finnish', [Definition] = '', [SortOrder] = 137.00 WHERE [Code] = 'fin'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kaa') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kaa', 'Kara-Kalpak', '', 215.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kara-Kalpak', [Definition] = '', [SortOrder] = 215.00 WHERE [Code] = 'kaa'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'map') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('map', 'Austronesian languages', '', 31.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Austronesian languages', [Definition] = '', [SortOrder] = 31.00 WHERE [Code] = 'map'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'min') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('min', 'Minangkabau', '', 291.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Minangkabau', [Definition] = '', [SortOrder] = 291.00 WHERE [Code] = 'min'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'tur') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('tur', 'Turkish', '', 445.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Turkish', [Definition] = '', [SortOrder] = 445.00 WHERE [Code] = 'tur'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'fry') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('fry', 'Western Frisian', '', 471.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Western Frisian', [Definition] = '', [SortOrder] = 471.00 WHERE [Code] = 'fry'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'kmb') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('kmb', 'Kimbundu', '', 227.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Kimbundu', [Definition] = '', [SortOrder] = 227.00 WHERE [Code] = 'kmb'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'frm') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('frm', 'French, Middle (ca.1400-1600)', '', 141.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'French, Middle (ca.1400-1600)', [Definition] = '', [SortOrder] = 141.00 WHERE [Code] = 'frm'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'ibo') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ibo', 'Igbo', '', 185.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Igbo', [Definition] = '', [SortOrder] = 185.00 WHERE [Code] = 'ibo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'doi') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('doi', 'Dogri', '', 111.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Dogri', [Definition] = '', [SortOrder] = 111.00 WHERE [Code] = 'doi'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'run') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('run', 'Rundi', '', 364.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Rundi', [Definition] = '', [SortOrder] = 364.00 WHERE [Code] = 'run'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureLanguageType] WHERE [Code] = 'bnt') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureLanguageType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('bnt', 'Bantu languages', '', 43.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureLanguageType] 
+SET [Description] = 'Bantu languages', [Definition] = '', [SortOrder] = 43.00 WHERE [Code] = 'bnt'  END
+END
+
+
+PRINT N'Populate RefAccessibilityFeaturePausesTheClockIndicator table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibilityFeaturePausesTheClockIndicator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeaturePausesTheClockIndicator] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefAccessibilityFeaturePausesTheClockIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('No', 'No', 'The accessibility feature does not stop the predetermined amount of time for the assessment or instruction activity.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeaturePausesTheClockIndicator] 
+SET [Description] = 'No', [Definition] = 'The accessibility feature does not stop the predetermined amount of time for the assessment or instruction activity.', [SortOrder] = 1.00 WHERE [Code] = 'No'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeaturePausesTheClockIndicator] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefAccessibilityFeaturePausesTheClockIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Yes', 'Yes', 'The accessibility feature stops the predetermined amount of time for the assessment or instruction activity.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeaturePausesTheClockIndicator] 
+SET [Description] = 'Yes', [Definition] = 'The accessibility feature stops the predetermined amount of time for the assessment or instruction activity.', [SortOrder] = 2.00 WHERE [Code] = 'Yes'  END
+END
+
+
+PRINT N'Populate RefAccessibilityFeatureRelationshipType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibilityFeatureRelationshipType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureRelationshipType] WHERE [Code] = 'Supporting') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureRelationshipType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Supporting', 'Supporting', 'One accessibility feature aids or assists the functionality of the other accessibility feature.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureRelationshipType] 
+SET [Description] = 'Supporting', [Definition] = 'One accessibility feature aids or assists the functionality of the other accessibility feature.', [SortOrder] = 5.00 WHERE [Code] = 'Supporting'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureRelationshipType] WHERE [Code] = 'Dependent') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureRelationshipType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Dependent', 'Dependent', 'One accessibility feature relies on another accessibility feature for full functionality.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureRelationshipType] 
+SET [Description] = 'Dependent', [Definition] = 'One accessibility feature relies on another accessibility feature for full functionality.', [SortOrder] = 2.00 WHERE [Code] = 'Dependent'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureRelationshipType] WHERE [Code] = 'Interdependent') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureRelationshipType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Interdependent', 'Interdependent', 'Both accessibility features rely on each other for full functionality.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureRelationshipType] 
+SET [Description] = 'Interdependent', [Definition] = 'Both accessibility features rely on each other for full functionality.', [SortOrder] = 4.00 WHERE [Code] = 'Interdependent'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureRelationshipType] WHERE [Code] = 'Enhancing') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureRelationshipType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Enhancing', 'Enhancing', 'One accessibility feature improves or amplifies the effects of the other accessibility feature.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureRelationshipType] 
+SET [Description] = 'Enhancing', [Definition] = 'One accessibility feature improves or amplifies the effects of the other accessibility feature.', [SortOrder] = 3.00 WHERE [Code] = 'Enhancing'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibilityFeatureRelationshipType] WHERE [Code] = 'Complementary') BEGIN INSERT INTO dbo.[RefAccessibilityFeatureRelationshipType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Complementary', 'Complementary', 'Two features that work together to enhance accessibility.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibilityFeatureRelationshipType] 
+SET [Description] = 'Complementary', [Definition] = 'Two features that work together to enhance accessibility.', [SortOrder] = 1.00 WHERE [Code] = 'Complementary'  END
+END
+
+
+PRINT N'Populate RefAccessibleFormatProviderType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAccessibleFormatProviderType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibleFormatProviderType] WHERE [Code] = 'K12School') BEGIN INSERT INTO dbo.[RefAccessibleFormatProviderType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('K12School', 'K12 School', 'The source from which the accessible formats are acquired is a K12 school.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibleFormatProviderType] 
+SET [Description] = 'K12 School', [Definition] = 'The source from which the accessible formats are acquired is a K12 school.', [SortOrder] = 1.00 WHERE [Code] = 'K12School'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibleFormatProviderType] WHERE [Code] = 'LEA') BEGIN INSERT INTO dbo.[RefAccessibleFormatProviderType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('LEA', 'Local Education Agency', 'The source from which the accessible formats are acquired is a local education agency.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibleFormatProviderType] 
+SET [Description] = 'Local Education Agency', [Definition] = 'The source from which the accessible formats are acquired is a local education agency.', [SortOrder] = 2.00 WHERE [Code] = 'LEA'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibleFormatProviderType] WHERE [Code] = 'StateOrFederallyFundedService') BEGIN INSERT INTO dbo.[RefAccessibleFormatProviderType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('StateOrFederallyFundedService', 'State or Federally Funded Service Organization', 'The source from which the accessible formats are acquired is a state or federally funded service organization.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibleFormatProviderType] 
+SET [Description] = 'State or Federally Funded Service Organization', [Definition] = 'The source from which the accessible formats are acquired is a state or federally funded service organization.', [SortOrder] = 4.00 WHERE [Code] = 'StateOrFederallyFundedService'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAccessibleFormatProviderType] WHERE [Code] = 'NonProfit') BEGIN INSERT INTO dbo.[RefAccessibleFormatProviderType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('NonProfit', 'Non-Profit Organization', 'The source from which the accessible formats are acquired is a non-profit organization.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAccessibleFormatProviderType] 
+SET [Description] = 'Non-Profit Organization', [Definition] = 'The source from which the accessible formats are acquired is a non-profit organization.', [SortOrder] = 3.00 WHERE [Code] = 'NonProfit'  END
+END
+
+
+PRINT N'Populate RefAdaptiveCalculatorType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAdaptiveCalculatorType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAdaptiveCalculatorType] WHERE [Code] = 'Talking') BEGIN INSERT INTO dbo.[RefAdaptiveCalculatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Talking', 'Talking', 'Talking is the specific type of adaptive calculator used.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAdaptiveCalculatorType] 
+SET [Description] = 'Talking', [Definition] = 'Talking is the specific type of adaptive calculator used.', [SortOrder] = 2.00 WHERE [Code] = 'Talking'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAdaptiveCalculatorType] WHERE [Code] = 'LargeKey') BEGIN INSERT INTO dbo.[RefAdaptiveCalculatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('LargeKey', 'Large key', 'Large key is the specific type of adaptive calculator used.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAdaptiveCalculatorType] 
+SET [Description] = 'Large key', [Definition] = 'Large key is the specific type of adaptive calculator used.', [SortOrder] = 1.00 WHERE [Code] = 'LargeKey'  END
+END
+
+
+PRINT N'Populate RefAgencyInvitationforTransitionPlanningIndicator table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAgencyInvitationforTransitionPlanningIndicator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAgencyInvitationforTransitionPlanningIndicator] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefAgencyInvitationforTransitionPlanningIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('No', 'No', '', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAgencyInvitationforTransitionPlanningIndicator] 
+SET [Description] = 'No', [Definition] = '', [SortOrder] = 1.00 WHERE [Code] = 'No'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAgencyInvitationforTransitionPlanningIndicator] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefAgencyInvitationforTransitionPlanningIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Yes', 'Yes', '', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAgencyInvitationforTransitionPlanningIndicator] 
+SET [Description] = 'Yes', [Definition] = '', [SortOrder] = 2.00 WHERE [Code] = 'Yes'  END
+END
+
+
+PRINT N'Populate RefAlternateResponseOptionType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAlternateResponseOptionType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'AdaptedKeyboard') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('AdaptedKeyboard', 'Adapted keyboard', 'Adapted keyboard is the type of alternative method for inputting a response.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Adapted keyboard', [Definition] = 'Adapted keyboard is the type of alternative method for inputting a response.', [SortOrder] = 1.00 WHERE [Code] = 'AdaptedKeyboard'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'TouchScreen') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TouchScreen', 'Touch screen', 'Touch screen is the type of alternative method for inputting a response.', 9.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Touch screen', [Definition] = 'Touch screen is the type of alternative method for inputting a response.', [SortOrder] = 9.00 WHERE [Code] = 'TouchScreen'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'AdaptedMouse') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('AdaptedMouse', 'Adapted mouse', 'Adapted mouse is the type of alternative method for inputting a response.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Adapted mouse', [Definition] = 'Adapted mouse is the type of alternative method for inputting a response.', [SortOrder] = 2.00 WHERE [Code] = 'AdaptedMouse'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'Switches') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Switches', 'Switches', 'Switches is the type of alternative method for inputting a response.', 8.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Switches', [Definition] = 'Switches is the type of alternative method for inputting a response.', [SortOrder] = 8.00 WHERE [Code] = 'Switches'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'LargeKeyboard') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('LargeKeyboard', 'Large keyboard', 'Large keyboard is the type of alternative method for inputting a response.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Large keyboard', [Definition] = 'Large keyboard is the type of alternative method for inputting a response.', [SortOrder] = 5.00 WHERE [Code] = 'LargeKeyboard'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'MouseKeys') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('MouseKeys', 'Mouse keys', 'Mouse keys is the type of alternative method for inputting a response.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Mouse keys', [Definition] = 'Mouse keys is the type of alternative method for inputting a response.', [SortOrder] = 6.00 WHERE [Code] = 'MouseKeys'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'HeadWand') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('HeadWand', 'Head wand', 'Head wand is the type of alternative method for inputting a response.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Head wand', [Definition] = 'Head wand is the type of alternative method for inputting a response.', [SortOrder] = 4.00 WHERE [Code] = 'HeadWand'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'FilterKeys') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('FilterKeys', 'Filter keys', 'Filter keys is the type of alternative method for inputting a response.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Filter keys', [Definition] = 'Filter keys is the type of alternative method for inputting a response.', [SortOrder] = 3.00 WHERE [Code] = 'FilterKeys'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAlternateResponseOptionType] WHERE [Code] = 'StickyKeys') BEGIN INSERT INTO dbo.[RefAlternateResponseOptionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('StickyKeys', 'Sticky keys', 'Sticky keys is the type of alternative method for inputting a response.', 7.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAlternateResponseOptionType] 
+SET [Description] = 'Sticky keys', [Definition] = 'Sticky keys is the type of alternative method for inputting a response.', [SortOrder] = 7.00 WHERE [Code] = 'StickyKeys'  END
+END
+
+
+PRINT N'Populate RefAssessmentComponentType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAssessmentComponentType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentComponentType] WHERE [Code] = 'ItemStem') BEGIN INSERT INTO dbo.[RefAssessmentComponentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ItemStem', 'Assessment item stem', 'The statement of the question or prompt for an assessment item to which the individual responds.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentComponentType] 
+SET [Description] = 'Assessment item stem', [Definition] = 'The statement of the question or prompt for an assessment item to which the individual responds.', [SortOrder] = 4.00 WHERE [Code] = 'ItemStem'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentComponentType] WHERE [Code] = 'All') BEGIN INSERT INTO dbo.[RefAssessmentComponentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('All', 'All assessment components', 'All components that make up the whole of an assessment.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentComponentType] 
+SET [Description] = 'All assessment components', [Definition] = 'All components that make up the whole of an assessment.', [SortOrder] = 1.00 WHERE [Code] = 'All'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentComponentType] WHERE [Code] = 'TestDirections') BEGIN INSERT INTO dbo.[RefAssessmentComponentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TestDirections', 'Test directions', 'Instructions provided to participants prior to the beginning of the test.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentComponentType] 
+SET [Description] = 'Test directions', [Definition] = 'Instructions provided to participants prior to the beginning of the test.', [SortOrder] = 6.00 WHERE [Code] = 'TestDirections'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentComponentType] WHERE [Code] = 'ItemStimulus') BEGIN INSERT INTO dbo.[RefAssessmentComponentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ItemStimulus', 'Assessment item stimulus', 'The text, source (e.g., video clip), and/or graphic about which the assessment item is written. The stimulus provides the context of the item/task to which the individual must respond.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentComponentType] 
+SET [Description] = 'Assessment item stimulus', [Definition] = 'The text, source (e.g., video clip), and/or graphic about which the assessment item is written. The stimulus provides the context of the item/task to which the individual must respond.', [SortOrder] = 5.00 WHERE [Code] = 'ItemStimulus'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentComponentType] WHERE [Code] = 'ItemPossibleResponse') BEGIN INSERT INTO dbo.[RefAssessmentComponentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ItemPossibleResponse', 'Assessment item possible response options', 'The possible responses presented to the participant within a selected-response/multiple-choice assessment item.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentComponentType] 
+SET [Description] = 'Assessment item possible response options', [Definition] = 'The possible responses presented to the participant within a selected-response/multiple-choice assessment item.', [SortOrder] = 3.00 WHERE [Code] = 'ItemPossibleResponse'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentComponentType] WHERE [Code] = 'ItemBodyText') BEGIN INSERT INTO dbo.[RefAssessmentComponentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ItemBodyText', 'Assessment item body text', 'The complete text of an assessment item including all applicable parts such as stimulus, stem, and possible response options presented.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentComponentType] 
+SET [Description] = 'Assessment item body text', [Definition] = 'The complete text of an assessment item including all applicable parts such as stimulus, stem, and possible response options presented.', [SortOrder] = 2.00 WHERE [Code] = 'ItemBodyText'  END
+END
+
+
+PRINT N'Populate RefAssessmentExtendedTimeType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefAssessmentExtendedTimeType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentExtendedTimeType] WHERE [Code] = 'DoubleTime') BEGIN INSERT INTO dbo.[RefAssessmentExtendedTimeType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('DoubleTime', 'Double time', 'The additional time provided to complete an assessment beyond the standard duration is double time.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentExtendedTimeType] 
+SET [Description] = 'Double time', [Definition] = 'The additional time provided to complete an assessment beyond the standard duration is double time.', [SortOrder] = 1.00 WHERE [Code] = 'DoubleTime'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentExtendedTimeType] WHERE [Code] = 'TimeAndOneQuarter') BEGIN INSERT INTO dbo.[RefAssessmentExtendedTimeType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TimeAndOneQuarter', 'Time and one quarter', 'The additional time provided to complete an assessment beyond the standard duration is time and one quarter.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentExtendedTimeType] 
+SET [Description] = 'Time and one quarter', [Definition] = 'The additional time provided to complete an assessment beyond the standard duration is time and one quarter.', [SortOrder] = 3.00 WHERE [Code] = 'TimeAndOneQuarter'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefAssessmentExtendedTimeType] WHERE [Code] = 'TimeAndAHalf') BEGIN INSERT INTO dbo.[RefAssessmentExtendedTimeType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TimeAndAHalf', 'Time and a half', 'The additional time provided to complete an assessment beyond the standard duration is time and a half.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefAssessmentExtendedTimeType] 
+SET [Description] = 'Time and a half', [Definition] = 'The additional time provided to complete an assessment beyond the standard duration is time and a half.', [SortOrder] = 2.00 WHERE [Code] = 'TimeAndAHalf'  END
+END
+
+
+PRINT N'Populate RefBehaviorImpedesLearningIndicator table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefBehaviorImpedesLearningIndicator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBehaviorImpedesLearningIndicator] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefBehaviorImpedesLearningIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('No', 'No', '', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBehaviorImpedesLearningIndicator] 
+SET [Description] = 'No', [Definition] = '', [SortOrder] = 1.00 WHERE [Code] = 'No'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBehaviorImpedesLearningIndicator] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefBehaviorImpedesLearningIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Yes', 'Yes', '', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBehaviorImpedesLearningIndicator] 
+SET [Description] = 'Yes', [Definition] = '', [SortOrder] = 2.00 WHERE [Code] = 'Yes'  END
+END
+
+
+PRINT N'Populate RefBrailleAccessType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefBrailleAccessType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleAccessType] WHERE [Code] = 'BrailleWriter') BEGIN INSERT INTO dbo.[RefBrailleAccessType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('BrailleWriter', 'Braille writer', 'The way braille is accessed is Braille writer.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleAccessType] 
+SET [Description] = 'Braille writer', [Definition] = 'The way braille is accessed is Braille writer.', [SortOrder] = 2.00 WHERE [Code] = 'BrailleWriter'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleAccessType] WHERE [Code] = 'RefreshableBraille') BEGIN INSERT INTO dbo.[RefBrailleAccessType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('RefreshableBraille', 'Refreshable Braille', 'The way braille is accessed is refreshable braille.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleAccessType] 
+SET [Description] = 'Refreshable Braille', [Definition] = 'The way braille is accessed is refreshable braille.', [SortOrder] = 3.00 WHERE [Code] = 'RefreshableBraille'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleAccessType] WHERE [Code] = 'BrailleNotetaker') BEGIN INSERT INTO dbo.[RefBrailleAccessType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('BrailleNotetaker', 'Braille notetaker', 'The way braille is accessed is Braille notetaker.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleAccessType] 
+SET [Description] = 'Braille notetaker', [Definition] = 'The way braille is accessed is Braille notetaker.', [SortOrder] = 1.00 WHERE [Code] = 'BrailleNotetaker'  END
+END
+
+
+PRINT N'Populate RefBrailleApplicationType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefBrailleApplicationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleApplicationType] WHERE [Code] = 'Read') BEGIN INSERT INTO dbo.[RefBrailleApplicationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Read', 'Read', 'The individual is provided with tools or resources for reading braille.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleApplicationType] 
+SET [Description] = 'Read', [Definition] = 'The individual is provided with tools or resources for reading braille.', [SortOrder] = 2.00 WHERE [Code] = 'Read'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleApplicationType] WHERE [Code] = 'Emboss') BEGIN INSERT INTO dbo.[RefBrailleApplicationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Emboss', 'Emboss', 'The individual is provided with tools or resources to emboss braille.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleApplicationType] 
+SET [Description] = 'Emboss', [Definition] = 'The individual is provided with tools or resources to emboss braille.', [SortOrder] = 1.00 WHERE [Code] = 'Emboss'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleApplicationType] WHERE [Code] = 'Write') BEGIN INSERT INTO dbo.[RefBrailleApplicationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Write', 'Write', 'The individual is provided with tools or resources for writing braille.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleApplicationType] 
+SET [Description] = 'Write', [Definition] = 'The individual is provided with tools or resources for writing braille.', [SortOrder] = 3.00 WHERE [Code] = 'Write'  END
+END
+
+
+PRINT N'Populate RefBrailleCodeType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefBrailleCodeType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleCodeType] WHERE [Code] = 'Nemeth') BEGIN INSERT INTO dbo.[RefBrailleCodeType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Nemeth', 'Nemeth', 'A specialized braille code used for representing mathematical and scientific notation providing a system for transcribing mathematical symbols, expressions, and technical content into braille, allowing individuals with visual impairments to access mathematical content effectively.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleCodeType] 
+SET [Description] = 'Nemeth', [Definition] = 'A specialized braille code used for representing mathematical and scientific notation providing a system for transcribing mathematical symbols, expressions, and technical content into braille, allowing individuals with visual impairments to access mathematical content effectively.', [SortOrder] = 1.00 WHERE [Code] = 'Nemeth'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleCodeType] WHERE [Code] = 'UEB') BEGIN INSERT INTO dbo.[RefBrailleCodeType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('UEB', 'Unified English Braille (UEB)', 'A standardized system of Braille developed to harmonize and streamline Braille codes used in English-speaking countries around the world.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleCodeType] 
+SET [Description] = 'Unified English Braille (UEB)', [Definition] = 'A standardized system of Braille developed to harmonize and streamline Braille codes used in English-speaking countries around the world.', [SortOrder] = 2.00 WHERE [Code] = 'UEB'  END
+END
+
+
+PRINT N'Populate RefBrailleVersionType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefBrailleVersionType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleVersionType] WHERE [Code] = 'Uncontracted') BEGIN INSERT INTO dbo.[RefBrailleVersionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Uncontracted', 'Uncontracted', 'A system of Braille that represents each letter of the alphabet and each punctuation mark separately, without any contractions.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleVersionType] 
+SET [Description] = 'Uncontracted', [Definition] = 'A system of Braille that represents each letter of the alphabet and each punctuation mark separately, without any contractions.', [SortOrder] = 2.00 WHERE [Code] = 'Uncontracted'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleVersionType] WHERE [Code] = 'Contracted') BEGIN INSERT INTO dbo.[RefBrailleVersionType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Contracted', 'Contracted', 'A system of Braille that includes contractions or abbreviations for common letter combinations, words, and prefixes, making it more efficient for reading and writing.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBrailleVersionType] 
+SET [Description] = 'Contracted', [Definition] = 'A system of Braille that includes contractions or abbreviations for common letter combinations, words, and prefixes, making it more efficient for reading and writing.', [SortOrder] = 1.00 WHERE [Code] = 'Contracted'  END
+END
+
+
+PRINT N'Populate RefBreakLocationType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefBreakLocationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBreakLocationType] WHERE [Code] = 'OutsideTestingEnvironment') BEGIN INSERT INTO dbo.[RefBreakLocationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('OutsideTestingEnvironment', 'Outside testing environment', 'The location where the individual is allowed to temporarily suspend activities is outside the testing environment.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBreakLocationType] 
+SET [Description] = 'Outside testing environment', [Definition] = 'The location where the individual is allowed to temporarily suspend activities is outside the testing environment.', [SortOrder] = 3.00 WHERE [Code] = 'OutsideTestingEnvironment'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBreakLocationType] WHERE [Code] = 'InChair') BEGIN INSERT INTO dbo.[RefBreakLocationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('InChair', 'In chair', 'The location where the individual is allowed to temporarily suspend activities is in their chair.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBreakLocationType] 
+SET [Description] = 'In chair', [Definition] = 'The location where the individual is allowed to temporarily suspend activities is in their chair.', [SortOrder] = 1.00 WHERE [Code] = 'InChair'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBreakLocationType] WHERE [Code] = 'InTestingEnvironment') BEGIN INSERT INTO dbo.[RefBreakLocationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('InTestingEnvironment', 'In testing environment', 'The location where the individual is allowed to temporarily suspend activities is in the testing environment.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBreakLocationType] 
+SET [Description] = 'In testing environment', [Definition] = 'The location where the individual is allowed to temporarily suspend activities is in the testing environment.', [SortOrder] = 2.00 WHERE [Code] = 'InTestingEnvironment'  END
+END
+
+
+PRINT N'Populate RefBreakType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefBreakType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBreakType] WHERE [Code] = 'Medical') BEGIN INSERT INTO dbo.[RefBreakType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Medical', 'Medical break', 'The designated pause allowing the individual to temporarily suspend activities is a medical break.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBreakType] 
+SET [Description] = 'Medical break', [Definition] = 'The designated pause allowing the individual to temporarily suspend activities is a medical break.', [SortOrder] = 1.00 WHERE [Code] = 'Medical'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBreakType] WHERE [Code] = 'Unscheduled') BEGIN INSERT INTO dbo.[RefBreakType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Unscheduled', 'Unscheduled break', 'The designated pause allowing the individual to temporarily suspend activities is an unscheduled break.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBreakType] 
+SET [Description] = 'Unscheduled break', [Definition] = 'The designated pause allowing the individual to temporarily suspend activities is an unscheduled break.', [SortOrder] = 3.00 WHERE [Code] = 'Unscheduled'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefBreakType] WHERE [Code] = 'Scheduled') BEGIN INSERT INTO dbo.[RefBreakType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Scheduled', 'Scheduled break', 'The designated pause allowing the individual to temporarily suspend activities is a scheduled break.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefBreakType] 
+SET [Description] = 'Scheduled break', [Definition] = 'The designated pause allowing the individual to temporarily suspend activities is a scheduled break.', [SortOrder] = 2.00 WHERE [Code] = 'Scheduled'  END
+END
+
+
+PRINT N'Populate RefCalculatorType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefCalculatorType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefCalculatorType] WHERE [Code] = 'Scientific') BEGIN INSERT INTO dbo.[RefCalculatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Scientific', 'Scientific', 'The specific type of calculator used is a scientific calculator.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCalculatorType] 
+SET [Description] = 'Scientific', [Definition] = 'The specific type of calculator used is a scientific calculator.', [SortOrder] = 4.00 WHERE [Code] = 'Scientific'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefCalculatorType] WHERE [Code] = 'FiveFunction') BEGIN INSERT INTO dbo.[RefCalculatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('FiveFunction', 'Five-function (add, subtract, multiply, divide, square root)', 'The specific type of calculator used is a five-function calculator with the ability to add, subtract, multiply, divide, and calculate the square root.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCalculatorType] 
+SET [Description] = 'Five-function (add, subtract, multiply, divide, square root)', [Definition] = 'The specific type of calculator used is a five-function calculator with the ability to add, subtract, multiply, divide, and calculate the square root.', [SortOrder] = 1.00 WHERE [Code] = 'FiveFunction'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefCalculatorType] WHERE [Code] = 'Graphing') BEGIN INSERT INTO dbo.[RefCalculatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Graphing', 'Graphing', 'The specific type of calculator used is a graphing calculator.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCalculatorType] 
+SET [Description] = 'Graphing', [Definition] = 'The specific type of calculator used is a graphing calculator.', [SortOrder] = 3.00 WHERE [Code] = 'Graphing'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefCalculatorType] WHERE [Code] = 'FourFunction') BEGIN INSERT INTO dbo.[RefCalculatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('FourFunction', 'Four-function (add, subtract, multiply, divide)', 'The specific type of calculator used is a four-function calculator with the ability to add, subtract, multiply and divide.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCalculatorType] 
+SET [Description] = 'Four-function (add, subtract, multiply, divide)', [Definition] = 'The specific type of calculator used is a four-function calculator with the ability to add, subtract, multiply and divide.', [SortOrder] = 2.00 WHERE [Code] = 'FourFunction'  END
+END
+
+
+PRINT N'Populate RefDegreeOfVisualImpairment table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefDegreeOfVisualImpairment]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefDegreeOfVisualImpairment] WHERE [Code] = 'TotallyBlind') BEGIN INSERT INTO dbo.[RefDegreeOfVisualImpairment]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TotallyBlind', 'Totally Blind', 'The visual impairment is light perception only or no light perception.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefDegreeOfVisualImpairment] 
+SET [Description] = 'Totally Blind', [Definition] = 'The visual impairment is light perception only or no light perception.', [SortOrder] = 3.00 WHERE [Code] = 'TotallyBlind'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefDegreeOfVisualImpairment] WHERE [Code] = 'SevereVisualImpairment') BEGIN INSERT INTO dbo.[RefDegreeOfVisualImpairment]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SevereVisualImpairment', 'Severe Visual Impairment', 'The visual impairment is severe.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefDegreeOfVisualImpairment] 
+SET [Description] = 'Severe Visual Impairment', [Definition] = 'The visual impairment is severe.', [SortOrder] = 2.00 WHERE [Code] = 'SevereVisualImpairment'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefDegreeOfVisualImpairment] WHERE [Code] = 'LegallyBlind') BEGIN INSERT INTO dbo.[RefDegreeOfVisualImpairment]([Code], [Description], [Definition], [SortOrder])
+VALUES ('LegallyBlind', 'Legally Blind', 'The visual impairment is legally blind and excludes totally blind.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefDegreeOfVisualImpairment] 
+SET [Description] = 'Legally Blind', [Definition] = 'The visual impairment is legally blind and excludes totally blind.', [SortOrder] = 1.00 WHERE [Code] = 'LegallyBlind'  END
+END
+
+
+PRINT N'Populate RefDisplayFormatAdjustmentType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefDisplayFormatAdjustmentType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefDisplayFormatAdjustmentType] WHERE [Code] = 'Simplified') BEGIN INSERT INTO dbo.[RefDisplayFormatAdjustmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Simplified', 'Simplified', 'Simplified is the type of adjustment to the format of the content.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefDisplayFormatAdjustmentType] 
+SET [Description] = 'Simplified', [Definition] = 'Simplified is the type of adjustment to the format of the content.', [SortOrder] = 1.00 WHERE [Code] = 'Simplified'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefDisplayFormatAdjustmentType] WHERE [Code] = 'Stacked') BEGIN INSERT INTO dbo.[RefDisplayFormatAdjustmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Stacked', 'Stacked', 'Stacked is the type of adjustment to the format of the content.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefDisplayFormatAdjustmentType] 
+SET [Description] = 'Stacked', [Definition] = 'Stacked is the type of adjustment to the format of the content.', [SortOrder] = 2.00 WHERE [Code] = 'Stacked'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefDisplayFormatAdjustmentType] WHERE [Code] = 'Streamlined') BEGIN INSERT INTO dbo.[RefDisplayFormatAdjustmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Streamlined', 'Streamlined', 'Streamlined is the type of adjustment to the format of the content.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefDisplayFormatAdjustmentType] 
+SET [Description] = 'Streamlined', [Definition] = 'Streamlined is the type of adjustment to the format of the content.', [SortOrder] = 3.00 WHERE [Code] = 'Streamlined'  END
+END
+
+
+PRINT N'Populate RefGroupSizeType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefGroupSizeType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefGroupSizeType] WHERE [Code] = 'SmallGroup') BEGIN INSERT INTO dbo.[RefGroupSizeType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SmallGroup', 'Small Group', 'The person will be in a small group setting.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefGroupSizeType] 
+SET [Description] = 'Small Group', [Definition] = 'The person will be in a small group setting.', [SortOrder] = 2.00 WHERE [Code] = 'SmallGroup'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefGroupSizeType] WHERE [Code] = 'Individual') BEGIN INSERT INTO dbo.[RefGroupSizeType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Individual', 'Individual', 'The person will be in an individual setting.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefGroupSizeType] 
+SET [Description] = 'Individual', [Definition] = 'The person will be in an individual setting.', [SortOrder] = 1.00 WHERE [Code] = 'Individual'  END
+END
+
+
+PRINT N'Populate RefIDEAPartCtoPartBTransitionDelayReason table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefIDEAPartCtoPartBTransitionDelayReason]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1003') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1003', 'Parent/guardian did not show up', 'Parent/guardian did not show up is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Parent/guardian did not show up', [Definition] = 'Parent/guardian did not show up is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 6.00 WHERE [Code] = '1003'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1010') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1010', 'Referred to Part C after 33 months', 'The reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B', 8.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Referred to Part C after 33 months', [Definition] = 'The reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B', [SortOrder] = 8.00 WHERE [Code] = '1010'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1008') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1008', 'Student enrolled in a University based program', 'Student enrolled in University based program  is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 11.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Student enrolled in a University based program', [Definition] = 'Student enrolled in University based program  is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 11.00 WHERE [Code] = '1008'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1009') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1009', 'Student unknown to district', 'Student unknown to district is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 13.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Student unknown to district', [Definition] = 'Student unknown to district is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 13.00 WHERE [Code] = '1009'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1011') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1011', 'Not eligible', 'Not eligible is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Not eligible', [Definition] = 'Not eligible is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 3.00 WHERE [Code] = '1011'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1006') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1006', 'Service discontinued', 'Service discontinued is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B', 9.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Service discontinued', [Definition] = 'Service discontinued is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B', [SortOrder] = 9.00 WHERE [Code] = '1006'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1013') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1013', 'Late notification from Part C to Part B', 'Late notification from Part C to Part B is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Late notification from Part C to Part B', [Definition] = 'Late notification from Part C to Part B is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 1.00 WHERE [Code] = '1013'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1012') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1012', 'Timeline began in previous district', 'Timeline began in previous district is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 14.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Timeline began in previous district', [Definition] = 'Timeline began in previous district is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 14.00 WHERE [Code] = '1012'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1001') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1001', 'No permission to test', 'No permission to test is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'No permission to test', [Definition] = 'No permission to test is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 2.00 WHERE [Code] = '1001'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '9999') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('9999', 'Other', 'The reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B is a reason not yet defined in CEDS.', 99.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Other', [Definition] = 'The reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B is a reason not yet defined in CEDS.', [SortOrder] = 99.00 WHERE [Code] = '9999'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1007') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1007', 'Student moved out of state', 'Student moved out of state  is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 12.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Student moved out of state', [Definition] = 'Student moved out of state  is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 12.00 WHERE [Code] = '1007'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1005') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1005', 'Student died', 'Student died is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B', 10.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Student died', [Definition] = 'Student died is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B', [SortOrder] = 10.00 WHERE [Code] = '1005'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1000') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1000', 'Parent/guardian refused services', 'The parent/guardian refused services is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 7.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Parent/guardian refused services', [Definition] = 'The parent/guardian refused services is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 7.00 WHERE [Code] = '1000'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1004') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1004', 'Parent/guardian deferred to later school year', 'Parent/guardian deferred to later school year is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Parent/guardian deferred to later school year', [Definition] = 'Parent/guardian deferred to later school year is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 4.00 WHERE [Code] = '1004'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIDEAPartCtoPartBTransitionDelayReason] WHERE [Code] = '1002') BEGIN INSERT INTO dbo.[RefIDEAPartCtoPartBTransitionDelayReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1002', 'Parent/guardian did not respond', 'Parent/guardian did not respond is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIDEAPartCtoPartBTransitionDelayReason] 
+SET [Description] = 'Parent/guardian did not respond', [Definition] = 'Parent/guardian did not respond is the reason for delay in timeliness of the IEP by the child’s third birthday for all children referred by Part C as potentially eligible for Part B.', [SortOrder] = 5.00 WHERE [Code] = '1002'  END
+END
+
+
+PRINT N'Populate RefIndicator11ChildFindTimelinessReason table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefIndicator11ChildFindTimelinessReason]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1007') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1007', 'Personnel required to be present for the evaluation completion were not available', 'The reason a student’s initial evaluation was not timely was because personnel required to be present for the IEP completion were not available.', 7.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Personnel required to be present for the evaluation completion were not available', [Definition] = 'The reason a student’s initial evaluation was not timely was because personnel required to be present for the IEP completion were not available.', [SortOrder] = 7.00 WHERE [Code] = '1007'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1009') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1009', 'Parent/guardian withdrew or refused consent to evaluate', 'The reason a student’s initial evaluation was not timely was because the parent/guardian withdrew or refused consent to evaluate.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Parent/guardian withdrew or refused consent to evaluate', [Definition] = 'The reason a student’s initial evaluation was not timely was because the parent/guardian withdrew or refused consent to evaluate.', [SortOrder] = 6.00 WHERE [Code] = '1009'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '9999') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('9999', 'Other Not Timely', 'The reason a student’s initial evaluation was not timely is a reason not yet defined in CEDS.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Other Not Timely', [Definition] = 'The reason a student’s initial evaluation was not timely is a reason not yet defined in CEDS.', [SortOrder] = 4.00 WHERE [Code] = '9999'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1001') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1001', 'Student moved during process', 'The reason a student’s initial evaluation was not timely was because the student moved during the process.', 12.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Student moved during process', [Definition] = 'The reason a student’s initial evaluation was not timely was because the student moved during the process.', [SortOrder] = 12.00 WHERE [Code] = '1001'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1000') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1000', 'Parent/guardian repeatedly failed to produce student for evaluation', 'The reason a student’s initial evaluation was not timely was because the parent/guardian repeatedly failed to produce the student for evaluation.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Parent/guardian repeatedly failed to produce student for evaluation', [Definition] = 'The reason a student’s initial evaluation was not timely was because the parent/guardian repeatedly failed to produce the student for evaluation.', [SortOrder] = 5.00 WHERE [Code] = '1000'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1005') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1005', 'Timeline began in a previous district', 'The reason a student’s initial evaluation was not timely was because the timeline began in a previous district.', 13.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Timeline began in a previous district', [Definition] = 'The reason a student’s initial evaluation was not timely was because the timeline began in a previous district.', [SortOrder] = 13.00 WHERE [Code] = '1005'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1006') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1006', 'Professionals needed to complete the evaluation were not available', 'The reason a student’s initial evaluation was not timely was because professionals needed to complete the evaluation were not available.', 8.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Professionals needed to complete the evaluation were not available', [Definition] = 'The reason a student’s initial evaluation was not timely was because professionals needed to complete the evaluation were not available.', [SortOrder] = 8.00 WHERE [Code] = '1006'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1003') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1003', 'Accepted out-of-state evaluation', 'The reason a student’s initial evaluation was not timely was because the state accepted an out-of-state evaluation.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Accepted out-of-state evaluation', [Definition] = 'The reason a student’s initial evaluation was not timely was because the state accepted an out-of-state evaluation.', [SortOrder] = 1.00 WHERE [Code] = '1003'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1010') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1010', 'Student died', 'The reason a student’s initial evaluation was not timely was because the student died.', 11.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Student died', [Definition] = 'The reason a student’s initial evaluation was not timely was because the student died.', [SortOrder] = 11.00 WHERE [Code] = '1010'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1004') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1004', 'Ruled in a prior school year', 'The reason a student’s initial evaluation was not timely was because the evaluation was ruled in a prior school year.', 9.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Ruled in a prior school year', [Definition] = 'The reason a student’s initial evaluation was not timely was because the evaluation was ruled in a prior school year.', [SortOrder] = 9.00 WHERE [Code] = '1004'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1008') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1008', 'External reports not available', 'The reason a student’s initial evaluation was not timely was because external reports were not available.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'External reports not available', [Definition] = 'The reason a student’s initial evaluation was not timely was because external reports were not available.', [SortOrder] = 3.00 WHERE [Code] = '1008'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1011') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1011', 'Evaluation completed in expected  time', 'The reason a student’s initial evaluation was timely was because the evaluation was completed in the expected time.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Evaluation completed in expected  time', [Definition] = 'The reason a student’s initial evaluation was timely was because the evaluation was completed in the expected time.', [SortOrder] = 2.00 WHERE [Code] = '1011'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndicator11ChildFindTimelinessReason] WHERE [Code] = '1002') BEGIN INSERT INTO dbo.[RefIndicator11ChildFindTimelinessReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1002', 'Specific Learning Disability written mutual agreement', 'The reason a student’s initial evaluation was not timely was because there is a Specific Learning Disability written mutual agreement.', 10.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndicator11ChildFindTimelinessReason] 
+SET [Description] = 'Specific Learning Disability written mutual agreement', [Definition] = 'The reason a student’s initial evaluation was not timely was because there is a Specific Learning Disability written mutual agreement.', [SortOrder] = 10.00 WHERE [Code] = '1002'  END
+END
+
+
+PRINT N'Populate RefIndirectCostRateAgreementIndicator table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefIndirectCostRateAgreementIndicator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateAgreementIndicator] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefIndirectCostRateAgreementIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('No', 'No', 'The organization does not have a federally approved Indirect Cost Rate Agreement.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateAgreementIndicator] 
+SET [Description] = 'No', [Definition] = 'The organization does not have a federally approved Indirect Cost Rate Agreement.', [SortOrder] = 1.00 WHERE [Code] = 'No'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateAgreementIndicator] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefIndirectCostRateAgreementIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Yes', 'Yes', 'The organization has a federally approved Indirect Cost Rate Agreement.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateAgreementIndicator] 
+SET [Description] = 'Yes', [Definition] = 'The organization has a federally approved Indirect Cost Rate Agreement.', [SortOrder] = 2.00 WHERE [Code] = 'Yes'  END
+END
+
+
+PRINT N'Populate RefIndirectCostRateDeviationReasonType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefIndirectCostRateDeviationReasonType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateDeviationReasonType] WHERE [Code] = 'TrainingRateProgram') BEGIN INSERT INTO dbo.[RefIndirectCostRateDeviationReasonType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TrainingRateProgram', 'Training Rate Program with negotiated Indirect Cost', 'The deviation reason is the indirect cost rate is based on the Training Rate Program with negotiated Indirect Cost', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateDeviationReasonType] 
+SET [Description] = 'Training Rate Program with negotiated Indirect Cost', [Definition] = 'The deviation reason is the indirect cost rate is based on the Training Rate Program with negotiated Indirect Cost', [SortOrder] = 5.00 WHERE [Code] = 'TrainingRateProgram'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateDeviationReasonType] WHERE [Code] = 'NotStateLGtribe') BEGIN INSERT INTO dbo.[RefIndirectCostRateDeviationReasonType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('NotStateLGtribe', 'Not State, local government or Indian tribe', 'The deviation reason is the legal entity is not a state, local government or Indian tribe', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateDeviationReasonType] 
+SET [Description] = 'Not State, local government or Indian tribe', [Definition] = 'The deviation reason is the legal entity is not a state, local government or Indian tribe', [SortOrder] = 1.00 WHERE [Code] = 'NotStateLGtribe'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateDeviationReasonType] WHERE [Code] = 'ICAgreement') BEGIN INSERT INTO dbo.[RefIndirectCostRateDeviationReasonType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ICAgreement', 'Restricted Rate in IC Agreement', 'The deviation reason is the indirect cost rate is based on the restricted rate is in the Indirect Cost Agreement', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateDeviationReasonType] 
+SET [Description] = 'Restricted Rate in IC Agreement', [Definition] = 'The deviation reason is the indirect cost rate is based on the restricted rate is in the Indirect Cost Agreement', [SortOrder] = 3.00 WHERE [Code] = 'ICAgreement'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateDeviationReasonType] WHERE [Code] = '34CFR') BEGIN INSERT INTO dbo.[RefIndirectCostRateDeviationReasonType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('34CFR', 'Restricted Rate Complies with 34 CFR 76.564 (c)(2)', 'The deviation reason is the indirect cost rate is based on the restricted rate complies with 34 CFR 76.564 (c)(2)', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateDeviationReasonType] 
+SET [Description] = 'Restricted Rate Complies with 34 CFR 76.564 (c)(2)', [Definition] = 'The deviation reason is the indirect cost rate is based on the restricted rate complies with 34 CFR 76.564 (c)(2)', [SortOrder] = 2.00 WHERE [Code] = '34CFR'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateDeviationReasonType] WHERE [Code] = 'MTDCrecovery') BEGIN INSERT INTO dbo.[RefIndirectCostRateDeviationReasonType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('MTDCrecovery', 'Training Rate Program with MTDC recovery', 'The deviation reason is the indirect cost rate is based on the training rate program with MTDC recovery.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateDeviationReasonType] 
+SET [Description] = 'Training Rate Program with MTDC recovery', [Definition] = 'The deviation reason is the indirect cost rate is based on the training rate program with MTDC recovery.', [SortOrder] = 4.00 WHERE [Code] = 'MTDCrecovery'  END
+END
+
+
+PRINT N'Populate RefIndirectCostRateStageCode table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefIndirectCostRateStageCode]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateStageCode] WHERE [Code] = 'Other') BEGIN INSERT INTO dbo.[RefIndirectCostRateStageCode]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Other', 'Other', 'The indirect cost rate stage is other.', 99.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateStageCode] 
+SET [Description] = 'Other', [Definition] = 'The indirect cost rate stage is other.', [SortOrder] = 99.00 WHERE [Code] = 'Other'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateStageCode] WHERE [Code] = 'Provisional') BEGIN INSERT INTO dbo.[RefIndirectCostRateStageCode]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Provisional', 'Provisional', 'The indirect cost rate stage is provisional.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateStageCode] 
+SET [Description] = 'Provisional', [Definition] = 'The indirect cost rate stage is provisional.', [SortOrder] = 3.00 WHERE [Code] = 'Provisional'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateStageCode] WHERE [Code] = 'Final') BEGIN INSERT INTO dbo.[RefIndirectCostRateStageCode]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Final', 'Final', 'The indirect cost rate stage is final.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateStageCode] 
+SET [Description] = 'Final', [Definition] = 'The indirect cost rate stage is final.', [SortOrder] = 2.00 WHERE [Code] = 'Final'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndirectCostRateStageCode] WHERE [Code] = 'Estimated') BEGIN INSERT INTO dbo.[RefIndirectCostRateStageCode]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Estimated', 'Estimated', 'The indirect cost rate stage is estimated.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefIndirectCostRateStageCode] 
+SET [Description] = 'Estimated', [Definition] = 'The indirect cost rate stage is estimated.', [SortOrder] = 1.00 WHERE [Code] = 'Estimated'  END
+END
+
+
+PRINT N'Populate RefLocale table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefLocale]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'TownFringe') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TownFringe', 'Town – Fringe', 'Territory inside an urban cluster that is less than or equal to 10 miles from an urbanized area.', 11.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Town – Fringe', [Definition] = 'Territory inside an urban cluster that is less than or equal to 10 miles from an urbanized area.', [SortOrder] = 11.00 WHERE [Code] = 'TownFringe'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'RuralRemote') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('RuralRemote', 'Rural - Remote', 'Census-defined rural territory that is more than 25 miles from an urbanized area and is also more than 10 miles from an urban cluster.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Rural - Remote', [Definition] = 'Census-defined rural territory that is more than 25 miles from an urbanized area and is also more than 10 miles from an urban cluster.', [SortOrder] = 4.00 WHERE [Code] = 'RuralRemote'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'CityMidsize') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('CityMidsize', 'City – Midsize', 'Territory inside an urbanized area and inside a principal city with population less than 250,000 and greater than or equal to 100,000.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'City – Midsize', [Definition] = 'Territory inside an urbanized area and inside a principal city with population less than 250,000 and greater than or equal to 100,000.', [SortOrder] = 2.00 WHERE [Code] = 'CityMidsize'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'SuburbanMidsize') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SuburbanMidsize', 'Suburban – Midsize', 'Territory outside a principal city and inside an urbanized area with population less than 250,000 and greater than or equal to 100,000.', 8.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Suburban – Midsize', [Definition] = 'Territory outside a principal city and inside an urbanized area with population less than 250,000 and greater than or equal to 100,000.', [SortOrder] = 8.00 WHERE [Code] = 'SuburbanMidsize'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'RuralDistant') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('RuralDistant', 'Rural – Distant', 'Census-defined rural territory that is more than 5 miles but less than or equal to 25 miles from an urbanized area, as well as rural territory that is more than 2.5 miles but less than or equal to 10 miles from an urban cluster.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Rural – Distant', [Definition] = 'Census-defined rural territory that is more than 5 miles but less than or equal to 25 miles from an urbanized area, as well as rural territory that is more than 2.5 miles but less than or equal to 10 miles from an urban cluster.', [SortOrder] = 5.00 WHERE [Code] = 'RuralDistant'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'TownRemote') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TownRemote', 'Town – Remote', 'Territory inside an urban cluster that is more than 35 miles from an urbanized area', 12.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Town – Remote', [Definition] = 'Territory inside an urban cluster that is more than 35 miles from an urbanized area', [SortOrder] = 12.00 WHERE [Code] = 'TownRemote'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'CityLarge') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('CityLarge', 'City – Large', 'Territory inside an urbanized area and inside a principal city with population of 250,000 or more.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'City – Large', [Definition] = 'Territory inside an urbanized area and inside a principal city with population of 250,000 or more.', [SortOrder] = 1.00 WHERE [Code] = 'CityLarge'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'SuburbanSmall') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SuburbanSmall', 'Suburban – Small', 'Territory outside a principal city and inside an urbanized area with population less than 100,000.', 9.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Suburban – Small', [Definition] = 'Territory outside a principal city and inside an urbanized area with population less than 100,000.', [SortOrder] = 9.00 WHERE [Code] = 'SuburbanSmall'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'TownDistant') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TownDistant', 'Town – Distant', 'Territory inside an urban cluster that is more than 10 miles and less than or equal to 35 miles from an urbanized area.', 10.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Town – Distant', [Definition] = 'Territory inside an urban cluster that is more than 10 miles and less than or equal to 35 miles from an urbanized area.', [SortOrder] = 10.00 WHERE [Code] = 'TownDistant'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'SuburbanLarge') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SuburbanLarge', 'Suburban – Large', 'Territory outside a principal city and inside an urbanized area with population of 250,000 or more.', 7.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Suburban – Large', [Definition] = 'Territory outside a principal city and inside an urbanized area with population of 250,000 or more.', [SortOrder] = 7.00 WHERE [Code] = 'SuburbanLarge'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'RuralFringe') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('RuralFringe', 'Rural – Fringe', 'Census-defined rural territory that is less than or equal to 5 miles from an urbanized area, as well as rural territory that is less than or equal to 2.5 miles from an urban cluster.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'Rural – Fringe', [Definition] = 'Census-defined rural territory that is less than or equal to 5 miles from an urbanized area, as well as rural territory that is less than or equal to 2.5 miles from an urban cluster.', [SortOrder] = 6.00 WHERE [Code] = 'RuralFringe'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefLocale] WHERE [Code] = 'CitySmall') BEGIN INSERT INTO dbo.[RefLocale]([Code], [Description], [Definition], [SortOrder])
+VALUES ('CitySmall', 'City – Small', 'Territory inside an urbanized area and inside a principal city with population less than 100,000.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefLocale] 
+SET [Description] = 'City – Small', [Definition] = 'Territory inside an urbanized area and inside a principal city with population less than 100,000.', [SortOrder] = 3.00 WHERE [Code] = 'CitySmall'  END
+END
+
+
+PRINT N'Populate RefMedicalSupportType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefMedicalSupportType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMedicalSupportType] WHERE [Code] = 'Food') BEGIN INSERT INTO dbo.[RefMedicalSupportType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Food', 'Food', 'Food is the type of support for a person with a medical condition.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMedicalSupportType] 
+SET [Description] = 'Food', [Definition] = 'Food is the type of support for a person with a medical condition.', [SortOrder] = 2.00 WHERE [Code] = 'Food'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMedicalSupportType] WHERE [Code] = 'ServiceAnimal') BEGIN INSERT INTO dbo.[RefMedicalSupportType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ServiceAnimal', 'Service animal', 'A service animal is the type of support for a person with a medical condition.', 7.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMedicalSupportType] 
+SET [Description] = 'Service animal', [Definition] = 'A service animal is the type of support for a person with a medical condition.', [SortOrder] = 7.00 WHERE [Code] = 'ServiceAnimal'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMedicalSupportType] WHERE [Code] = 'MedicalEquipment') BEGIN INSERT INTO dbo.[RefMedicalSupportType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('MedicalEquipment', 'Medical equipment', 'Medical equipment is the type of support for a person with a medical condition.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMedicalSupportType] 
+SET [Description] = 'Medical equipment', [Definition] = 'Medical equipment is the type of support for a person with a medical condition.', [SortOrder] = 4.00 WHERE [Code] = 'MedicalEquipment'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMedicalSupportType] WHERE [Code] = 'MedicalDevice') BEGIN INSERT INTO dbo.[RefMedicalSupportType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('MedicalDevice', 'Medical device', 'A medical device is the type of support for a person with a medical condition.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMedicalSupportType] 
+SET [Description] = 'Medical device', [Definition] = 'A medical device is the type of support for a person with a medical condition.', [SortOrder] = 3.00 WHERE [Code] = 'MedicalDevice'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMedicalSupportType] WHERE [Code] = 'MobileDeviceApplication') BEGIN INSERT INTO dbo.[RefMedicalSupportType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('MobileDeviceApplication', 'Mobile device/application', 'A mobile device/application is the type of support for a person with a medical condition.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMedicalSupportType] 
+SET [Description] = 'Mobile device/application', [Definition] = 'A mobile device/application is the type of support for a person with a medical condition.', [SortOrder] = 6.00 WHERE [Code] = 'MobileDeviceApplication'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMedicalSupportType] WHERE [Code] = 'Medication') BEGIN INSERT INTO dbo.[RefMedicalSupportType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Medication', 'Medication', 'Medication is the type of support for a person with a medical condition.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMedicalSupportType] 
+SET [Description] = 'Medication', [Definition] = 'Medication is the type of support for a person with a medical condition.', [SortOrder] = 5.00 WHERE [Code] = 'Medication'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMedicalSupportType] WHERE [Code] = 'Drink') BEGIN INSERT INTO dbo.[RefMedicalSupportType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Drink', 'Drink', 'Drink is the type of support for a person with a medical condition.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMedicalSupportType] 
+SET [Description] = 'Drink', [Definition] = 'Drink is the type of support for a person with a medical condition.', [SortOrder] = 1.00 WHERE [Code] = 'Drink'  END
+END
+
+
+PRINT N'Populate RefMetricType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefMetricType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMetricType] WHERE [Code] = 'Other') BEGIN INSERT INTO dbo.[RefMetricType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Other', 'Other', 'The measurement scale or level of measurement for a variable is an option not yet defined in CEDS.', 99.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMetricType] 
+SET [Description] = 'Other', [Definition] = 'The measurement scale or level of measurement for a variable is an option not yet defined in CEDS.', [SortOrder] = 99.00 WHERE [Code] = 'Other'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMetricType] WHERE [Code] = 'IntervalIndex') BEGIN INSERT INTO dbo.[RefMetricType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('IntervalIndex', 'Interval data – Index', 'The measurement scale or level of measurement for a variable is interval data – index.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMetricType] 
+SET [Description] = 'Interval data – Index', [Definition] = 'The measurement scale or level of measurement for a variable is interval data – index.', [SortOrder] = 1.00 WHERE [Code] = 'IntervalIndex'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMetricType] WHERE [Code] = 'NominalMetNotMet') BEGIN INSERT INTO dbo.[RefMetricType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('NominalMetNotMet', 'Nominal data – Met/not met', 'The measurement scale or level of measurement for a variable is nominal data –met/not met.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMetricType] 
+SET [Description] = 'Nominal data – Met/not met', [Definition] = 'The measurement scale or level of measurement for a variable is nominal data –met/not met.', [SortOrder] = 3.00 WHERE [Code] = 'NominalMetNotMet'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMetricType] WHERE [Code] = 'OrdinalPerformanceLevel') BEGIN INSERT INTO dbo.[RefMetricType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('OrdinalPerformanceLevel', 'Ordinal data – Performance levels', 'The measurement scale or level of measurement for a variable is ordinal data – performance levels.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMetricType] 
+SET [Description] = 'Ordinal data – Performance levels', [Definition] = 'The measurement scale or level of measurement for a variable is ordinal data – performance levels.', [SortOrder] = 4.00 WHERE [Code] = 'OrdinalPerformanceLevel'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefMetricType] WHERE [Code] = 'IntervalPercentageScale') BEGIN INSERT INTO dbo.[RefMetricType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('IntervalPercentageScale', 'Interval data – Percentage scale', 'The measurement scale or level of measurement for a variable is interval data – percentage scale.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMetricType] 
+SET [Description] = 'Interval data – Percentage scale', [Definition] = 'The measurement scale or level of measurement for a variable is interval data – percentage scale.', [SortOrder] = 2.00 WHERE [Code] = 'IntervalPercentageScale'  END
+END
+
+
+PRINT N'Populate RefPerkinsNontraditionalType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefPerkinsNontraditionalType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefPerkinsNontraditionalType] WHERE [Code] = 'Male') BEGIN INSERT INTO dbo.[RefPerkinsNontraditionalType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Male', 'Male', 'Male', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefPerkinsNontraditionalType] 
+SET [Description] = 'Male', [Definition] = 'Male', [SortOrder] = 2.00 WHERE [Code] = 'Male'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefPerkinsNontraditionalType] WHERE [Code] = 'Female') BEGIN INSERT INTO dbo.[RefPerkinsNontraditionalType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Female', 'Female', 'Female', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefPerkinsNontraditionalType] 
+SET [Description] = 'Female', [Definition] = 'Female', [SortOrder] = 1.00 WHERE [Code] = 'Female'  END
+END
+
+
+PRINT N'Populate RefProceduralSafeguardsNoticeIndicator table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefProceduralSafeguardsNoticeIndicator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefProceduralSafeguardsNoticeIndicator] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefProceduralSafeguardsNoticeIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('No', 'No', '', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefProceduralSafeguardsNoticeIndicator] 
+SET [Description] = 'No', [Definition] = '', [SortOrder] = 1.00 WHERE [Code] = 'No'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefProceduralSafeguardsNoticeIndicator] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefProceduralSafeguardsNoticeIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Yes', 'Yes', '', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefProceduralSafeguardsNoticeIndicator] 
+SET [Description] = 'Yes', [Definition] = '', [SortOrder] = 2.00 WHERE [Code] = 'Yes'  END
+END
+
+
+PRINT N'Populate RefReadAloudType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefReadAloudType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReadAloudType] WHERE [Code] = 'TextToSpeech') BEGIN INSERT INTO dbo.[RefReadAloudType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TextToSpeech', 'Text-to-speech', 'Text is read aloud to the person via embedded computer-generated speech.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReadAloudType] 
+SET [Description] = 'Text-to-speech', [Definition] = 'Text is read aloud to the person via embedded computer-generated speech.', [SortOrder] = 3.00 WHERE [Code] = 'TextToSpeech'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReadAloudType] WHERE [Code] = 'HumanReader') BEGIN INSERT INTO dbo.[RefReadAloudType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('HumanReader', 'Human reader', 'Text is read aloud to the person by a trained and qualified human reader.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReadAloudType] 
+SET [Description] = 'Human reader', [Definition] = 'Text is read aloud to the person by a trained and qualified human reader.', [SortOrder] = 1.00 WHERE [Code] = 'HumanReader'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReadAloudType] WHERE [Code] = 'Recorded') BEGIN INSERT INTO dbo.[RefReadAloudType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Recorded', 'Recorded', 'Text that has been prerecorded by a trained and qualified human reader is delivered audibly through some type of audio device.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReadAloudType] 
+SET [Description] = 'Recorded', [Definition] = 'Text that has been prerecorded by a trained and qualified human reader is delivered audibly through some type of audio device.', [SortOrder] = 2.00 WHERE [Code] = 'Recorded'  END
+END
+
+
+PRINT N'Populate RefReferenceSheetType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefReferenceSheetType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReferenceSheetType] WHERE [Code] = 'PeriodicTable') BEGIN INSERT INTO dbo.[RefReferenceSheetType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('PeriodicTable', 'Periodic Table', 'A tabular arrangement of chemical elements organized by their atomic number, electron configuration, and chemical properties.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReferenceSheetType] 
+SET [Description] = 'Periodic Table', [Definition] = 'A tabular arrangement of chemical elements organized by their atomic number, electron configuration, and chemical properties.', [SortOrder] = 5.00 WHERE [Code] = 'PeriodicTable'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReferenceSheetType] WHERE [Code] = 'GraphicOrganizer') BEGIN INSERT INTO dbo.[RefReferenceSheetType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('GraphicOrganizer', 'Graphic Organizer', 'A visual tool used to organize and represent information, concepts, or ideas in a structured format.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReferenceSheetType] 
+SET [Description] = 'Graphic Organizer', [Definition] = 'A visual tool used to organize and represent information, concepts, or ideas in a structured format.', [SortOrder] = 3.00 WHERE [Code] = 'GraphicOrganizer'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReferenceSheetType] WHERE [Code] = '100sTable') BEGIN INSERT INTO dbo.[RefReferenceSheetType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('100sTable', '100s Table', 'A table listing numbers from 1 – 100.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReferenceSheetType] 
+SET [Description] = '100s Table', [Definition] = 'A table listing numbers from 1 – 100.', [SortOrder] = 1.00 WHERE [Code] = '100sTable'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReferenceSheetType] WHERE [Code] = 'ComputationTable') BEGIN INSERT INTO dbo.[RefReferenceSheetType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('ComputationTable', 'Computation Table', 'A structured representation used to organize and compute INSERT INTO @OptionSetChange  VALUES based on specific rules or algorithms.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReferenceSheetType] 
+SET [Description] = 'Computation Table', [Definition] = 'A structured representation used to organize and compute INSERT INTO @OptionSetChange  VALUES based on specific rules or algorithms.', [SortOrder] = 2.00 WHERE [Code] = 'ComputationTable'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefReferenceSheetType] WHERE [Code] = 'MultiplicationTable') BEGIN INSERT INTO dbo.[RefReferenceSheetType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('MultiplicationTable', 'Multiplication Table', 'A grid that displays the products of multiplying numbers within a specified range.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefReferenceSheetType] 
+SET [Description] = 'Multiplication Table', [Definition] = 'A grid that displays the products of multiplying numbers within a specified range.', [SortOrder] = 4.00 WHERE [Code] = 'MultiplicationTable'  END
+END
+
+
+PRINT N'Populate RefRetentionExemptionReason table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefRetentionExemptionReason]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1001') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1001', 'English Learner Less than 3 Years', 'The reason why this student was exempted from retention in a grade level because the student was an English Learner student who has less than three years of instruction in an English Learner program.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'English Learner Less than 3 Years', [Definition] = 'The reason why this student was exempted from retention in a grade level because the student was an English Learner student who has less than three years of instruction in an English Learner program.', [SortOrder] = 4.00 WHERE [Code] = '1001'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1006') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1006', 'Student Portfolio', 'The reason why this student was exempted from retention in a grade level was because student demonstrated a reading level through a portfolio demonstrating competency in all state standards for this grade level.', 8.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'Student Portfolio', [Definition] = 'The reason why this student was exempted from retention in a grade level was because student demonstrated a reading level through a portfolio demonstrating competency in all state standards for this grade level.', [SortOrder] = 8.00 WHERE [Code] = '1006'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1003') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1003', 'Assessed IEP or Section 504', 'The reason why this student was exempted from retention in a grade level because the student with a disability (1) participated in the state annual accountability assessment and (2) has an Individualized Education Program (IEP) or Section 504 Plan that reflects the student has either (a) received intensive remediation in reading for two years but still demonstrates a deficiency or (b) was previously retained in the same grade or an earlier grade.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'Assessed IEP or Section 504', [Definition] = 'The reason why this student was exempted from retention in a grade level because the student with a disability (1) participated in the state annual accountability assessment and (2) has an Individualized Education Program (IEP) or Section 504 Plan that reflects the student has either (a) received intensive remediation in reading for two years but still demonstrates a deficiency or (b) was previously retained in the same grade or an earlier grade.', [SortOrder] = 2.00 WHERE [Code] = '1003'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1004') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1004', 'Alternative assessment', 'The reason why this student was exempted from retention in a grade level because the student demonstrated proficiency on an alternative standardized assessment approved by the State Board of Education.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'Alternative assessment', [Definition] = 'The reason why this student was exempted from retention in a grade level because the student demonstrated proficiency on an alternative standardized assessment approved by the State Board of Education.', [SortOrder] = 1.00 WHERE [Code] = '1004'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1000') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1000', 'English Learner Less Than 2 Years', 'The reason why this student was exempted from retention in a grade level because the student was an English Learner student who has less than two years of instruction in an English Learner program.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'English Learner Less Than 2 Years', [Definition] = 'The reason why this student was exempted from retention in a grade level because the student was an English Learner student who has less than two years of instruction in an English Learner program.', [SortOrder] = 3.00 WHERE [Code] = '1000'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1007') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1007', 'Parent Request', 'The student’s parent or legal guardian has requested, in the appropriate time frame, the student not be retained, and the superintendent, chief administrator, or their designee has determined that promotion is in the best interest of the student.', 7.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'Parent Request', [Definition] = 'The student’s parent or legal guardian has requested, in the appropriate time frame, the student not be retained, and the superintendent, chief administrator, or their designee has determined that promotion is in the best interest of the student.', [SortOrder] = 7.00 WHERE [Code] = '1007'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1005') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1005', 'Intensive intervention with retention 2 years', 'The reason why this student was exempted from retention in a grade level because the student received intensive intervention in reading for two years but still demonstrated a deficiency in reading and was previously retained in the same grade or an earlier grade for a total of two years and has not met proficient education criteria.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'Intensive intervention with retention 2 years', [Definition] = 'The reason why this student was exempted from retention in a grade level because the student received intensive intervention in reading for two years but still demonstrated a deficiency in reading and was previously retained in the same grade or an earlier grade for a total of two years and has not met proficient education criteria.', [SortOrder] = 5.00 WHERE [Code] = '1005'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '1002') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('1002', 'Not assessed IEP', 'The reason why this student was exempted from retention in a grade level was because the student has a disability whose individualized education plan (IEP) indicates that participation in the statewide accountability assessment program is not appropriate, as authorized under state law.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'Not assessed IEP', [Definition] = 'The reason why this student was exempted from retention in a grade level was because the student has a disability whose individualized education plan (IEP) indicates that participation in the statewide accountability assessment program is not appropriate, as authorized under state law.', [SortOrder] = 6.00 WHERE [Code] = '1002'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefRetentionExemptionReason] WHERE [Code] = '9999') BEGIN INSERT INTO dbo.[RefRetentionExemptionReason]([Code], [Description], [Definition], [SortOrder])
+VALUES ('9999', 'Other', 'The reason why this student was exempted from retention in a grade level is an option not yet defined in CEDS.', 99.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefRetentionExemptionReason] 
+SET [Description] = 'Other', [Definition] = 'The reason why this student was exempted from retention in a grade level is an option not yet defined in CEDS.', [SortOrder] = 99.00 WHERE [Code] = '9999'  END
+END
+
+
+PRINT N'Populate RefSchoolQualityOrStudentSuccessIndicatorType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefSchoolQualityOrStudentSuccessIndicatorType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSchoolQualityOrStudentSuccessIndicatorType] WHERE [Code] = 'NOSTUDENTS') BEGIN INSERT INTO dbo.[RefSchoolQualityOrStudentSuccessIndicatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('NOSTUDENTS', 'No students in the subgroup', 'There are no students in a student subgroup.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSchoolQualityOrStudentSuccessIndicatorType] 
+SET [Description] = 'No students in the subgroup', [Definition] = 'There are no students in a student subgroup.', [SortOrder] = 1.00 WHERE [Code] = 'NOSTUDENTS'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSchoolQualityOrStudentSuccessIndicatorType] WHERE [Code] = 'STTDEF') BEGIN INSERT INTO dbo.[RefSchoolQualityOrStudentSuccessIndicatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('STTDEF', 'State defined status', 'A status defined by the state.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSchoolQualityOrStudentSuccessIndicatorType] 
+SET [Description] = 'State defined status', [Definition] = 'A status defined by the state.', [SortOrder] = 2.00 WHERE [Code] = 'STTDEF'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSchoolQualityOrStudentSuccessIndicatorType] WHERE [Code] = 'TOOFEW') BEGIN INSERT INTO dbo.[RefSchoolQualityOrStudentSuccessIndicatorType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TOOFEW', 'Too few students', 'The number of students in the school or for a student group was less than the minimum group size necessary or required to reliably calculate the indicator.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSchoolQualityOrStudentSuccessIndicatorType] 
+SET [Description] = 'Too few students', [Definition] = 'The number of students in the school or for a student group was less than the minimum group size necessary or required to reliably calculate the indicator.', [SortOrder] = 3.00 WHERE [Code] = 'TOOFEW'  END
+END
+
+
+PRINT N'Populate RefSettingType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefSettingType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSettingType] WHERE [Code] = 'AlternateLocation') BEGIN INSERT INTO dbo.[RefSettingType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('AlternateLocation', 'Alternate location', 'An alternate location, not located on school grounds, is the type of adjustment in the environment based on individual needs.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSettingType] 
+SET [Description] = 'Alternate location', [Definition] = 'An alternate location, not located on school grounds, is the type of adjustment in the environment based on individual needs.', [SortOrder] = 2.00 WHERE [Code] = 'AlternateLocation'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSettingType] WHERE [Code] = 'Lighting') BEGIN INSERT INTO dbo.[RefSettingType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Lighting', 'Lighting', 'Lighting is the type of adjustment in the environment based on individual needs.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSettingType] 
+SET [Description] = 'Lighting', [Definition] = 'Lighting is the type of adjustment in the environment based on individual needs.', [SortOrder] = 4.00 WHERE [Code] = 'Lighting'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSettingType] WHERE [Code] = 'Acoustics') BEGIN INSERT INTO dbo.[RefSettingType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Acoustics', 'Acoustics', 'Acoustics is the type of adjustment in the environment based on individual needs.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSettingType] 
+SET [Description] = 'Acoustics', [Definition] = 'Acoustics is the type of adjustment in the environment based on individual needs.', [SortOrder] = 1.00 WHERE [Code] = 'Acoustics'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSettingType] WHERE [Code] = 'SeparateSetting') BEGIN INSERT INTO dbo.[RefSettingType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SeparateSetting', 'Separate setting', 'A separate setting, located on school grounds, is the type of adjustment in the environment based on individual needs.', 6.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSettingType] 
+SET [Description] = 'Separate setting', [Definition] = 'A separate setting, located on school grounds, is the type of adjustment in the environment based on individual needs.', [SortOrder] = 6.00 WHERE [Code] = 'SeparateSetting'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSettingType] WHERE [Code] = 'Seating') BEGIN INSERT INTO dbo.[RefSettingType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Seating', 'Seating', 'Seating is the type of adjustment in the environment based on individual needs.', 5.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSettingType] 
+SET [Description] = 'Seating', [Definition] = 'Seating is the type of adjustment in the environment based on individual needs.', [SortOrder] = 5.00 WHERE [Code] = 'Seating'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSettingType] WHERE [Code] = 'Climate') BEGIN INSERT INTO dbo.[RefSettingType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Climate', 'Climate', 'Climate is the type of adjustment in the environment based on individual needs.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSettingType] 
+SET [Description] = 'Climate', [Definition] = 'Climate is the type of adjustment in the environment based on individual needs.', [SortOrder] = 3.00 WHERE [Code] = 'Climate'  END
+END
+
+
+PRINT N'Populate RefSignedAdministrationDeliveryMethod table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefSignedAdministrationDeliveryMethod]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSignedAdministrationDeliveryMethod] WHERE [Code] = 'HumanVirtual') BEGIN INSERT INTO dbo.[RefSignedAdministrationDeliveryMethod]([Code], [Description], [Definition], [SortOrder])
+VALUES ('HumanVirtual', 'Human virtual', 'Human virtual is the method in which the signed administration will be delivered.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSignedAdministrationDeliveryMethod] 
+SET [Description] = 'Human virtual', [Definition] = 'Human virtual is the method in which the signed administration will be delivered.', [SortOrder] = 4.00 WHERE [Code] = 'HumanVirtual'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSignedAdministrationDeliveryMethod] WHERE [Code] = 'AvatarRecordedVideo') BEGIN INSERT INTO dbo.[RefSignedAdministrationDeliveryMethod]([Code], [Description], [Definition], [SortOrder])
+VALUES ('AvatarRecordedVideo', 'Avatar recorded video', 'Avatar recorded video is the method in which the signed administration will be delivered.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSignedAdministrationDeliveryMethod] 
+SET [Description] = 'Avatar recorded video', [Definition] = 'Avatar recorded video is the method in which the signed administration will be delivered.', [SortOrder] = 1.00 WHERE [Code] = 'AvatarRecordedVideo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSignedAdministrationDeliveryMethod] WHERE [Code] = 'HumanRecordedVideo') BEGIN INSERT INTO dbo.[RefSignedAdministrationDeliveryMethod]([Code], [Description], [Definition], [SortOrder])
+VALUES ('HumanRecordedVideo', 'Human recorded video', 'Human recorded video is the method in which the signed administration will be delivered.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSignedAdministrationDeliveryMethod] 
+SET [Description] = 'Human recorded video', [Definition] = 'Human recorded video is the method in which the signed administration will be delivered.', [SortOrder] = 3.00 WHERE [Code] = 'HumanRecordedVideo'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSignedAdministrationDeliveryMethod] WHERE [Code] = 'HumanInPerson') BEGIN INSERT INTO dbo.[RefSignedAdministrationDeliveryMethod]([Code], [Description], [Definition], [SortOrder])
+VALUES ('HumanInPerson', 'Human in-person', 'Human in-person is the method in which the signed administration will be delivered.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSignedAdministrationDeliveryMethod] 
+SET [Description] = 'Human in-person', [Definition] = 'Human in-person is the method in which the signed administration will be delivered.', [SortOrder] = 2.00 WHERE [Code] = 'HumanInPerson'  END
+END
+
+
+PRINT N'Populate RefSignedAdministrationType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefSignedAdministrationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSignedAdministrationType] WHERE [Code] = 'SignedExactEnglish') BEGIN INSERT INTO dbo.[RefSignedAdministrationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('SignedExactEnglish', 'Signed Exact English', 'Signed Exact English is the type of sign language in which content is presented.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSignedAdministrationType] 
+SET [Description] = 'Signed Exact English', [Definition] = 'Signed Exact English is the type of sign language in which content is presented.', [SortOrder] = 3.00 WHERE [Code] = 'SignedExactEnglish'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSignedAdministrationType] WHERE [Code] = 'AmericanSignLanguage') BEGIN INSERT INTO dbo.[RefSignedAdministrationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('AmericanSignLanguage', 'American Sign Language', 'American Sign Language is the type of sign language in which content is presented.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSignedAdministrationType] 
+SET [Description] = 'American Sign Language', [Definition] = 'American Sign Language is the type of sign language in which content is presented.', [SortOrder] = 1.00 WHERE [Code] = 'AmericanSignLanguage'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefSignedAdministrationType] WHERE [Code] = 'CuedSpeech') BEGIN INSERT INTO dbo.[RefSignedAdministrationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('CuedSpeech', 'Cued speech', 'Cued speech is the type of sign language in which content is presented.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefSignedAdministrationType] 
+SET [Description] = 'Cued speech', [Definition] = 'Cued speech is the type of sign language in which content is presented.', [SortOrder] = 2.00 WHERE [Code] = 'CuedSpeech'  END
+END
+
+
+PRINT N'Populate RefStudentInvitationforTransitionPlanningIndicator table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefStudentInvitationforTransitionPlanningIndicator]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefStudentInvitationforTransitionPlanningIndicator] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefStudentInvitationforTransitionPlanningIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('No', 'No', '', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefStudentInvitationforTransitionPlanningIndicator] 
+SET [Description] = 'No', [Definition] = '', [SortOrder] = 2.00 WHERE [Code] = 'Yes'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefStudentInvitationforTransitionPlanningIndicator] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefStudentInvitationforTransitionPlanningIndicator]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Yes', 'Yes', '', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefStudentInvitationforTransitionPlanningIndicator] 
+SET [Description] = 'Yes', [Definition] = '', [SortOrder] = 1.00 WHERE [Code] = 'No'  END
+END
+
+
+PRINT N'Populate RefTactileMediumType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefTactileMediumType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefTactileMediumType] WHERE [Code] = 'Paper') BEGIN INSERT INTO dbo.[RefTactileMediumType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Paper', 'Paper', 'Paper is the tactile or textured medium used to convey visual information through touch.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTactileMediumType] 
+SET [Description] = 'Paper', [Definition] = 'Paper is the tactile or textured medium used to convey visual information through touch.', [SortOrder] = 1.00 WHERE [Code] = 'Paper'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefTactileMediumType] WHERE [Code] = 'Thermoform') BEGIN INSERT INTO dbo.[RefTactileMediumType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Thermoform', 'Thermoform', 'Thermoform is the tactile or textured medium used to convey visual information through touch.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTactileMediumType] 
+SET [Description] = 'Thermoform', [Definition] = 'Thermoform is the tactile or textured medium used to convey visual information through touch.', [SortOrder] = 2.00 WHERE [Code] = 'Thermoform'  END
+END
+
+
+PRINT N'Populate RefTranslationPresentationType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefTranslationPresentationType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefTranslationPresentationType] WHERE [Code] = 'DualLanguageTranslation') BEGIN INSERT INTO dbo.[RefTranslationPresentationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('DualLanguageTranslation', 'Dual language translation', 'The presentation type for the translated language is the dual language translation which provides the original language and the translation.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTranslationPresentationType] 
+SET [Description] = 'Dual language translation', [Definition] = 'The presentation type for the translated language is the dual language translation which provides the original language and the translation.', [SortOrder] = 1.00 WHERE [Code] = 'DualLanguageTranslation'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefTranslationPresentationType] WHERE [Code] = 'TranslatedVersionOnly') BEGIN INSERT INTO dbo.[RefTranslationPresentationType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('TranslatedVersionOnly', 'Translated version only', 'The presentation type for the translated language is the translated version only.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTranslationPresentationType] 
+SET [Description] = 'Translated version only', [Definition] = 'The presentation type for the translated language is the translated version only.', [SortOrder] = 2.00 WHERE [Code] = 'TranslatedVersionOnly'  END
+END
+
+
+PRINT N'Populate RefVisualImpairmentType table'
+IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[RefVisualImpairmentType]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefVisualImpairmentType] WHERE [Code] = 'Glaucoma') BEGIN INSERT INTO dbo.[RefVisualImpairmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Glaucoma', 'Glaucoma', 'Glaucoma caused the visual impairment.', 3.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefVisualImpairmentType] 
+SET [Description] = 'Glaucoma', [Definition] = 'Glaucoma caused the visual impairment.', [SortOrder] = 3.00 WHERE [Code] = 'Glaucoma'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefVisualImpairmentType] WHERE [Code] = 'DiabeticRetinopathy') BEGIN INSERT INTO dbo.[RefVisualImpairmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('DiabeticRetinopathy', 'Diabetic Retinopathy', 'Diabetic Retinopathy caused the visual impairment.', 2.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefVisualImpairmentType] 
+SET [Description] = 'Diabetic Retinopathy', [Definition] = 'Diabetic Retinopathy caused the visual impairment.', [SortOrder] = 2.00 WHERE [Code] = 'DiabeticRetinopathy'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefVisualImpairmentType] WHERE [Code] = 'Other') BEGIN INSERT INTO dbo.[RefVisualImpairmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Other', 'Other', 'Other cause of the visual impairment', 99.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefVisualImpairmentType] 
+SET [Description] = 'Other', [Definition] = 'Other cause of the visual impairment', [SortOrder] = 99.00 WHERE [Code] = 'Other'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefVisualImpairmentType] WHERE [Code] = 'MacularDegeneration') BEGIN INSERT INTO dbo.[RefVisualImpairmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('MacularDegeneration', 'Macular Degeneration', 'Macular Degeneration caused the visual impairment.', 4.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefVisualImpairmentType] 
+SET [Description] = 'Macular Degeneration', [Definition] = 'Macular Degeneration caused the visual impairment.', [SortOrder] = 4.00 WHERE [Code] = 'MacularDegeneration'  END
+IF NOT EXISTS (SELECT 1 FROM dbo.[RefVisualImpairmentType] WHERE [Code] = 'Cataract') BEGIN INSERT INTO dbo.[RefVisualImpairmentType]([Code], [Description], [Definition], [SortOrder])
+VALUES ('Cataract', 'Cataract', 'Cataract caused the visual impairment.', 1.00) END
+ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefVisualImpairmentType] 
+SET [Description] = 'Cataract', [Definition] = 'Cataract caused the visual impairment.', [SortOrder] = 1.00 WHERE [Code] = 'Cataract'  END
+END
 
