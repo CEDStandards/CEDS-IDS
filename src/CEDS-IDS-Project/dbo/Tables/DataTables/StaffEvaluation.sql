@@ -10,11 +10,13 @@
     [RecordEndDateTime]          DATETIME      NULL,
     [RecordStatusId]             INT           NULL,
     [DataCollectionId]           INT           NULL,
+    [RefStaffEvaluationScaleId]  INT           NULL,
     CONSTRAINT [PK_StaffEvaluation] PRIMARY KEY CLUSTERED ([StaffEvaluationId] ASC),
     CONSTRAINT [FK_StaffEvaluation_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_StaffEvaluation_OrganizationPersonRole] FOREIGN KEY ([OrganizationPersonRoleId]) REFERENCES [dbo].[OrganizationPersonRole] ([OrganizationPersonRoleId]),
     CONSTRAINT [FK_StaffEvaluation_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId]),
-    CONSTRAINT [FK_StaffEvaluation_RefStaffPerformanceLevel] FOREIGN KEY ([RefStaffPerformanceLevelId]) REFERENCES [dbo].[RefStaffPerformanceLevel] ([RefStaffPerformanceLevelId])
+    CONSTRAINT [FK_StaffEvaluation_RefStaffPerformanceLevel] FOREIGN KEY ([RefStaffPerformanceLevelId]) REFERENCES [dbo].[RefStaffPerformanceLevel] ([RefStaffPerformanceLevelId]),
+    CONSTRAINT [FK_StaffEvaluation_RefStaffEvaluationScale] FOREIGN KEY ([RefStaffEvaluationScaleId]) REFERENCES [dbo].[RefStaffEvaluationScale] ([RefStaffEvaluationScaleId])
 );
 
 
@@ -173,3 +175,22 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'StaffEvaluation', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The quantitative or qualitative range of possible scores/rating for a person''s overall performance (e.g., 0 - 10; Poor, Fair, Average, Good, Excellent).', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'StaffEvaluation', @level2type = N'COLUMN', @level2name = N'RefStaffEvaluationScaleId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Staff Evaluation Scale', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'StaffEvaluation', @level2type = N'COLUMN', @level2name = N'RefStaffEvaluationScaleId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002176', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'StaffEvaluation', @level2type = N'COLUMN', @level2name = N'RefStaffEvaluationScaleId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002176', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'StaffEvaluation', @level2type = N'COLUMN', @level2name = N'RefStaffEvaluationScaleId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'StaffEvaluation', @level2type = N'COLUMN', @level2name = N'RefStaffEvaluationScaleId';

@@ -24,6 +24,8 @@
     [RefTargetedSupportAndImprovementStatusId]           INT           NULL,
     [RecordStatusId]                                     INT           NULL,
     [DataCollectionId]                                   INT           NULL,
+    [RefCRDCJusticeFacilityTypeId]                              INT           NULL,
+    [RefComprehensiveSupportAndImprovementIdentificationTypeId] INT           NULL,
     CONSTRAINT [PK_OrganizationFederalAccountability] PRIMARY KEY CLUSTERED ([OrganizationFederalAccountabilityId] ASC),
     CONSTRAINT [FK_OrganizationFedAccountability_RefCteGraduationRateInclusion] FOREIGN KEY ([RefCteGraduationRateInclusionId]) REFERENCES [dbo].[RefCteGraduationRateInclusion] ([RefCteGraduationRateInclusionId]),
     CONSTRAINT [FK_OrganizationFedAccountability_RefElementaryMiddleAdditional] FOREIGN KEY ([RefElementaryMiddleAdditionalId]) REFERENCES [dbo].[RefElementaryMiddleAdditional] ([RefElementaryMiddleAdditionalId]),
@@ -40,7 +42,9 @@
     CONSTRAINT [FK_OrganizationFederalAccountability_RefProficiencyTargetAyp] FOREIGN KEY ([RefProficiencyTargetStatusMathId]) REFERENCES [dbo].[RefProficiencyTargetAyp] ([RefProficiencyTargetAypId]),
     CONSTRAINT [FK_OrganizationFederalAccountability_RefProficiencyTargetAyp1] FOREIGN KEY ([RefProficiencyTargetStatusRLAId]) REFERENCES [dbo].[RefProficiencyTargetAyp] ([RefProficiencyTargetAypId]),
     CONSTRAINT [FK_OrganizationFederalAccountability_RefReconstitutedStatus] FOREIGN KEY ([RefReconstitutedStatusId]) REFERENCES [dbo].[RefReconstitutedStatus] ([RefReconstitutedStatusId]),
-    CONSTRAINT [FK_OrganizationFederalAccountability_RefTargetedSupportAndImprovementStatus] FOREIGN KEY ([RefTargetedSupportAndImprovementStatusId]) REFERENCES [dbo].[RefTargetedSupportAndImprovementStatus] ([RefTargetedSupportAndImprovementStatusId])
+    CONSTRAINT [FK_OrganizationFederalAccountability_RefTargetedSupportAndImprovementStatus] FOREIGN KEY ([RefTargetedSupportAndImprovementStatusId]) REFERENCES [dbo].[RefTargetedSupportAndImprovementStatus] ([RefTargetedSupportAndImprovementStatusId]),
+    CONSTRAINT [FK_OrganizationFederalAccountability_RefCRDCJusticeFacilityType] FOREIGN KEY ([RefCRDCJusticeFacilityTypeId]) REFERENCES [dbo].[RefCRDCJusticeFacilityType] ([RefCRDCJusticeFacilityTypeId]),
+    CONSTRAINT [FK_OrganizationFederalAccountability_RefComprehensiveSupportAndImprovementIdentificationType] FOREIGN KEY ([RefComprehensiveSupportAndImprovementIdentificationTypeId]) REFERENCES [dbo].[RefComprehensiveSupportAndImprovementIdentificationType] ([RefComprehensiveSupportAndImprovementIdentificationTypeId])
 );
 
 
@@ -479,3 +483,42 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefTargetedSupportAndImprovementStatusId';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The type of public or private facility that confines pre-adjudicated/pre-convicted individuals, post-adjudicated/post-convicted individuals, or both.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefCRDCJusticeFacilityTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'CRDC Justice Facility Type', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefCRDCJusticeFacilityTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002192', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefCRDCJusticeFacilityTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002192', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefCRDCJusticeFacilityTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefCRDCJusticeFacilityTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The reasons for which a school is identified as a comprehensive support and improvement school.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefComprehensiveSupportAndImprovementIdentificationTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Comprehensive Support and Improvement Identification Type', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefComprehensiveSupportAndImprovementIdentificationTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002182', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefComprehensiveSupportAndImprovementIdentificationTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002182', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefComprehensiveSupportAndImprovementIdentificationTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'OrganizationFederalAccountability', @level2type = N'COLUMN', @level2name = N'RefComprehensiveSupportAndImprovementIdentificationTypeId';

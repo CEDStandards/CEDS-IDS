@@ -17,6 +17,7 @@
     [RefSpecialEducationStaffCategoryId]              INT            NULL,
     [RefSpecialEducationAgeGroupTaughtId]             INT            NULL,
     [RefMepStaffCategoryId]                           INT            NULL,
+    [RefMepSessionTypeId]                             INT            NULL,
     [RefTitleIProgramStaffCategoryId]                 INT            NULL,
     [RefEDFactsTeacherInexperiencedStatusId]          INT            NULL,
     [RefEmergencyOrProvisionalCredentialStatusId]     INT            NULL,
@@ -27,6 +28,7 @@
     [DataCollectionId]                                INT            NULL,
     [RefEdFactsCertificationStatusId]                 INT            NULL,
     [RefSpecialEducationTeacherQualificationStatusId] INT            NULL,
+    [RefTitleIIILanguageInstructionIndicatorId]       INT            NULL,
     CONSTRAINT [PK_K12StaffAssignmentId] PRIMARY KEY CLUSTERED ([K12StaffAssignmentId] ASC),
     CONSTRAINT [FK_K12StaffAssignment_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_K12StaffAssignment_OrganizationPerson] FOREIGN KEY ([OrganizationPersonRoleId]) REFERENCES [dbo].[OrganizationPersonRole] ([OrganizationPersonRoleId]) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -38,13 +40,15 @@
     CONSTRAINT [FK_K12StaffAssignment_RefEducationStaffClassification] FOREIGN KEY ([RefK12StaffClassificationId]) REFERENCES [dbo].[RefK12StaffClassification] ([RefK12StaffClassificationId]),
     CONSTRAINT [FK_K12StaffAssignment_RefEmergencyOrProvisionalCredentialStatus] FOREIGN KEY ([RefEmergencyOrProvisionalCredentialStatusId]) REFERENCES [dbo].[RefEmergencyOrProvisionalCredentialStatus] ([RefEmergencyOrProvisionalCredentialStatusId]),
     CONSTRAINT [FK_K12StaffAssignment_RefMepStaffCategory] FOREIGN KEY ([RefMepStaffCategoryId]) REFERENCES [dbo].[RefMepStaffCategory] ([RefMepStaffCategoryId]),
+    CONSTRAINT [FK_K12StaffAssignment_RefMepSessionType] FOREIGN KEY ([RefMepSessionTypeId]) REFERENCES [dbo].[RefMepSessionType] ([RefMepSessionTypeId]),
     CONSTRAINT [FK_K12StaffAssignment_RefOutOfFieldStatus] FOREIGN KEY ([RefOutOfFieldStatusId]) REFERENCES [dbo].[RefOutOfFieldStatus] ([RefOutOfFieldStatusId]),
     CONSTRAINT [FK_K12StaffAssignment_RefProfessionalEducationJobClassification] FOREIGN KEY ([RefProfessionalEducationJobClassificationId]) REFERENCES [dbo].[RefProfessionalEducationJobClassification] ([RefProfessionalEducationJobClassificationId]),
     CONSTRAINT [FK_K12StaffAssignment_RefSpecialEducationAgeGroupTaught] FOREIGN KEY ([RefSpecialEducationAgeGroupTaughtId]) REFERENCES [dbo].[RefSpecialEducationAgeGroupTaught] ([RefSpecialEducationAgeGroupTaughtId]),
     CONSTRAINT [FK_K12StaffAssignment_RefSpecialEducationStaffCategory] FOREIGN KEY ([RefSpecialEducationStaffCategoryId]) REFERENCES [dbo].[RefSpecialEducationStaffCategory] ([RefSpecialEducationStaffCategoryId]),
     CONSTRAINT [FK_K12StaffAssignment_RefSpecialEducationTeacherQualificationStatus] FOREIGN KEY ([RefSpecialEducationTeacherQualificationStatusId]) REFERENCES [dbo].[RefSpecialEducationTeacherQualificationStatus] ([RefSpecialEducationTeacherQualificationStatusId]),
     CONSTRAINT [FK_K12StaffAssignment_RefTeachingAssignmentRole] FOREIGN KEY ([RefTeachingAssignmentRoleId]) REFERENCES [dbo].[RefTeachingAssignmentRole] ([RefTeachingAssignmentRoleId]),
-    CONSTRAINT [FK_K12StaffAssignment_RefTitleIProgramStaffCategory] FOREIGN KEY ([RefTitleIProgramStaffCategoryId]) REFERENCES [dbo].[RefTitleIProgramStaffCategory] ([RefTitleIProgramStaffCategoryId])
+    CONSTRAINT [FK_K12StaffAssignment_RefTitleIProgramStaffCategory] FOREIGN KEY ([RefTitleIProgramStaffCategoryId]) REFERENCES [dbo].[RefTitleIProgramStaffCategory] ([RefTitleIProgramStaffCategoryId]),
+    CONSTRAINT [FK_K12StaffAssignment_RefTitleIIILanguageInstructionIndicator] FOREIGN KEY ([RefTitleIIILanguageInstructionIndicatorId]) REFERENCES [dbo].[RefTitleIIILanguageInstructionIndicator] ([RefTitleIIILanguageInstructionIndicatorId])
 );
 
 
@@ -451,3 +455,22 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'RefSpecialEducationTeacherQualificationStatusId';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'An indication of whether a teacher teaches in language instruction educational programs designed for English learners supported with Title III of ESEA, as amended by ESSA, funds.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'RefTitleIIILanguageInstructionIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Title III Language Instruction Indicator', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'RefTitleIIILanguageInstructionIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002203', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'RefTitleIIILanguageInstructionIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002203', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'RefTitleIIILanguageInstructionIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StaffAssignment', @level2type = N'COLUMN', @level2name = N'RefTitleIIILanguageInstructionIndicatorId';

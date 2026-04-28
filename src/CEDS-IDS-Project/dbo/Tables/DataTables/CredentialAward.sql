@@ -18,10 +18,14 @@
     [OrganizationId]              INT            NULL,
     [RecordStatusId]              INT            NULL,
     [DataCollectionId]            INT            NULL,
-    [ExpirationDate]             DATE           NULL,
-    [RefIssuingStateId]         INT            NULL,
+    [ExpirationDate]              DATE           NULL,
+    [RefIssuingStateId]           INT            NULL,
     [ProfessionalCertificateOrLicenseNumber] NVARCHAR (30) NULL,
     [CredentialOrLicenseAwardEntity] NVARCHAR (60) NULL,
+    [RefCredentialAwardStatusTypeId]           INT            NULL,
+    [RefCredentialAwardIdentificationSystemId] INT            NULL,
+    [CredentialAwardIdentifier]                NVARCHAR (60)  NULL,
+    [CredentialAwardStatusDate]                DATE           NULL,
     CONSTRAINT [PK_CredentialAward] PRIMARY KEY CLUSTERED ([CredentialAwardId] ASC),
     CONSTRAINT [FK_CredentialAward_CredentialIssuer] FOREIGN KEY ([CredentialIssuerId]) REFERENCES [dbo].[CredentialIssuer] ([CredentialIssuerId]),
     CONSTRAINT [FK_CredentialAward_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
@@ -29,7 +33,9 @@
     CONSTRAINT [FK_CredentialAward_Person] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Person] ([PersonId]),
     CONSTRAINT [FK_CredentialAward_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId]),
     CONSTRAINT [FK_CredentialAward_RefIssuingState] FOREIGN KEY ([RefIssuingStateId]) REFERENCES [dbo].[RefState] ([RefStateId]),
-    CONSTRAINT [FK_CredentialDefinitionAward_CredentialDefinition] FOREIGN KEY ([CredentialDefinitionId]) REFERENCES [dbo].[CredentialDefinition] ([CredentialDefinitionId])
+    CONSTRAINT [FK_CredentialDefinitionAward_CredentialDefinition] FOREIGN KEY ([CredentialDefinitionId]) REFERENCES [dbo].[CredentialDefinition] ([CredentialDefinitionId]),
+    CONSTRAINT [FK_CredentialAward_RefCredentialAwardStatusType] FOREIGN KEY ([RefCredentialAwardStatusTypeId]) REFERENCES [dbo].[RefCredentialAwardStatusType] ([RefCredentialAwardStatusTypeId]),
+    CONSTRAINT [FK_CredentialAward_RefCredentialAwardIdentificationSystem] FOREIGN KEY ([RefCredentialAwardIdentificationSystemId]) REFERENCES [dbo].[RefCredentialAwardIdentificationSystem] ([RefCredentialAwardIdentificationSystemId])
 );
 
 
@@ -248,3 +254,82 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'An indication of whether a credential is valid for use.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardStatusTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Credential Award Status Type', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardStatusTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002196', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardStatusTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002196', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardStatusTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardStatusTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'A coding scheme that is used for identification and record-keeping purposes by a program, school, school system, state, or other organization to refer to the award of a credential.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardIdentificationSystemId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Credential Award Identification System', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardIdentificationSystemId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002199', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardIdentificationSystemId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002199', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardIdentificationSystemId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardIdentificationSystemId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'A unique number or alphanumeric code assigned to a credential award by a program, school, school system, state, or other agency or entity.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardIdentifier';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Credential Award Identifier', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardIdentifier';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'002198', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardIdentifier';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22198', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardIdentifier';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardIdentifier';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The date on which the status of a credential award was recorded.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardStatusDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Credential Award Status Date', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardStatusDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'002197', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardStatusDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22197', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardStatusDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAward', @level2type = N'COLUMN', @level2name = N'CredentialAwardStatusDate';

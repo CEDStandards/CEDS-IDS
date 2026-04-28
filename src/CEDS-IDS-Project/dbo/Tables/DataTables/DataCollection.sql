@@ -9,6 +9,8 @@
     [SourceSystemName]                     NVARCHAR (100) NULL,
     [DataCollectionOpenDate]               DATETIME       NULL,
     [RefDataCollectionStatusId]            INT            NULL,
+    [RecordStartDateTime]                  DATETIME       NULL,
+    [RecordEndDateTime]                    DATETIME       NULL,
     CONSTRAINT [PK_DataCollection] PRIMARY KEY CLUSTERED ([DataCollectionId] ASC),
     CONSTRAINT [FK_DataCollection_RefDataCollectionStatus] FOREIGN KEY ([RefDataCollectionStatusId]) REFERENCES [dbo].[RefDataCollectionStatus] ([RefDataCollectionStatusId])
 );

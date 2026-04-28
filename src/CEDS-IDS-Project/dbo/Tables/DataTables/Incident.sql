@@ -24,6 +24,9 @@
     [RecordEndDateTime]                   DATETIME       NULL,
     [RecordStatusId]                      INT            NULL,
     [DataCollectionId]                    INT            NULL,
+    [RefHarassmentOrBullyingReligionTypeId] INT            NULL,
+    [IncidentResponsibilityStaffIndicator]  BIT            NULL,
+    [ShootingIncidentIndicator]             BIT            NULL,
     CONSTRAINT [PK_Incident] PRIMARY KEY CLUSTERED ([IncidentId] ASC),
     CONSTRAINT [FK_Incident_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_Incident_OrganizationPerson] FOREIGN KEY ([OrganizationPersonRoleId]) REFERENCES [dbo].[OrganizationPersonRole] ([OrganizationPersonRoleId]),
@@ -38,7 +41,8 @@
     CONSTRAINT [FK_Incident_RefIncidentTimeDescriptionCode] FOREIGN KEY ([RefIncidentTimeDescriptionCodeId]) REFERENCES [dbo].[RefIncidentTimeDescriptionCode] ([RefIncidentTimeDescriptionCodeId]),
     CONSTRAINT [FK_Incident_RefRefIncidentBehavior] FOREIGN KEY ([RefIncidentBehaviorId]) REFERENCES [dbo].[RefIncidentBehavior] ([RefIncidentBehaviorId]),
     CONSTRAINT [FK_Incident_RefRefIncidentBehaviorSecondary] FOREIGN KEY ([RefIncidentBehaviorSecondaryId]) REFERENCES [dbo].[RefIncidentBehaviorSecondary] ([RefIncidentBehaviorSecondaryId]),
-    CONSTRAINT [FK_Incident_RefWeaponType] FOREIGN KEY ([RefWeaponTypeId]) REFERENCES [dbo].[RefWeaponType] ([RefWeaponTypeId])
+    CONSTRAINT [FK_Incident_RefWeaponType] FOREIGN KEY ([RefWeaponTypeId]) REFERENCES [dbo].[RefWeaponType] ([RefWeaponTypeId]),
+    CONSTRAINT [FK_Incident_RefHarassmentOrBullyingReligionType] FOREIGN KEY ([RefHarassmentOrBullyingReligionTypeId]) REFERENCES [dbo].[RefHarassmentOrBullyingReligionType] ([RefHarassmentOrBullyingReligionTypeId])
 );
 
 
@@ -477,3 +481,62 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The actual or perceived religious affiliation of a student that is the basis of an allegation of harassment or bullying.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'RefHarassmentOrBullyingReligionTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Harassment or Bullying Religion Type', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'RefHarassmentOrBullyingReligionTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002202', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'RefHarassmentOrBullyingReligionTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002202', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'RefHarassmentOrBullyingReligionTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'RefHarassmentOrBullyingReligionTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'An indication of whether a staff member was determined to be involved in an incident as an offender.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'IncidentResponsibilityStaffIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Incident Responsibility Staff Indicator', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'IncidentResponsibilityStaffIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'002189', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'IncidentResponsibilityStaffIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22189', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'IncidentResponsibilityStaffIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'IncidentResponsibilityStaffIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'An indication of whether the incident involved a shooting, regardless of whether anyone was hurt.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'ShootingIncidentIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Shooting Incident Indicator', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'ShootingIncidentIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'002188', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'ShootingIncidentIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=22188', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'ShootingIncidentIndicator';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Incident', @level2type = N'COLUMN', @level2name = N'ShootingIncidentIndicator';

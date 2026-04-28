@@ -7,6 +7,7 @@
     [GenerationCode]                      NVARCHAR (10) NULL,
     [Prefix]                              NVARCHAR (30) NULL,
     [Birthdate]                           DATE          NULL,
+    [DeathDate]                           DATE          NULL,
     [RefSexId]                            INT           NULL,
     [HispanicLatinoEthnicity]             BIT           NULL,
     [RefUSCitizenshipStatusId]            INT           NULL,
@@ -377,3 +378,22 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDetail', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The year, month, and day on which a person died.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDetail', @level2type = N'COLUMN', @level2name = N'DeathDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Death Date', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDetail', @level2type = N'COLUMN', @level2name = N'DeathDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'002206', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDetail', @level2type = N'COLUMN', @level2name = N'DeathDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/P002206', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDetail', @level2type = N'COLUMN', @level2name = N'DeathDate';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDetail', @level2type = N'COLUMN', @level2name = N'DeathDate';

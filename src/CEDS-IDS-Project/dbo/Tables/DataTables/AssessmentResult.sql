@@ -19,7 +19,7 @@
     [EarlyLearningOutcomeMeasurementDate]         DATETIME       NULL,
     [RefOutcomeTimePointId]                       INT            NULL,
     [AssessmentResultDescriptiveFeedbackDateTime] DATETIME       NULL,
-    [AssessmentResultScoreStandardError]          DECIMAL (9, 2) NULL,
+    [AssessmentResultScoreValueStandardError]     DECIMAL (9, 2) NULL,
     [RefAssessmentResultDataTypeId]               INT            NULL,
     [RefAssessmentResultScoreTypeId]              INT            NULL,
     [RecordStartDateTime]                         DATETIME       NULL,
@@ -381,23 +381,23 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CED
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The measure of sampling variability and measurement error for the score, the amount of error to be expected in the score.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreStandardError';
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The measure of sampling variability and measurement error for the score, the amount of error to be expected in the score.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreValueStandardError';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Result Score Standard Error', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreStandardError';
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Assessment Result Score Value Standard Error', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreValueStandardError';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'001546', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreStandardError';
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'001546', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreValueStandardError';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=20522', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreStandardError';
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=20522', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreValueStandardError';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreStandardError';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'AssessmentResult', @level2type = N'COLUMN', @level2name = N'AssessmentResultScoreValueStandardError';
 
 
 GO

@@ -11,12 +11,16 @@
     [DataCollectionId]                      INT      NULL,
     [RefDelinquentProgramTypeId]            INT      NULL,
     [RefNeglectedProgramTypeId]             INT      NULL,
+    [RefNeglectedOrDelinquentLongTermStatusId]            INT      NULL,
+    [RefNeglectedOrDelinquentProgramEnrollmentSubpartId]  INT      NULL,
     CONSTRAINT [PK_ProgramParticipationNeglected] PRIMARY KEY CLUSTERED ([ProgramParticipationNeglectedId] ASC),
     CONSTRAINT [FK_ProgramParticipationNeglected_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_ProgramParticipationNeglected_PersonProgramParticipation] FOREIGN KEY ([PersonProgramParticipationId]) REFERENCES [dbo].[PersonProgramParticipation] ([PersonProgramParticipationId]),
     CONSTRAINT [FK_ProgramParticipationNeglected_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId]),
     CONSTRAINT [FK_ProgramParticipationNeglected_RefDelinquentProgramType] FOREIGN KEY ([RefDelinquentProgramTypeId]) REFERENCES [dbo].[RefDelinquentProgramType] ([RefDelinquentProgramTypeId]),
-    CONSTRAINT [FK_ProgramParticipationNeglected_RefNeglectedProgramType] FOREIGN KEY ([RefNeglectedProgramTypeId]) REFERENCES [dbo].[RefNeglectedProgramType] ([RefNeglectedProgramTypeId])
+    CONSTRAINT [FK_ProgramParticipationNeglected_RefNeglectedProgramType] FOREIGN KEY ([RefNeglectedProgramTypeId]) REFERENCES [dbo].[RefNeglectedProgramType] ([RefNeglectedProgramTypeId]),
+    CONSTRAINT [FK_ProgramParticipationNeglected_RefNeglectedOrDelinquentLongTermStatus] FOREIGN KEY ([RefNeglectedOrDelinquentLongTermStatusId]) REFERENCES [dbo].[RefNeglectedOrDelinquentLongTermStatus] ([RefNeglectedOrDelinquentLongTermStatusId]),
+    CONSTRAINT [FK_ProgramParticipationNeglected_RefNeglectedOrDelinquentProgramEnrollmentSubpart] FOREIGN KEY ([RefNeglectedOrDelinquentProgramEnrollmentSubpartId]) REFERENCES [dbo].[RefNeglectedOrDelinquentProgramEnrollmentSubpart] ([RefNeglectedOrDelinquentProgramEnrollmentSubpartId])
 );
 
 
@@ -167,3 +171,42 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedProgramTypeId';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'An indication that students were served for at least 90 consecutive days during the reporting period by Title I, Part D of ESEA as amended.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentLongTermStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Neglected or Delinquent Long Term Status', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentLongTermStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002180', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentLongTermStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002180', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentLongTermStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentLongTermStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'Indicates the Title I, Part D subpart under which a student is enrolled in a program for neglected or delinquent students, as defined in the Elementary and Secondary Education Act (ESEA), as amended.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentProgramEnrollmentSubpartId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Neglected or Delinquent Program Enrollment Subpart', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentProgramEnrollmentSubpartId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002181', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentProgramEnrollmentSubpartId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002181', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentProgramEnrollmentSubpartId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ProgramParticipationNeglected', @level2type = N'COLUMN', @level2name = N'RefNeglectedOrDelinquentProgramEnrollmentSubpartId';

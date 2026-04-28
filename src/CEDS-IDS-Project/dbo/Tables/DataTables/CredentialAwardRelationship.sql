@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[CredentialAwardRelationship] (
     [CredentialAwardRelationshipId]    INT      IDENTITY (1, 1) NOT NULL,
-    [RefCredentialAwardRelationshipId] INT      NULL,
+    [RefCredentialAwardRelationshipTypeId] INT      NULL,
     [RelatedCredentialAwardId]         INT      NOT NULL,
     [CredentialAwardId]                INT      NOT NULL,
     [RecordStartDateTime]              DATETIME NULL,
@@ -11,7 +11,7 @@
     CONSTRAINT [FK_CredentialAwardRelationship_CredentialAward] FOREIGN KEY ([CredentialAwardId]) REFERENCES [dbo].[CredentialAward] ([CredentialAwardId]),
     CONSTRAINT [FK_CredentialAwardRelationship_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_CredentialAwardRelationship_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId]),
-    CONSTRAINT [FK_CredentialAwardRelationship_RefCredentialAwardRelationship] FOREIGN KEY ([RefCredentialAwardRelationshipId]) REFERENCES [dbo].[RefCredentialAwardRelationship] ([RefCredentialAwardRelationshipId])
+    CONSTRAINT [FK_CredentialAwardRelationship_RefCredentialAwardRelationshipType] FOREIGN KEY ([RefCredentialAwardRelationshipTypeId]) REFERENCES [dbo].[RefCredentialAwardRelationshipType] ([RefCredentialAwardRelationshipTypeId])
 );
 
 
@@ -24,21 +24,21 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CED
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The nature of a credential award''s relationship to another credential award.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'CredentialAwardRelationshipId';
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The nature of a credential award''s relationship to another credential award.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardRelationshipTypeId';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Credential Award Relationship', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'CredentialAwardRelationshipId';
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Credential Award Relationship', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardRelationshipTypeId';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'002081', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'CredentialAwardRelationshipId';
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'002081', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardRelationshipTypeId';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=25011', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'CredentialAwardRelationshipId';
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002081', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardRelationshipTypeId';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'CredentialAwardRelationshipId';
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'CredentialAwardRelationship', @level2type = N'COLUMN', @level2name = N'RefCredentialAwardRelationshipTypeId';
 

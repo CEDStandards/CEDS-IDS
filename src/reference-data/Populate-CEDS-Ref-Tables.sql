@@ -1,6 +1,6 @@
 /*    
 
-	Copyright 2025 Common Education Data Standards
+	Copyright 2026 Common Education Data Standards
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -16,19 +16,19 @@
 
 	
 	Common Education Data Standards (CEDS)
-    Version 13.0.0.0
+    Version 14.0.0.0
     Integration Data Store (IDS)
     
 	Model database ref table population script
 	
-    This script populates the reference tables in a IDS version 13.0.0.0 model database.  
+    This script populates the reference tables in a IDS version 14.0.0.0 model database.  
     
     WARNING!!!!
     This script is intended for use on a model database and should not 
     be used on a database that contains data.
     
     The script was generated from a model database 
-    hosted on a Microsoft SQL Server 2019 platform.  
+    hosted on a Microsoft SQL Server 2022 platform.  
     
     Questions on this script can be sent to ceds@ed.gov
     
@@ -39,7 +39,7 @@
 */ 
 
 --Update a database named CEDS-IDS-V13-0-0-0 or specify appropriate DB name for your server.
-USE [CEDS-IDS-V13-0-0-0];
+USE [CEDS-IDS-V14-0-0-0];
 GO
 
 -- change @updateExisting to 1 to update all existing Ref table values matching Codes and for Ref tables that include a FK to other Ref tables (not RefJurisdictionId) matching Code and Description 
@@ -74321,3 +74321,693 @@ ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefVisualImpairmentType]
 SET [Description] = 'Cataract', [Definition] = 'Cataract caused the visual impairment.', [SortOrder] = 1.00 WHERE [Code] = 'Cataract'  END
 END
 
+
+
+
+-- ============================================================
+-- RefCanadianProvinceAbbreviation (13 entries)
+-- ============================================================
+PRINT N'Populate RefCanadianProvinceAbbreviation table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCanadianProvinceAbbreviation]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'AB') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('AB','Alberta','Alberta',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Alberta',[Definition]='Alberta',[SortOrder]=1.00 WHERE [Code]='AB' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'BC') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('BC','British Columbia','British Columbia',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='British Columbia',[Definition]='British Columbia',[SortOrder]=2.00 WHERE [Code]='BC' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'MB') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('MB','Manitoba','Manitoba',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Manitoba',[Definition]='Manitoba',[SortOrder]=3.00 WHERE [Code]='MB' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'NB') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('NB','New Brunswick','New Brunswick',4.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='New Brunswick',[Definition]='New Brunswick',[SortOrder]=4.00 WHERE [Code]='NB' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'NL') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('NL','Newfoundland and Labrador','Newfoundland and Labrador',5.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Newfoundland and Labrador',[Definition]='Newfoundland and Labrador',[SortOrder]=5.00 WHERE [Code]='NL' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'NT') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('NT','Northwest Territories','Northwest Territories',6.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Northwest Territories',[Definition]='Northwest Territories',[SortOrder]=6.00 WHERE [Code]='NT' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'NS') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('NS','Nova Scotia','Nova Scotia',7.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Nova Scotia',[Definition]='Nova Scotia',[SortOrder]=7.00 WHERE [Code]='NS' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'NU') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('NU','Nunavut','Nunavut',8.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Nunavut',[Definition]='Nunavut',[SortOrder]=8.00 WHERE [Code]='NU' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'ON') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('ON','Ontario','Ontario',9.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Ontario',[Definition]='Ontario',[SortOrder]=9.00 WHERE [Code]='ON' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'PE') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('PE','Prince Edward Island','Prince Edward Island',10.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Prince Edward Island',[Definition]='Prince Edward Island',[SortOrder]=10.00 WHERE [Code]='PE' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'QC') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('QC','Quebec','Quebec',11.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Quebec',[Definition]='Quebec',[SortOrder]=11.00 WHERE [Code]='QC' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'SK') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('SK','Saskatchewan','Saskatchewan',12.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Saskatchewan',[Definition]='Saskatchewan',[SortOrder]=12.00 WHERE [Code]='SK' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCanadianProvinceAbbreviation] WHERE [Code] = 'YT') BEGIN INSERT INTO dbo.[RefCanadianProvinceAbbreviation]([Code],[Description],[Definition],[SortOrder]) VALUES ('YT','Yukon','Yukon',13.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCanadianProvinceAbbreviation] SET [Description]='Yukon',[Definition]='Yukon',[SortOrder]=13.00 WHERE [Code]='YT' END
+END
+
+
+-- ============================================================
+-- RefComprehensiveSupportAndImprovementIdentificationType (4 entries)
+-- ============================================================
+PRINT N'Populate RefComprehensiveSupportAndImprovementIdentificationType table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefComprehensiveSupportAndImprovementIdentificationType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefComprehensiveSupportAndImprovementIdentificationType] WHERE [Code] = 'CSILOWPERF') BEGIN INSERT INTO dbo.[RefComprehensiveSupportAndImprovementIdentificationType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('CSILOWPERF','Lowest-performing school','Lowest-performing school',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefComprehensiveSupportAndImprovementIdentificationType] SET [Description]='Lowest-performing school',[Definition]='Lowest-performing school',[SortOrder]=1.00 WHERE [Code]='CSILOWPERF' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefComprehensiveSupportAndImprovementIdentificationType] WHERE [Code] = 'CSILOWGR') BEGIN INSERT INTO dbo.[RefComprehensiveSupportAndImprovementIdentificationType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('CSILOWGR','Low graduation rate high school','Low graduation rate high school',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefComprehensiveSupportAndImprovementIdentificationType] SET [Description]='Low graduation rate high school',[Definition]='Low graduation rate high school',[SortOrder]=2.00 WHERE [Code]='CSILOWGR' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefComprehensiveSupportAndImprovementIdentificationType] WHERE [Code] = 'CSIATSINOEXIT') BEGIN INSERT INTO dbo.[RefComprehensiveSupportAndImprovementIdentificationType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('CSIATSINOEXIT','ATSI school becoming CSI because not exiting ATSI status','Schools receiving Title I, Part A funds identified for comprehensive support and improvement (CSI) under ESSA Section 1111(d)(3)(A)(i)(III) because of their ATSI identification and failure to exit such status within the state-determined number of years.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefComprehensiveSupportAndImprovementIdentificationType] SET [Description]='ATSI school becoming CSI because not exiting ATSI status',[Definition]='Schools receiving Title I, Part A funds identified for comprehensive support and improvement (CSI) under ESSA Section 1111(d)(3)(A)(i)(III) because of their ATSI identification and failure to exit such status within the state-determined number of years.',[SortOrder]=3.00 WHERE [Code]='CSIATSINOEXIT' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefComprehensiveSupportAndImprovementIdentificationType] WHERE [Code] = 'CSIMRI') BEGIN INSERT INTO dbo.[RefComprehensiveSupportAndImprovementIdentificationType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('CSIMRI','More rigorous interventions because CSI school not exiting such status','Schools receiving Title I, Part A funds identified for comprehensive support and improvement under ESSA Section 1111(d)(3)(A)(i)(IV) as a school that has not satisfied the exit criteria within the state-determined number of years.',4.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefComprehensiveSupportAndImprovementIdentificationType] SET [Description]='More rigorous interventions because CSI school not exiting such status',[Definition]='Schools receiving Title I, Part A funds identified for comprehensive support and improvement under ESSA Section 1111(d)(3)(A)(i)(IV) as a school that has not satisfied the exit criteria within the state-determined number of years.',[SortOrder]=4.00 WHERE [Code]='CSIMRI' END
+END
+
+
+-- ============================================================
+-- RefCredentialAwardIdentificationSystem (5 entries)
+-- ============================================================
+PRINT N'Populate RefCredentialAwardIdentificationSystem table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCredentialAwardIdentificationSystem]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardIdentificationSystem] WHERE [Code] = 'School') BEGIN INSERT INTO dbo.[RefCredentialAwardIdentificationSystem]([Code],[Description],[Definition],[SortOrder]) VALUES ('School','School-assigned number','The related Credential Award Identifier uses a school-assigned number.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardIdentificationSystem] SET [Description]='School-assigned number',[Definition]='The related Credential Award Identifier uses a school-assigned number.',[SortOrder]=1.00 WHERE [Code]='School' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardIdentificationSystem] WHERE [Code] = 'District') BEGIN INSERT INTO dbo.[RefCredentialAwardIdentificationSystem]([Code],[Description],[Definition],[SortOrder]) VALUES ('District','District-assigned number','The related Credential Award Identifier uses a district-assigned number.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardIdentificationSystem] SET [Description]='District-assigned number',[Definition]='The related Credential Award Identifier uses a district-assigned number.',[SortOrder]=2.00 WHERE [Code]='District' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardIdentificationSystem] WHERE [Code] = 'State') BEGIN INSERT INTO dbo.[RefCredentialAwardIdentificationSystem]([Code],[Description],[Definition],[SortOrder]) VALUES ('State','State-assigned number','The related Credential Award Identifier uses a state-assigned number.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardIdentificationSystem] SET [Description]='State-assigned number',[Definition]='The related Credential Award Identifier uses a state-assigned number.',[SortOrder]=3.00 WHERE [Code]='State' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardIdentificationSystem] WHERE [Code] = 'Federal') BEGIN INSERT INTO dbo.[RefCredentialAwardIdentificationSystem]([Code],[Description],[Definition],[SortOrder]) VALUES ('Federal','Federal identification number','The related Credential Award Identifier uses a federal identification number.',4.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardIdentificationSystem] SET [Description]='Federal identification number',[Definition]='The related Credential Award Identifier uses a federal identification number.',[SortOrder]=4.00 WHERE [Code]='Federal' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardIdentificationSystem] WHERE [Code] = 'Other') BEGIN INSERT INTO dbo.[RefCredentialAwardIdentificationSystem]([Code],[Description],[Definition],[SortOrder]) VALUES ('Other','Other','The related Credential Award Identifier uses a Credential Award identification system not yet defined in CEDS.',5.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardIdentificationSystem] SET [Description]='Other',[Definition]='The related Credential Award Identifier uses a Credential Award identification system not yet defined in CEDS.',[SortOrder]=5.00 WHERE [Code]='Other' END
+END
+
+
+-- ============================================================
+-- RefCredentialAwardRelationshipType (1 entry)
+-- ============================================================
+PRINT N'Populate RefCredentialAwardRelationshipType table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCredentialAwardRelationshipType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardRelationshipType] WHERE [Code] = '1000') BEGIN INSERT INTO dbo.[RefCredentialAwardRelationshipType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('1000','Extension','A relationship in which the related credential award enhances or expands the scope of another credential award.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardRelationshipType] SET [Description]='Extension',[Definition]='A relationship in which the related credential award enhances or expands the scope of another credential award.',[SortOrder]=1.00 WHERE [Code]='1000' END
+END
+
+
+-- ============================================================
+-- RefCredentialAwardStatusType (7 entries)
+-- ============================================================
+PRINT N'Populate RefCredentialAwardStatusType table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCredentialAwardStatusType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardStatusType] WHERE [Code] = 'Valid') BEGIN INSERT INTO dbo.[RefCredentialAwardStatusType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Valid','Valid','The credential is valid.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardStatusType] SET [Description]='Valid',[Definition]='The credential is valid.',[SortOrder]=1.00 WHERE [Code]='Valid' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardStatusType] WHERE [Code] = 'Expired') BEGIN INSERT INTO dbo.[RefCredentialAwardStatusType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Expired','Expired','The credential is no longer valid because the Credential Award End Date has passed.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardStatusType] SET [Description]='Expired',[Definition]='The credential is no longer valid because the Credential Award End Date has passed.',[SortOrder]=2.00 WHERE [Code]='Expired' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardStatusType] WHERE [Code] = 'LapsedInactivity') BEGIN INSERT INTO dbo.[RefCredentialAwardStatusType]([Code],[Description],[Definition],[SortOrder]) VALUES ('LapsedInactivity','Lapsed due to Inactivity','The credential is no longer valid because the recipient has failed to use the credential for the required period of time.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardStatusType] SET [Description]='Lapsed due to Inactivity',[Definition]='The credential is no longer valid because the recipient has failed to use the credential for the required period of time.',[SortOrder]=3.00 WHERE [Code]='LapsedInactivity' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardStatusType] WHERE [Code] = 'Nullified') BEGIN INSERT INTO dbo.[RefCredentialAwardStatusType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Nullified','Nullified','The credential is no longer valid at the request of the recipient.',4.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardStatusType] SET [Description]='Nullified',[Definition]='The credential is no longer valid at the request of the recipient.',[SortOrder]=4.00 WHERE [Code]='Nullified' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardStatusType] WHERE [Code] = 'Revoked') BEGIN INSERT INTO dbo.[RefCredentialAwardStatusType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Revoked','Revoked','The credential has been revoked by the credential issuer.',5.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardStatusType] SET [Description]='Revoked',[Definition]='The credential has been revoked by the credential issuer.',[SortOrder]=5.00 WHERE [Code]='Revoked' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardStatusType] WHERE [Code] = 'Suspended') BEGIN INSERT INTO dbo.[RefCredentialAwardStatusType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Suspended','Suspended','The credential is not currently valid pending investigation and/or disciplinary action.',6.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardStatusType] SET [Description]='Suspended',[Definition]='The credential is not currently valid pending investigation and/or disciplinary action.',[SortOrder]=6.00 WHERE [Code]='Suspended' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialAwardStatusType] WHERE [Code] = 'Withdrawn') BEGIN INSERT INTO dbo.[RefCredentialAwardStatusType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Withdrawn','Withdrawn','This credential is no longer valid. This credential was initially awarded but it was later determined that the credential should not have been awarded.',7.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCredentialAwardStatusType] SET [Description]='Withdrawn',[Definition]='This credential is no longer valid. This credential was initially awarded but it was later determined that the credential should not have been awarded.',[SortOrder]=7.00 WHERE [Code]='Withdrawn' END
+END
+
+
+-- ============================================================
+-- RefEnglishLearnerExitedStatus (2 entries)
+-- ============================================================
+PRINT N'Populate RefEnglishLearnerExitedStatus table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefEnglishLearnerExitedStatus]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEnglishLearnerExitedStatus] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefEnglishLearnerExitedStatus]([Code],[Description],[Definition],[SortOrder]) VALUES ('Yes','Yes','Yes',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEnglishLearnerExitedStatus] SET [Description]='Yes',[Definition]='Yes',[SortOrder]=1.00 WHERE [Code]='Yes' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEnglishLearnerExitedStatus] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefEnglishLearnerExitedStatus]([Code],[Description],[Definition],[SortOrder]) VALUES ('No','No','No',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEnglishLearnerExitedStatus] SET [Description]='No',[Definition]='No',[SortOrder]=2.00 WHERE [Code]='No' END
+END
+
+
+-- ============================================================
+-- RefEvaluationRequiredIndicator (2 entries)
+-- ============================================================
+PRINT N'Populate RefEvaluationRequiredIndicator table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefEvaluationRequiredIndicator]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEvaluationRequiredIndicator] WHERE [Code] = 'Required') BEGIN INSERT INTO dbo.[RefEvaluationRequiredIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('Required','Evaluation required','Individuals in this position are required to be evaluated.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEvaluationRequiredIndicator] SET [Description]='Evaluation required',[Definition]='Individuals in this position are required to be evaluated.',[SortOrder]=1.00 WHERE [Code]='Required' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEvaluationRequiredIndicator] WHERE [Code] = 'NotRequired') BEGIN INSERT INTO dbo.[RefEvaluationRequiredIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('NotRequired','Evaluation not required','Individuals in this position are not required to be evaluated.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEvaluationRequiredIndicator] SET [Description]='Evaluation not required',[Definition]='Individuals in this position are not required to be evaluated.',[SortOrder]=2.00 WHERE [Code]='NotRequired' END
+END
+
+
+-- ============================================================
+-- RefHarassmentOrBullyingReligionType (15 entries)
+-- ============================================================
+PRINT N'Populate RefHarassmentOrBullyingReligionType table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefHarassmentOrBullyingReligionType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Agnostic') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Agnostic','Agnostic','A person who believes that the existence or nature of an ultimate reality, such as a deity, is unknown or unknowable.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Agnostic',[Definition]='A person who believes that the existence or nature of an ultimate reality, such as a deity, is unknown or unknowable.',[SortOrder]=1.00 WHERE [Code]='Agnostic' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Atheist') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Atheist','Atheist','A person who does not believe in the existence of a deity.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Atheist',[Definition]='A person who does not believe in the existence of a deity.',[SortOrder]=2.00 WHERE [Code]='Atheist' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Buddhist') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Buddhist','Buddhist','A person who follows the religion of eastern or central Asia that grew out of the teaching of Siddhartha Gautama, which teaches that suffering is inherent in life and that one can be liberated from it by cultivating wisdom, virtue, and concentration.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Buddhist',[Definition]='A person who follows the religion of eastern or central Asia that grew out of the teaching of Siddhartha Gautama, which teaches that suffering is inherent in life and that one can be liberated from it by cultivating wisdom, virtue, and concentration.',[SortOrder]=3.00 WHERE [Code]='Buddhist' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Catholic') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Catholic','Catholic','A person who follows the monotheistic religion of Catholic Christianity, especially that of the Roman Catholic Church.',4.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Catholic',[Definition]='A person who follows the monotheistic religion of Catholic Christianity, especially that of the Roman Catholic Church.',[SortOrder]=4.00 WHERE [Code]='Catholic' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'EasternOrthodox') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('EasternOrthodox','Eastern Orthodox (Russian, Greek, Other)','A person who follows the monotheistic religion of the Eastern Christian Church. This faith follows the Nicene Creed and the traditions of the early church councils.',5.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Eastern Orthodox (Russian, Greek, Other)',[Definition]='A person who follows the monotheistic religion of the Eastern Christian Church. This faith follows the Nicene Creed and the traditions of the early church councils.',[SortOrder]=5.00 WHERE [Code]='EasternOrthodox' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Hindu') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Hindu','Hindu','A person who observes the traditions and practices of the dominant religion of India, which includes the caste system and a belief in reincarnation.',6.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Hindu',[Definition]='A person who observes the traditions and practices of the dominant religion of India, which includes the caste system and a belief in reincarnation.',[SortOrder]=6.00 WHERE [Code]='Hindu' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Islamic') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Islamic','Islamic (Muslim)','A person who follows the monotheistic religion of Muslims, which includes belief in Allah as the sole deity and in Muhammad as his prophet.',7.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Islamic (Muslim)',[Definition]='A person who follows the monotheistic religion of Muslims, which includes belief in Allah as the sole deity and in Muhammad as his prophet.',[SortOrder]=7.00 WHERE [Code]='Islamic' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'JehovahsWitness') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('JehovahsWitness','Jehovah''s Witness','A person who follows the religion founded by Charles Taze Russell. Members witness by distributing literature and staging public meetings.',8.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Jehovah''s Witness',[Definition]='A person who follows the religion founded by Charles Taze Russell. Members witness by distributing literature and staging public meetings.',[SortOrder]=8.00 WHERE [Code]='JehovahsWitness' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Jewish') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Jewish','Jewish (Judaism)','A person who identifies himself or herself as a member of the religious and/or ethnic group that descends from the ancient Hebrews and follows the Torah.',9.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Jewish (Judaism)',[Definition]='A person who identifies himself or herself as a member of the religious and/or ethnic group that descends from the ancient Hebrews and follows the Torah.',[SortOrder]=9.00 WHERE [Code]='Jewish' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Mormon') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Mormon','Mormon (Latter-day Saint)','A person who follows the Church of Jesus Christ of Latter-day Saints tracing its modern origin to Joseph Smith. They accept the Bible and the Book of Mormon as holy scripture.',10.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Mormon (Latter-day Saint)',[Definition]='A person who follows the Church of Jesus Christ of Latter-day Saints tracing its modern origin to Joseph Smith. They accept the Bible and the Book of Mormon as holy scripture.',[SortOrder]=10.00 WHERE [Code]='Mormon' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'MultipleReligions') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('MultipleReligions','Multiple Religions, Group','A group of persons demonstrating a commitment or devotion to religious faith or observance based upon more than one type of religion.',11.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Multiple Religions, Group',[Definition]='A group of persons demonstrating a commitment or devotion to religious faith or observance based upon more than one type of religion.',[SortOrder]=11.00 WHERE [Code]='MultipleReligions' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'OtherChristian') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('OtherChristian','Other Christian','A person who follows other denominations or nondenominational religions based on the life and teachings of Jesus Christ not described in the other Christian categories.',12.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Other Christian',[Definition]='A person who follows other denominations or nondenominational religions based on the life and teachings of Jesus Christ not described in the other Christian categories.',[SortOrder]=12.00 WHERE [Code]='OtherChristian' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'OtherReligions') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('OtherReligions','Other Religions','A person who follows other non-Christian religions not described in the other religion categories. Examples include Baha''i, Jainism, Shinto, Taoism, Zoroastrianism, etc.',13.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Other Religions',[Definition]='A person who follows other non-Christian religions not described in the other religion categories. Examples include Baha''i, Jainism, Shinto, Taoism, Zoroastrianism, etc.',[SortOrder]=13.00 WHERE [Code]='OtherReligions' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Protestant') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Protestant','Protestant','A person who follows the monotheistic religion of Christianity that is not part of Catholic or Eastern Orthodox Christianity.',14.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Protestant',[Definition]='A person who follows the monotheistic religion of Christianity that is not part of Catholic or Eastern Orthodox Christianity.',[SortOrder]=14.00 WHERE [Code]='Protestant' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHarassmentOrBullyingReligionType] WHERE [Code] = 'Sikh') BEGIN INSERT INTO dbo.[RefHarassmentOrBullyingReligionType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Sikh','Sikh','A person who follows the monotheistic religion of India founded about 1500 by Guru Nanak and marked by rejection of idolatry and caste.',15.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHarassmentOrBullyingReligionType] SET [Description]='Sikh',[Definition]='A person who follows the monotheistic religion of India founded about 1500 by Guru Nanak and marked by rejection of idolatry and caste.',[SortOrder]=15.00 WHERE [Code]='Sikh' END
+END
+
+
+-- ============================================================
+-- RefHotspotNeedIndicator (3 entries)
+-- ============================================================
+PRINT N'Populate RefHotspotNeedIndicator table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefHotspotNeedIndicator]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHotspotNeedIndicator] WHERE [Code] = 'Needed') BEGIN INSERT INTO dbo.[RefHotspotNeedIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('Needed','Needed','The student needs a Wi-Fi hotspot to access remote instruction.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHotspotNeedIndicator] SET [Description]='Needed',[Definition]='The student needs a Wi-Fi hotspot to access remote instruction.',[SortOrder]=1.00 WHERE [Code]='Needed' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHotspotNeedIndicator] WHERE [Code] = 'NotNeeded') BEGIN INSERT INTO dbo.[RefHotspotNeedIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('NotNeeded','Not Needed','The student does not need a Wi-Fi hotspot to access remote instruction.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHotspotNeedIndicator] SET [Description]='Not Needed',[Definition]='The student does not need a Wi-Fi hotspot to access remote instruction.',[SortOrder]=2.00 WHERE [Code]='NotNeeded' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHotspotNeedIndicator] WHERE [Code] = 'Unknown') BEGIN INSERT INTO dbo.[RefHotspotNeedIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('Unknown','Unknown','It is not known if the student needs a Wi-Fi hotspot to access remote instruction.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHotspotNeedIndicator] SET [Description]='Unknown',[Definition]='It is not known if the student needs a Wi-Fi hotspot to access remote instruction.',[SortOrder]=3.00 WHERE [Code]='Unknown' END
+END
+
+
+-- ============================================================
+-- RefHotspotReceivedIndicator (3 entries)
+-- ============================================================
+PRINT N'Populate RefHotspotReceivedIndicator table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefHotspotReceivedIndicator]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHotspotReceivedIndicator] WHERE [Code] = 'Received') BEGIN INSERT INTO dbo.[RefHotspotReceivedIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('Received','Received','The student received a Wi-Fi hotspot to access remote instruction.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHotspotReceivedIndicator] SET [Description]='Received',[Definition]='The student received a Wi-Fi hotspot to access remote instruction.',[SortOrder]=1.00 WHERE [Code]='Received' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHotspotReceivedIndicator] WHERE [Code] = 'NotReceived') BEGIN INSERT INTO dbo.[RefHotspotReceivedIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('NotReceived','Not Received','The student did not receive a Wi-Fi hotspot to access remote instruction.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHotspotReceivedIndicator] SET [Description]='Not Received',[Definition]='The student did not receive a Wi-Fi hotspot to access remote instruction.',[SortOrder]=2.00 WHERE [Code]='NotReceived' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefHotspotReceivedIndicator] WHERE [Code] = 'Unknown') BEGIN INSERT INTO dbo.[RefHotspotReceivedIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('Unknown','Unknown','It is not known if a student received a Wi-Fi hotspot to access remote instruction.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefHotspotReceivedIndicator] SET [Description]='Unknown',[Definition]='It is not known if a student received a Wi-Fi hotspot to access remote instruction.',[SortOrder]=3.00 WHERE [Code]='Unknown' END
+END
+
+
+-- ============================================================
+-- RefMagnetOrSpecialProgramEmphasisType (3 entries)
+-- ============================================================
+PRINT N'Populate RefMagnetOrSpecialProgramEmphasisType table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefMagnetOrSpecialProgramEmphasisType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefMagnetOrSpecialProgramEmphasisType] WHERE [Code] = 'NoRacialIsolation') BEGIN INSERT INTO dbo.[RefMagnetOrSpecialProgramEmphasisType]([Code],[Description],[Definition],[SortOrder]) VALUES ('NoRacialIsolation','No Racial Isolation','The magnet or special program''s emphasis is to attract students of different racial/ethnic backgrounds for the purpose of reducing racial isolation.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMagnetOrSpecialProgramEmphasisType] SET [Description]='No Racial Isolation',[Definition]='The magnet or special program''s emphasis is to attract students of different racial/ethnic backgrounds for the purpose of reducing racial isolation.',[SortOrder]=1.00 WHERE [Code]='NoRacialIsolation' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefMagnetOrSpecialProgramEmphasisType] WHERE [Code] = 'AcademicSocial') BEGIN INSERT INTO dbo.[RefMagnetOrSpecialProgramEmphasisType]([Code],[Description],[Definition],[SortOrder]) VALUES ('AcademicSocial','Academic or Social Focus','The magnet or special program''s emphasis is to provide an academic or social focus on a particular theme.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMagnetOrSpecialProgramEmphasisType] SET [Description]='Academic or Social Focus',[Definition]='The magnet or special program''s emphasis is to provide an academic or social focus on a particular theme.',[SortOrder]=2.00 WHERE [Code]='AcademicSocial' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefMagnetOrSpecialProgramEmphasisType] WHERE [Code] = 'Both') BEGIN INSERT INTO dbo.[RefMagnetOrSpecialProgramEmphasisType]([Code],[Description],[Definition],[SortOrder]) VALUES ('Both','Both','The magnet or special program''s emphasis is 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing racial isolation, and 2) to provide an academic or social focus on a particular theme.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefMagnetOrSpecialProgramEmphasisType] SET [Description]='Both',[Definition]='The magnet or special program''s emphasis is 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing racial isolation, and 2) to provide an academic or social focus on a particular theme.',[SortOrder]=3.00 WHERE [Code]='Both' END
+END
+
+
+-- ============================================================
+-- RefNeglectedOrDelinquentLongTermStatus (1 entry)
+-- ============================================================
+PRINT N'Populate RefNeglectedOrDelinquentLongTermStatus table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefNeglectedOrDelinquentLongTermStatus]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefNeglectedOrDelinquentLongTermStatus] WHERE [Code] = 'NDLONGTERM') BEGIN INSERT INTO dbo.[RefNeglectedOrDelinquentLongTermStatus]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('NDLONGTERM','Long-Term Neglected or Delinquent Student','Long-term students are those who were served in programs funded by Title I, Part D, Subpart 2 for at least 90 consecutive days.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefNeglectedOrDelinquentLongTermStatus] SET [Description]='Long-Term Neglected or Delinquent Student',[Definition]='Long-term students are those who were served in programs funded by Title I, Part D, Subpart 2 for at least 90 consecutive days.',[SortOrder]=1.00 WHERE [Code]='NDLONGTERM' END
+END
+
+
+-- ============================================================
+-- RefNeglectedOrDelinquentProgramEnrollmentSubpart (2 entries)
+-- ============================================================
+PRINT N'Populate RefNeglectedOrDelinquentProgramEnrollmentSubpart table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefNeglectedOrDelinquentProgramEnrollmentSubpart]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefNeglectedOrDelinquentProgramEnrollmentSubpart] WHERE [Code] = 'Subpart1') BEGIN INSERT INTO dbo.[RefNeglectedOrDelinquentProgramEnrollmentSubpart]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Subpart1','State Agency','Indicates Title I, Part D Subpart 1 State Agency, under which a student is enrolled in a program for neglected or delinquent children and youth operated or supported by a State Agency.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefNeglectedOrDelinquentProgramEnrollmentSubpart] SET [Description]='State Agency',[Definition]='Indicates Title I, Part D Subpart 1 State Agency, under which a student is enrolled in a program for neglected or delinquent children and youth operated or supported by a State Agency.',[SortOrder]=1.00 WHERE [Code]='Subpart1' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefNeglectedOrDelinquentProgramEnrollmentSubpart] WHERE [Code] = 'Subpart2') BEGIN INSERT INTO dbo.[RefNeglectedOrDelinquentProgramEnrollmentSubpart]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Subpart2','Local Agency','Indicates Title I, Part D Subpart 2 Local Agency, under which a student is enrolled in a program for neglected or delinquent children and youth operated or supported by a Local Educational Agency.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefNeglectedOrDelinquentProgramEnrollmentSubpart] SET [Description]='Local Agency',[Definition]='Indicates Title I, Part D Subpart 2 Local Agency, under which a student is enrolled in a program for neglected or delinquent children and youth operated or supported by a Local Educational Agency.',[SortOrder]=2.00 WHERE [Code]='Subpart2' END
+END
+
+
+-- ============================================================
+-- RefPreschoolDailyLength (3 entries)
+-- ============================================================
+PRINT N'Populate RefPreschoolDailyLength table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefPreschoolDailyLength]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefPreschoolDailyLength] WHERE [Code] = 'FullDay') BEGIN INSERT INTO dbo.[RefPreschoolDailyLength]([Code],[Description],[Definition],[SortOrder]) VALUES ('FullDay','Full-day','The program is provided to the students it serves as a full-day program.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefPreschoolDailyLength] SET [Description]='Full-day',[Definition]='The program is provided to the students it serves as a full-day program.',[SortOrder]=1.00 WHERE [Code]='FullDay' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefPreschoolDailyLength] WHERE [Code] = 'PartDay') BEGIN INSERT INTO dbo.[RefPreschoolDailyLength]([Code],[Description],[Definition],[SortOrder]) VALUES ('PartDay','Part-day','The program is provided to the students it serves as a part-day program.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefPreschoolDailyLength] SET [Description]='Part-day',[Definition]='The program is provided to the students it serves as a part-day program.',[SortOrder]=2.00 WHERE [Code]='PartDay' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefPreschoolDailyLength] WHERE [Code] = 'NotProvided') BEGIN INSERT INTO dbo.[RefPreschoolDailyLength]([Code],[Description],[Definition],[SortOrder]) VALUES ('NotProvided','Not provided','Program is not provided.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefPreschoolDailyLength] SET [Description]='Not provided',[Definition]='Program is not provided.',[SortOrder]=3.00 WHERE [Code]='NotProvided' END
+END
+
+
+-- ============================================================
+-- RefServiceChargeIndicator (3 entries)
+-- ============================================================
+PRINT N'Populate RefServiceChargeIndicator table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefServiceChargeIndicator]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefServiceChargeIndicator] WHERE [Code] = 'NoCharge') BEGIN INSERT INTO dbo.[RefServiceChargeIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('NoCharge','No Charge','The parent or guardian is not charged for the service and/or program.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefServiceChargeIndicator] SET [Description]='No Charge',[Definition]='The parent or guardian is not charged for the service and/or program.',[SortOrder]=1.00 WHERE [Code]='NoCharge' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefServiceChargeIndicator] WHERE [Code] = 'PartialCharge') BEGIN INSERT INTO dbo.[RefServiceChargeIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('PartialCharge','Partial Charge','The parent or guardian is partially charged for the service and/or program.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefServiceChargeIndicator] SET [Description]='Partial Charge',[Definition]='The parent or guardian is partially charged for the service and/or program.',[SortOrder]=2.00 WHERE [Code]='PartialCharge' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefServiceChargeIndicator] WHERE [Code] = 'FullCharge') BEGIN INSERT INTO dbo.[RefServiceChargeIndicator]([Code],[Description],[Definition],[SortOrder]) VALUES ('FullCharge','Full Charge','The parent or guardian is fully charged for the service and/or program.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefServiceChargeIndicator] SET [Description]='Full Charge',[Definition]='The parent or guardian is fully charged for the service and/or program.',[SortOrder]=3.00 WHERE [Code]='FullCharge' END
+END
+
+
+-- ============================================================
+-- RefStaffEvaluationScale (2 entries)
+-- ============================================================
+PRINT N'Populate RefStaffEvaluationScale table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefStaffEvaluationScale]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefStaffEvaluationScale] WHERE [Code] = 'NoDataAvailable') BEGIN INSERT INTO dbo.[RefStaffEvaluationScale]([Code],[Description],[Definition],[SortOrder]) VALUES ('NoDataAvailable','No data available','Data for this element was not collected and/or was not available for collection.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefStaffEvaluationScale] SET [Description]='No data available',[Definition]='Data for this element was not collected and/or was not available for collection.',[SortOrder]=1.00 WHERE [Code]='NoDataAvailable' END
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefStaffEvaluationScale] WHERE [Code] = 'NA') BEGIN INSERT INTO dbo.[RefStaffEvaluationScale]([Code],[Description],[Definition],[SortOrder]) VALUES ('NA','Not applicable','Not applicable',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefStaffEvaluationScale] SET [Description]='Not applicable',[Definition]='Not applicable',[SortOrder]=2.00 WHERE [Code]='NA' END
+END
+
+
+/* ============================================================
+   PART 1 – NEW NAMED INDIVIDUALS
+   ============================================================ */
+
+PRINT N'-- PART 1: New Named Individuals --';
+
+
+-- RefBrailleAccessType -------------------------------------------
+PRINT N'RefBrailleAccessType: adding EmbossedBraille';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefBrailleAccessType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleAccessType] WHERE [Code] = 'EmbossedBraille')
+    INSERT INTO dbo.[RefBrailleAccessType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('EmbossedBraille', 'Embossed braille', 'The way braille is accessed is embossed braille.', 4.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefBrailleAccessType]
+    SET [Description] = 'Embossed braille',
+        [Definition]  = 'The way braille is accessed is embossed braille.',
+        [SortOrder]   = 4.00
+    WHERE [Code] = 'EmbossedBraille'
+END
+
+
+-- RefBrailleCodeType ---------------------------------------------
+PRINT N'RefBrailleCodeType: adding UEBMathScience';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefBrailleCodeType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefBrailleCodeType] WHERE [Code] = 'UEBMathScience')
+    INSERT INTO dbo.[RefBrailleCodeType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('UEBMathScience', 'UEB Math/Science', 'A specialized braille code under Unified English Braille (UEB) used to represent mathematical and scientific notation, providing a structured system for transcribing technical content into braille to ensure effective access for individuals with visual impairments.', 3.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefBrailleCodeType]
+    SET [Description] = 'UEB Math/Science',
+        [Definition]  = 'A specialized braille code under Unified English Braille (UEB) used to represent mathematical and scientific notation, providing a structured system for transcribing technical content into braille to ensure effective access for individuals with visual impairments.',
+        [SortOrder]   = 3.00
+    WHERE [Code] = 'UEBMathScience'
+END
+
+
+-- RefCalendarEventType -------------------------------------------
+PRINT N'RefCalendarEventType: adding ProfessionalDevelopmentDay';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCalendarEventType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCalendarEventType] WHERE [Code] = 'ProfessionalDevelopmentDay')
+    INSERT INTO dbo.[RefCalendarEventType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('ProfessionalDevelopmentDay', 'Professional development day', 'Professional development day is specified as the type of scheduled or unscheduled calendar event. A Professional development day is a day designated for staff training, workshops, or other activities aimed at improving teaching practices and educational outcomes, during which students typically do not attend school.', 8.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefCalendarEventType]
+    SET [Description] = 'Professional development day',
+        [Definition]  = 'Professional development day is specified as the type of scheduled or unscheduled calendar event. A Professional development day is a day designated for staff training, workshops, or other activities aimed at improving teaching practices and educational outcomes, during which students typically do not attend school.',
+        [SortOrder]   = 8.00
+    WHERE [Code] = 'ProfessionalDevelopmentDay'
+END
+
+
+
+-- RefCourseSectionAssessmentReportingMethod ----------------------
+PRINT N'RefCourseSectionAssessmentReportingMethod: adding ACT superscore';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCourseSectionAssessmentReportingMethod]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCourseSectionAssessmentReportingMethod] WHERE [Code] = '03482')
+    INSERT INTO dbo.[RefCourseSectionAssessmentReportingMethod]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('03482', 'ACT superscore', '', 1.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefCourseSectionAssessmentReportingMethod]
+    SET [Description] = 'ACT superscore',
+        [Definition]  = '',
+        [SortOrder]   = 1.00
+    WHERE [Code] = '03482'
+END
+
+
+-- RefCredentialType ----------------------------------------------
+PRINT N'RefCredentialType: adding LicensureDistinction';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCredentialType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCredentialType] WHERE [Code] = 'LicensureDistinction')
+    INSERT INTO dbo.[RefCredentialType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('LicensureDistinction', 'Licensure distinction', 'Licensure distinction is specified as the category of credential a person holds.', 9.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefCredentialType]
+    SET [Description] = 'Licensure distinction',
+        [Definition]  = 'Licensure distinction is specified as the category of credential a person holds.',
+        [SortOrder]   = 9.00
+    WHERE [Code] = 'LicensureDistinction'
+END
+
+
+-- RefDisciplinaryActionTaken -------------------------------------
+PRINT N'RefDisciplinaryActionTaken: adding Transfer to Alternative School';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefDisciplinaryActionTaken]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefDisciplinaryActionTaken] WHERE [Code] = '75002')
+    INSERT INTO dbo.[RefDisciplinaryActionTaken]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('75002', 'Transfer to Alternative School', 'Transfer to alternative school is a consequence of an incident for the student(s) involved in an incident as perpetrators.', 50.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefDisciplinaryActionTaken]
+    SET [Description] = 'Transfer to Alternative School',
+        [Definition]  = 'Transfer to alternative school is a consequence of an incident for the student(s) involved in an incident as perpetrators.',
+        [SortOrder]   = 50.00
+    WHERE [Code] = '75002'
+END
+
+
+-- RefEnrollmentStatus --------------------------------------------
+PRINT N'RefEnrollmentStatus: adding No-Show';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefEnrollmentStatus]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEnrollmentStatus] WHERE [Code] = '01814')
+    INSERT INTO dbo.[RefEnrollmentStatus]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('01814', 'No-Show', 'The student was expected to enroll but did not appear or attend classes.', 5.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefEnrollmentStatus]
+    SET [Description] = 'No-Show',
+        [Definition]  = 'The student was expected to enroll but did not appear or attend classes.',
+        [SortOrder]   = 5.00
+    WHERE [Code] = '01814'
+END
+
+
+-- RefIncidentBehavior --------------------------------------------
+PRINT N'RefIncidentBehavior: adding Harassment or bullying on the basis of religion';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefIncidentBehavior]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefIncidentBehavior] WHERE [Code] = '75008')
+    INSERT INTO dbo.[RefIncidentBehavior]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('75008', 'Harassment or bullying on the basis of religion', 'Harmful conduct based on actual or perceived religion. Harassment or bullying may take many forms, including verbal acts and name-calling, as well as nonverbal behavior, such as graphic and written statements, or conduct that is physically threatening, harmful, or humiliating.', 39.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefIncidentBehavior]
+    SET [Description] = 'Harassment or bullying on the basis of religion',
+        [Definition]  = 'Harmful conduct based on actual or perceived religion. Harassment or bullying may take many forms, including verbal acts and name-calling, as well as nonverbal behavior, such as graphic and written statements, or conduct that is physically threatening, harmful, or humiliating.',
+        [SortOrder]   = 39.00
+    WHERE [Code] = '75008'
+END
+
+
+-- RefIndividualizedProgramType -----------------------------------
+PRINT N'RefIndividualizedProgramType: adding CEIS and CCEIS';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefIndividualizedProgramType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndividualizedProgramType] WHERE [Code] = '75020')
+    INSERT INTO dbo.[RefIndividualizedProgramType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('75020', 'Coordinated Early Intervening Services (CEIS)', 'The type of individualized program developed for the student is a coordinated early intervening service.', 11.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefIndividualizedProgramType]
+    SET [Description] = 'Coordinated Early Intervening Services (CEIS)',
+        [Definition]  = 'The type of individualized program developed for the student is a coordinated early intervening service.',
+        [SortOrder]   = 11.00
+    WHERE [Code] = '75020'
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefIndividualizedProgramType] WHERE [Code] = '75021')
+    INSERT INTO dbo.[RefIndividualizedProgramType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('75021', 'Comprehensive Coordinated Early Intervening Services (CCEIS)', 'The type of individualized program developed for the student is a comprehensive coordinated early intervening service.', 12.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefIndividualizedProgramType]
+    SET [Description] = 'Comprehensive Coordinated Early Intervening Services (CCEIS)',
+        [Definition]  = 'The type of individualized program developed for the student is a comprehensive coordinated early intervening service.',
+        [SortOrder]   = 12.00
+    WHERE [Code] = '75021'
+END
+
+
+-- RefK12StaffClassification --------------------------------------
+PRINT N'RefK12StaffClassification: adding Civil Rights Coordinator';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefK12StaffClassification]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefK12StaffClassification] WHERE [Code] = 'CivilRightsCoordinator')
+    INSERT INTO dbo.[RefK12StaffClassification]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('CivilRightsCoordinator', 'Civil Rights Coordinator', 'Identifies the designated official who coordinates compliance with federal civil rights laws for the LEA or school and serves as a point of contact for complaints, inquiries, and training related to civil rights obligations.', 56.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefK12StaffClassification]
+    SET [Description] = 'Civil Rights Coordinator',
+        [Definition]  = 'Identifies the designated official who coordinates compliance with federal civil rights laws for the LEA or school and serves as a point of contact for complaints, inquiries, and training related to civil rights obligations.',
+        [SortOrder]   = 56.00
+    WHERE [Code] = 'CivilRightsCoordinator'
+END
+
+
+-- RefSpecialEducationAgeGroupTaught ------------------------------
+PRINT N'RefSpecialEducationAgeGroupTaught: adding 3TO5NOTK and AGE5KTO21';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefSpecialEducationAgeGroupTaught]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefSpecialEducationAgeGroupTaught] WHERE [Code] = '3TO5NOTK')
+    INSERT INTO dbo.[RefSpecialEducationAgeGroupTaught]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('3TO5NOTK', '3 through 5 (not in kindergarten)', 'The age range of special education students taught is 3 through 5 (not in kindergarten).', 3.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefSpecialEducationAgeGroupTaught]
+    SET [Description] = '3 through 5 (not in kindergarten)',
+        [Definition]  = 'The age range of special education students taught is 3 through 5 (not in kindergarten).',
+        [SortOrder]   = 3.00
+    WHERE [Code] = '3TO5NOTK'
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefSpecialEducationAgeGroupTaught] WHERE [Code] = 'AGE5KTO21')
+    INSERT INTO dbo.[RefSpecialEducationAgeGroupTaught]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('AGE5KTO21', '5 (in kindergarten) through 21', 'The age range of special education students taught is 5 (in kindergarten) through 21.', 4.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefSpecialEducationAgeGroupTaught]
+    SET [Description] = '5 (in kindergarten) through 21',
+        [Definition]  = 'The age range of special education students taught is 5 (in kindergarten) through 21.',
+        [SortOrder]   = 4.00
+    WHERE [Code] = 'AGE5KTO21'
+END
+
+
+-- RefTactileMediumType -------------------------------------------
+PRINT N'RefTactileMediumType: adding ActualObject and Manipulative';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefTactileMediumType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefTactileMediumType] WHERE [Code] = 'ActualObject')
+    INSERT INTO dbo.[RefTactileMediumType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('ActualObject', 'Actual object', 'A real-world item used in its original form to convey information through touch.', 3.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefTactileMediumType]
+    SET [Description] = 'Actual object',
+        [Definition]  = 'A real-world item used in its original form to convey information through touch.',
+        [SortOrder]   = 3.00
+    WHERE [Code] = 'ActualObject'
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefTactileMediumType] WHERE [Code] = 'Manipulative')
+    INSERT INTO dbo.[RefTactileMediumType]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('Manipulative', 'Manipulative', 'A tactile resource designed to allow the person to physically engage with and explore abstract concepts.', 4.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefTactileMediumType]
+    SET [Description] = 'Manipulative',
+        [Definition]  = 'A tactile resource designed to allow the person to physically engage with and explore abstract concepts.',
+        [SortOrder]   = 4.00
+    WHERE [Code] = 'Manipulative'
+END
+
+
+-- RefTargetedSupportAndImprovementStatus -------------------------
+PRINT N'RefTargetedSupportAndImprovementStatus: adding deprecated exit status';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefTargetedSupportAndImprovementStatus]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefTargetedSupportAndImprovementStatus] WHERE [Code] = '(Deprecated)TSIEXIT')
+    INSERT INTO dbo.[RefTargetedSupportAndImprovementStatus]([Code], [Description], [Definition], [SortOrder])
+    VALUES ('(Deprecated)TSIEXIT', '(Deprecated) Targeted support and improvement - exit status', '(Deprecated) Targeted support and improvement - exit status is the designation given to a school by the state for targeted support and improvement.', 3.00)
+  ELSE IF @updateExisting = 1
+    UPDATE dbo.[RefTargetedSupportAndImprovementStatus]
+    SET [Description] = '(Deprecated) Targeted support and improvement - exit status',
+        [Definition]  = '(Deprecated) Targeted support and improvement - exit status is the designation given to a school by the state for targeted support and improvement.',
+        [SortOrder]   = 3.00
+    WHERE [Code] = '(Deprecated)TSIEXIT'
+END
+
+
+/* ============================================================
+   PART 2 – UPDATED NAMED INDIVIDUALS (substantive changes only)
+   ============================================================ */
+
+PRINT N'';
+PRINT N'-- PART 2: Updated Named Individuals --';
+
+
+-- RefBrailleCodeType: Nemeth -------------------------------------------
+-- Description changed: "Nemeth" --> "UEB with Nemeth"
+-- Definition changed:  Expanded to describe the UEB + Nemeth combination.
+PRINT N'RefBrailleCodeType: updating Nemeth -> UEB with Nemeth';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefBrailleCodeType]') AND type = N'U')
+BEGIN
+  UPDATE dbo.[RefBrailleCodeType]
+  SET [Description] = 'UEB with Nemeth',
+      [Definition]  = 'A specialized braille code that uses Unified English Braille (UEB) for literary content and incorporates the Nemeth Code for representing mathematical and scientific notation, providing a structured system for transcribing technical content into braille to ensure effective access for individuals with visual impairments.'
+  WHERE [Code] = 'Nemeth'
+END
+
+
+-- RefCalendarEventType: 6 entries -------------------------------------
+-- Double-space ("the  type") corrected to single-space ("the type").
+PRINT N'RefCalendarEventType: correcting double-space in definitions (6 entries)';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCalendarEventType]') AND type = N'U')
+BEGIN
+  UPDATE dbo.[RefCalendarEventType]
+  SET [Definition] = 'Emergency day is specified as the type of scheduled or unscheduled calendar event.'
+  WHERE [Code] = 'EmergencyDay'
+
+  UPDATE dbo.[RefCalendarEventType]
+  SET [Definition] = 'Holiday is specified as the type of scheduled or unscheduled calendar event.'
+  WHERE [Code] = 'Holiday'
+
+  UPDATE dbo.[RefCalendarEventType]
+  SET [Definition] = 'Student late arrival/early dismissal is specified as the type of scheduled or unscheduled calendar event.'
+  WHERE [Code] = 'LateArrivalEarlyDismissal'
+
+  UPDATE dbo.[RefCalendarEventType]
+  SET [Definition] = 'Other is specified as the type of scheduled or unscheduled calendar event.'
+  WHERE [Code] = 'Other'
+
+  UPDATE dbo.[RefCalendarEventType]
+  SET [Definition] = 'Strike is specified as the type of scheduled or unscheduled calendar event.'
+  WHERE [Code] = 'Strike'
+
+  UPDATE dbo.[RefCalendarEventType]
+  SET [Definition] = 'Teacher only day is specified as the type of scheduled or unscheduled calendar event.'
+  WHERE [Code] = 'TeacherOnlyDay'
+END
+
+
+-- RefCredentialType: 5 entries ----------------------------------------
+-- Double-space ("the  category") corrected to single-space ("the category").
+PRINT N'RefCredentialType: correcting double-space in definitions (5 entries)';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCredentialType]') AND type = N'U')
+BEGIN
+  UPDATE dbo.[RefCredentialType]
+  SET [Definition] = 'Certification is specified as the category of credential a person holds.'
+  WHERE [Code] = 'Certification'
+
+  UPDATE dbo.[RefCredentialType]
+  SET [Definition] = 'Endorsement is specified as the category of credential a person holds.'
+  WHERE [Code] = 'Endorsement'
+
+  UPDATE dbo.[RefCredentialType]
+  SET [Definition] = 'Licensure is specified as the category of credential a person holds.'
+  WHERE [Code] = 'Licensure'
+
+  UPDATE dbo.[RefCredentialType]
+  SET [Definition] = 'Other is specified as the category of credential a person holds.'
+  WHERE [Code] = 'Other'
+
+  UPDATE dbo.[RefCredentialType]
+  SET [Definition] = 'Registration is specified as the category of credential a person holds.'
+  WHERE [Code] = 'Registration'
+END
+
+
+-- RefK12StaffClassification: 2 entries --------------------------------
+-- HomeVisitors:      Definition expanded to clarify home-visiting purpose.
+-- SchoolPsychologist: Description corrected ("School Psychologist" singular)
+--                     and definition updated with comprehensive scope.
+-- SchoolCounselors:  Ontology definition is placeholder "PutDefinitionHere";
+--                    existing SQL definition intentionally retained.
+PRINT N'RefK12StaffClassification: updating HomeVisitors and SchoolPsychologist';
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefK12StaffClassification]') AND type = N'U')
+BEGIN
+  UPDATE dbo.[RefK12StaffClassification]
+  SET [Description] = 'Home Visitors',
+      [Definition]  = 'Professional staff members assigned specific duties related to visiting a child or pregnant woman''s home for the purpose of assisting parents in fostering the growth and development of their child.'
+  WHERE [Code] = 'HomeVisitors'
+
+  UPDATE dbo.[RefK12StaffClassification]
+  SET [Description] = 'School Psychologist',
+      [Definition]  = 'Professional staff member who provides direct and indirect support, including prevention and intervention, to evaluate and address student''s intellectual development, academic success, social-emotional learning, and mental and behavioral health.'
+  WHERE [Code] = 'SchoolPsychologist'
+END
+
+
+
+-- ============================================================
+-- RefCRDCJusticeFacilityType (4 entries)
+-- ============================================================
+PRINT N'Populate RefCRDCJusticeFacilityType table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefCRDCJusticeFacilityType]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCRDCJusticeFacilityType] WHERE [Code] = 'Preadjudication') BEGIN INSERT INTO dbo.[RefCRDCJusticeFacilityType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Preadjudication','Pre-adjudication facility','Confines pre-adjudicated juveniles. A pre-adjudicated juvenile is an individual (typically under 21 years of age) who has been charged with a delinquent act but has not yet been adjudicated by a court.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCRDCJusticeFacilityType] SET [Description]='Pre-adjudication facility',[Definition]='Confines pre-adjudicated juveniles. A pre-adjudicated juvenile is an individual (typically under 21 years of age) who has been charged with a delinquent act but has not yet been adjudicated by a court.',[SortOrder]=1.00 WHERE [Code]='Preadjudication' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCRDCJusticeFacilityType] WHERE [Code] = 'Postadjudication') BEGIN INSERT INTO dbo.[RefCRDCJusticeFacilityType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Postadjudication','Post-adjudication facility','Confines post-adjudicated juveniles. A post-adjudicated juvenile is an individual (typically under 21 years of age) who has been found delinquent by a court and placed in a residential facility as part of a disposition.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCRDCJusticeFacilityType] SET [Description]='Post-adjudication facility',[Definition]='Confines post-adjudicated juveniles. A post-adjudicated juvenile is an individual (typically under 21 years of age) who has been found delinquent by a court and placed in a residential facility as part of a disposition.',[SortOrder]=2.00 WHERE [Code]='Postadjudication' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCRDCJusticeFacilityType] WHERE [Code] = 'Preconviction') BEGIN INSERT INTO dbo.[RefCRDCJusticeFacilityType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Preconviction','Pre-conviction facility','Confines pre-convicted adults. A pre-convicted adult is an individual (typically 21 years of age or older) who has been charged with a crime but has not yet been convicted.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCRDCJusticeFacilityType] SET [Description]='Pre-conviction facility',[Definition]='Confines pre-convicted adults. A pre-convicted adult is an individual (typically 21 years of age or older) who has been charged with a crime but has not yet been convicted.',[SortOrder]=3.00 WHERE [Code]='Preconviction' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefCRDCJusticeFacilityType] WHERE [Code] = 'Postconviction') BEGIN INSERT INTO dbo.[RefCRDCJusticeFacilityType]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Postconviction','Post-conviction facility','Confines post-convicted adults. A post-convicted adult is an individual (typically 21 years of age or older) who has been found guilty of a crime and is serving a sentence in a correctional facility.',4.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefCRDCJusticeFacilityType] SET [Description]='Post-conviction facility',[Definition]='Confines post-convicted adults. A post-convicted adult is an individual (typically 21 years of age or older) who has been found guilty of a crime and is serving a sentence in a correctional facility.',[SortOrder]=4.00 WHERE [Code]='Postconviction' END
+END
+
+
+-- ============================================================
+-- RefEdFactsCohortGraduationStatus (4 entries)
+-- ============================================================
+PRINT N'Populate RefEdFactsCohortGraduationStatus table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefEdFactsCohortGraduationStatus]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEdFactsCohortGraduationStatus] WHERE [Code] = 'COHYES') BEGIN INSERT INTO dbo.[RefEdFactsCohortGraduationStatus]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('COHYES','Graduated with a regular high school diploma within the allowable time','The student graduated with a regular high school diploma within the allowable time.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEdFactsCohortGraduationStatus] SET [Description]='Graduated with a regular high school diploma within the allowable time',[Definition]='The student graduated with a regular high school diploma within the allowable time.',[SortOrder]=1.00 WHERE [Code]='COHYES' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEdFactsCohortGraduationStatus] WHERE [Code] = 'COHALTDPL') BEGIN INSERT INTO dbo.[RefEdFactsCohortGraduationStatus]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('COHALTDPL','Graduated with a State-defined alternate high school diploma within the allowable time','The student graduated with a state-defined alternate high school diploma within the allowable time.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEdFactsCohortGraduationStatus] SET [Description]='Graduated with a State-defined alternate high school diploma within the allowable time',[Definition]='The student graduated with a state-defined alternate high school diploma within the allowable time.',[SortOrder]=2.00 WHERE [Code]='COHALTDPL' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEdFactsCohortGraduationStatus] WHERE [Code] = 'COHNO') BEGIN INSERT INTO dbo.[RefEdFactsCohortGraduationStatus]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('COHNO','Did not graduate with a regular or State-defined alternate high school diploma within the allowable time','The student did not graduate with a regular or State-defined alternate high school diploma within the allowable time.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEdFactsCohortGraduationStatus] SET [Description]='Did not graduate with a regular or State-defined alternate high school diploma within the allowable time',[Definition]='The student did not graduate with a regular or State-defined alternate high school diploma within the allowable time.',[SortOrder]=3.00 WHERE [Code]='COHNO' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefEdFactsCohortGraduationStatus] WHERE [Code] = 'COHREM') BEGIN INSERT INTO dbo.[RefEdFactsCohortGraduationStatus]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('COHREM','Has not graduated with a state-defined alternate high school diploma and removed from the cohort as allowed','The student has not graduated with a state-defined alternate high school diploma and has been removed from the cohort as allowed under ESSA.',4.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefEdFactsCohortGraduationStatus] SET [Description]='Has not graduated with a state-defined alternate high school diploma and removed from the cohort as allowed',[Definition]='The student has not graduated with a state-defined alternate high school diploma and has been removed from the cohort as allowed under ESSA.',[SortOrder]=4.00 WHERE [Code]='COHREM' END
+END
+
+
+-- ============================================================
+-- RefTitleIIILanguageInstructionIndicator (2 entries)
+-- ============================================================
+PRINT N'Populate RefTitleIIILanguageInstructionIndicator table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefTitleIIILanguageInstructionIndicator]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefTitleIIILanguageInstructionIndicator] WHERE [Code] = 'Yes') BEGIN INSERT INTO dbo.[RefTitleIIILanguageInstructionIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Yes','Yes','The teacher teaches in language instruction educational programs designed for English learners supported with Title III funds.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTitleIIILanguageInstructionIndicator] SET [Description]='Yes',[Definition]='The teacher teaches in language instruction educational programs designed for English learners supported with Title III funds.',[SortOrder]=1.00 WHERE [Code]='Yes' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefTitleIIILanguageInstructionIndicator] WHERE [Code] = 'No') BEGIN INSERT INTO dbo.[RefTitleIIILanguageInstructionIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('No','No','The teacher does not teach in language instruction educational programs designed for English learners supported with Title III funds.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefTitleIIILanguageInstructionIndicator] SET [Description]='No',[Definition]='The teacher does not teach in language instruction educational programs designed for English learners supported with Title III funds.',[SortOrder]=2.00 WHERE [Code]='No' END
+END
+
+
+-- ============================================================
+-- RefWiFiEnabledDeviceNeedIndicator (3 entries)
+-- Note: Distinct from RefHotspotNeedIndicator. This table covers
+-- Wi-Fi enabled devices (laptops, tablets, etc.), not hotspots.
+-- ============================================================
+PRINT N'Populate RefWiFiEnabledDeviceNeedIndicator table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefWiFiEnabledDeviceNeedIndicator]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefWiFiEnabledDeviceNeedIndicator] WHERE [Code] = 'Needed') BEGIN INSERT INTO dbo.[RefWiFiEnabledDeviceNeedIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Needed','Needed','The student needs a Wi-Fi enabled device to access remote instruction.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefWiFiEnabledDeviceNeedIndicator] SET [Description]='Needed',[Definition]='The student needs a Wi-Fi enabled device to access remote instruction.',[SortOrder]=1.00 WHERE [Code]='Needed' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefWiFiEnabledDeviceNeedIndicator] WHERE [Code] = 'NotNeeded') BEGIN INSERT INTO dbo.[RefWiFiEnabledDeviceNeedIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('NotNeeded','Not Needed','The student does not need a Wi-Fi enabled device to access remote instruction.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefWiFiEnabledDeviceNeedIndicator] SET [Description]='Not Needed',[Definition]='The student does not need a Wi-Fi enabled device to access remote instruction.',[SortOrder]=2.00 WHERE [Code]='NotNeeded' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefWiFiEnabledDeviceNeedIndicator] WHERE [Code] = 'Unknown') BEGIN INSERT INTO dbo.[RefWiFiEnabledDeviceNeedIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Unknown','Unknown','It is not known if the student needs a Wi-Fi enabled device to access remote instruction.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefWiFiEnabledDeviceNeedIndicator] SET [Description]='Unknown',[Definition]='It is not known if the student needs a Wi-Fi enabled device to access remote instruction.',[SortOrder]=3.00 WHERE [Code]='Unknown' END
+END
+
+
+-- ============================================================
+-- RefWiFiEnabledDeviceReceivedIndicator (3 entries)
+-- Note: Distinct from RefHotspotReceivedIndicator. This table covers
+-- Wi-Fi enabled devices (laptops, tablets, etc.), not hotspots.
+-- ============================================================
+PRINT N'Populate RefWiFiEnabledDeviceReceivedIndicator table'
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RefWiFiEnabledDeviceReceivedIndicator]') AND type = N'U')
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefWiFiEnabledDeviceReceivedIndicator] WHERE [Code] = 'Received') BEGIN INSERT INTO dbo.[RefWiFiEnabledDeviceReceivedIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Received','Received','The student received a Wi-Fi enabled device to access remote instruction.',1.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefWiFiEnabledDeviceReceivedIndicator] SET [Description]='Received',[Definition]='The student received a Wi-Fi enabled device to access remote instruction.',[SortOrder]=1.00 WHERE [Code]='Received' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefWiFiEnabledDeviceReceivedIndicator] WHERE [Code] = 'NotReceived') BEGIN INSERT INTO dbo.[RefWiFiEnabledDeviceReceivedIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('NotReceived','Not Received','The student did not receive a Wi-Fi enabled device to access remote instruction.',2.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefWiFiEnabledDeviceReceivedIndicator] SET [Description]='Not Received',[Definition]='The student did not receive a Wi-Fi enabled device to access remote instruction.',[SortOrder]=2.00 WHERE [Code]='NotReceived' END
+
+  IF NOT EXISTS (SELECT 1 FROM dbo.[RefWiFiEnabledDeviceReceivedIndicator] WHERE [Code] = 'Unknown') BEGIN INSERT INTO dbo.[RefWiFiEnabledDeviceReceivedIndicator]([Code],[Description],[Definition],[SortOrder])
+  VALUES ('Unknown','Unknown','It is not known if a student received a Wi-Fi enabled device to access remote instruction.',3.00) END ELSE IF @updateExisting = 1 BEGIN UPDATE dbo.[RefWiFiEnabledDeviceReceivedIndicator] SET [Description]='Unknown',[Definition]='It is not known if a student received a Wi-Fi enabled device to access remote instruction.',[SortOrder]=3.00 WHERE [Code]='Unknown' END
+END
+
+
+PRINT N'';
+PRINT N'V14 new Ref table population addendum complete (16 rows across 5 tables).';
+GO
