@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[IncidentPerson] (
     [IncidentPersonId]            INT           IDENTITY (1, 1) NOT NULL,
     [IncidentId]                  INT           NOT NULL,
-    [PersonId]                    INT           NOT NULL,
+    [PersonId]                    INT           NULL,
     [Identifier]                  NVARCHAR (40) NULL,
     [RefIncidentPersonRoleTypeId] INT           NOT NULL,
     [RefIncidentPersonTypeId]     INT           NULL,

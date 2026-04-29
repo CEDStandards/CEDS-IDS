@@ -706,7 +706,6 @@
     <Build Include="dbo\Tables\ReferenceTables\RefCourseSectionEnrollmentStatusType.sql" />
     <Build Include="dbo\Tables\ReferenceTables\RefCourseSectionEntryType.sql" />
     <Build Include="dbo\Tables\ReferenceTables\RefCourseSectionExitType.sql" />
-    <Build Include="dbo\Tables\ReferenceTables\RefCredentialAwardRelationship.sql" />
     <Build Include="dbo\Tables\ReferenceTables\RefCredentialDefAgentRoleType.sql" />
     <Build Include="dbo\Tables\ReferenceTables\RefCredentialDefAssessMethodType.sql" />
     <Build Include="dbo\Tables\ReferenceTables\RefCredentialDefIntendedPurposeType.sql" />
@@ -1210,6 +1209,31 @@
     <Build Include="dbo\Tables\DataTables\OrganizationIndirectCostRate.sql" />
     <Build Include="dbo\Tables\DataTables\AccessibilityFeatureRelationship.sql" />
     <Build Include="dbo\Tables\ReferenceTables\RefIndirectCostRateAgreementIndicator.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefCanadianProvinceAbbreviation.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefComprehensiveSupportAndImprovementIdentificationType.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefCRDCJusticeFacilityType.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefCredentialAwardIdentificationSystem.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefCredentialAwardRelationshipType.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefCredentialAwardStatusType.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefEdFactsCohortGraduationStatus.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefEnglishLearnerExitedStatus.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefEvaluationRequiredIndicator.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefHarassmentOrBullyingReligionType.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefHotspotNeedIndicator.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefHotspotReceivedIndicator.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefMagnetOrSpecialProgramEmphasisType.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefNeglectedOrDelinquentLongTermStatus.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefNeglectedOrDelinquentProgramEnrollmentSubpart.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefPreschoolDailyLength.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefServiceChargeIndicator.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefStaffEvaluationScale.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefTitleIIILanguageInstructionIndicator.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefWiFiEnabledDeviceNeedIndicator.sql" />
+    <Build Include="dbo\Tables\ReferenceTables\RefWiFiEnabledDeviceReceivedIndicator.sql" />
+    <Build Include="dbo\Tables\DataTables\JobEvaluation.sql" />
+    <Build Include="dbo\Tables\DataTables\ProgramFinancialCharacteristic.sql" />
+    <Build Include="dbo\Tables\CredentialAwardIdentifier.sql" />
+    <Build Include="dbo\Tables\CredentialAwardStatus.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CEDS-IDS-Project.refactorlog" />

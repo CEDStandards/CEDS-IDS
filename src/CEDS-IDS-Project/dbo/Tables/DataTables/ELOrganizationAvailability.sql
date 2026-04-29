@@ -11,12 +11,14 @@
     [RecordEndDateTime]            DATETIME       NULL,
     [RecordStatusId]               INT            NULL,
     [DataCollectionId]             INT            NULL,
+    [RefPreschoolDailyLengthId]    INT            NULL,
     CONSTRAINT [PK_ELOrganizationAvailability] PRIMARY KEY CLUSTERED ([ELOrganizationAvailabilityId] ASC),
     CONSTRAINT [FK_ELOrganizationAvailability_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_ELOrganizationAvailability_Organization1] FOREIGN KEY ([OrganizationId]) REFERENCES [dbo].[Organization] ([OrganizationId]),
     CONSTRAINT [FK_ELOrganizationAvailability_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId]),
     CONSTRAINT [FK_ELOrganizationAvailability_RefEnvironmentSetting] FOREIGN KEY ([RefEnvironmentSettingId]) REFERENCES [dbo].[RefEnvironmentSetting] ([RefEnvironmentSettingId]),
-    CONSTRAINT [FK_ELOrganizationAvailability_RefServiceOption] FOREIGN KEY ([RefServiceOptionId]) REFERENCES [dbo].[RefServiceOption] ([RefServiceOptionId])
+    CONSTRAINT [FK_ELOrganizationAvailability_RefServiceOption] FOREIGN KEY ([RefServiceOptionId]) REFERENCES [dbo].[RefServiceOption] ([RefServiceOptionId]),
+    CONSTRAINT [FK_ELOrganizationAvailability_RefPreschoolDailyLength] FOREIGN KEY ([RefPreschoolDailyLengthId]) REFERENCES [dbo].[RefPreschoolDailyLength] ([RefPreschoolDailyLengthId])
 );
 
 
@@ -187,3 +189,22 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ELOrganizationAvailability', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The portion of a day that a preschool program is provided to the students it serves.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ELOrganizationAvailability', @level2type = N'COLUMN', @level2name = N'RefPreschoolDailyLengthId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Preschool Daily Length', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ELOrganizationAvailability', @level2type = N'COLUMN', @level2name = N'RefPreschoolDailyLengthId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002185', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ELOrganizationAvailability', @level2type = N'COLUMN', @level2name = N'RefPreschoolDailyLengthId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002185', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ELOrganizationAvailability', @level2type = N'COLUMN', @level2name = N'RefPreschoolDailyLengthId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'ELOrganizationAvailability', @level2type = N'COLUMN', @level2name = N'RefPreschoolDailyLengthId';

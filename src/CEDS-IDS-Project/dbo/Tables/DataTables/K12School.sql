@@ -20,6 +20,7 @@
     [RecordEndDateTime]                        DATETIME       NULL,
     [RecordStatusId]                           INT            NULL,
     [DataCollectionId]                         INT            NULL,
+    [RefMagnetOrSpecialProgramEmphasisTypeId]  INT            NULL,
     CONSTRAINT [PK_K12School] PRIMARY KEY NONCLUSTERED ([K12SchoolId] ASC),
     CONSTRAINT [FK_K12School_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_K12School_K12CharterSchoolAuthorizerAgency] FOREIGN KEY ([K12CharterSchoolAuthorizerAgencyId]) REFERENCES [dbo].[K12CharterSchoolAuthorizerAgency] ([K12CharterSchoolAuthorizerAgencyId]),
@@ -31,7 +32,8 @@
     CONSTRAINT [FK_K12School_RefIncreasedLearningTimeType] FOREIGN KEY ([RefIncreasedLearningTimeTypeId]) REFERENCES [dbo].[RefIncreasedLearningTimeType] ([RefIncreasedLearningTimeTypeId]),
     CONSTRAINT [FK_K12School_RefSchoolLevel] FOREIGN KEY ([RefSchoolLevelId]) REFERENCES [dbo].[RefSchoolLevel] ([RefSchoolLevelId]),
     CONSTRAINT [FK_K12School_RefSchoolType] FOREIGN KEY ([RefSchoolTypeId]) REFERENCES [dbo].[RefSchoolType] ([RefSchoolTypeId]),
-    CONSTRAINT [FK_K12School_RefStatePovertyDesignation] FOREIGN KEY ([RefStatePovertyDesignationId]) REFERENCES [dbo].[RefStatePovertyDesignation] ([RefStatePovertyDesignationId])
+    CONSTRAINT [FK_K12School_RefStatePovertyDesignation] FOREIGN KEY ([RefStatePovertyDesignationId]) REFERENCES [dbo].[RefStatePovertyDesignation] ([RefStatePovertyDesignationId]),
+    CONSTRAINT [FK_K12School_RefMagnetOrSpecialProgramEmphasisType] FOREIGN KEY ([RefMagnetOrSpecialProgramEmphasisTypeId]) REFERENCES [dbo].[RefMagnetOrSpecialProgramEmphasisType] ([RefMagnetOrSpecialProgramEmphasisTypeId])
 );
 
 
@@ -362,3 +364,22 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'001918', @le
 GO
 EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=20899', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12School', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The type of emphasis a school or special program has as it relates to its population.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12School', @level2type = N'COLUMN', @level2name = N'RefMagnetOrSpecialProgramEmphasisTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Magnet or Special Program Emphasis Type', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12School', @level2type = N'COLUMN', @level2name = N'RefMagnetOrSpecialProgramEmphasisTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002183', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12School', @level2type = N'COLUMN', @level2name = N'RefMagnetOrSpecialProgramEmphasisTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002183', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12School', @level2type = N'COLUMN', @level2name = N'RefMagnetOrSpecialProgramEmphasisTypeId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12School', @level2type = N'COLUMN', @level2name = N'RefMagnetOrSpecialProgramEmphasisTypeId';

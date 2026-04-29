@@ -10,10 +10,12 @@
     [RecordEndDateTime]              DATETIME      NULL,
     [RecordStatusId]                 INT           NULL,
     [DataCollectionId]               INT           NULL,
+    [RefEdFactsCohortGraduationStatusId] INT           NULL,
     CONSTRAINT [PK_K12StudentCohort] PRIMARY KEY CLUSTERED ([K12StudentCohortId] ASC),
     CONSTRAINT [FK_K12StudentCohort_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_K12StudentCohort_OrganizationPersonRole] FOREIGN KEY ([OrganizationPersonRoleId]) REFERENCES [dbo].[OrganizationPersonRole] ([OrganizationPersonRoleId]),
-    CONSTRAINT [FK_K12StudentCohort_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId])
+    CONSTRAINT [FK_K12StudentCohort_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId]),
+    CONSTRAINT [FK_K12StudentCohort_RefEdFactsCohortGraduationStatus] FOREIGN KEY ([RefEdFactsCohortGraduationStatusId]) REFERENCES [dbo].[RefEdFactsCohortGraduationStatus] ([RefEdFactsCohortGraduationStatusId])
 );
 
 
@@ -164,3 +166,22 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StudentCohort', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'An indication of whether students in a cohort graduated with a high school diploma within the allowable timeframe.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StudentCohort', @level2type = N'COLUMN', @level2name = N'RefEdFactsCohortGraduationStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'EDFacts Cohort Graduation Status', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StudentCohort', @level2type = N'COLUMN', @level2name = N'RefEdFactsCohortGraduationStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002179', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StudentCohort', @level2type = N'COLUMN', @level2name = N'RefEdFactsCohortGraduationStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002179', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StudentCohort', @level2type = N'COLUMN', @level2name = N'RefEdFactsCohortGraduationStatusId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'K12StudentCohort', @level2type = N'COLUMN', @level2name = N'RefEdFactsCohortGraduationStatusId';

@@ -21,6 +21,7 @@
     [RecordStatusId]                  INT            NULL,
     [DataCollectionId]                INT            NULL,
     [RefLocaleId]                     INT            NULL,
+    [RefCanadianProvinceAbbreviationId] INT            NULL,
     CONSTRAINT [PK_Address] PRIMARY KEY CLUSTERED ([LocationAddressId] ASC),
     CONSTRAINT [FK_LocationAddress_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_LocationAddress_Location] FOREIGN KEY ([LocationId]) REFERENCES [dbo].[Location] ([LocationId]) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -29,7 +30,8 @@
     CONSTRAINT [FK_LocationAddress_RefCounty] FOREIGN KEY ([RefCountyId]) REFERENCES [dbo].[RefCounty] ([RefCountyId]),
     CONSTRAINT [FK_LocationAddress_RefERSRuralUrbanContinuumCode] FOREIGN KEY ([RefERSRuralUrbanContinuumCodeId]) REFERENCES [dbo].[RefERSRuralUrbanContinuumCode] ([RefERSRuralUrbanContinuumCodeId]),
     CONSTRAINT [FK_LocationAddress_RefState] FOREIGN KEY ([RefStateId]) REFERENCES [dbo].[RefState] ([RefStateId]),
-    CONSTRAINT [FK_LocationAddress_RefLocale] FOREIGN KEY ([RefLocaleId]) REFERENCES [dbo].[RefLocale] ([RefLocaleId])
+    CONSTRAINT [FK_LocationAddress_RefLocale] FOREIGN KEY ([RefLocaleId]) REFERENCES [dbo].[RefLocale] ([RefLocaleId]),
+    CONSTRAINT [FK_LocationAddress_RefCanadianProvinceAbbreviation] FOREIGN KEY ([RefCanadianProvinceAbbreviationId]) REFERENCES [dbo].[RefCanadianProvinceAbbreviation] ([RefCanadianProvinceAbbreviationId])
 );
 
 
@@ -350,3 +352,20 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CED
 
 
 GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'The abbreviation for the province (within Canada) in which an address is located.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'LocationAddress', @level2type = N'COLUMN', @level2name = N'RefCanadianProvinceAbbreviationId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Canadian Province Abbreviation', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'LocationAddress', @level2type = N'COLUMN', @level2name = N'RefCanadianProvinceAbbreviationId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002177', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'LocationAddress', @level2type = N'COLUMN', @level2name = N'RefCanadianProvinceAbbreviationId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002177', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'LocationAddress', @level2type = N'COLUMN', @level2name = N'RefCanadianProvinceAbbreviationId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'LocationAddress', @level2type = N'COLUMN', @level2name = N'RefCanadianProvinceAbbreviationId';

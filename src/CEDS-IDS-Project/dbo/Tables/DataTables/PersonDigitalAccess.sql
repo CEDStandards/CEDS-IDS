@@ -10,6 +10,10 @@
     [RecordEndDateTime]                       DATETIME NULL,
     [RecordStatusId]                          INT      NULL,
     [DataCollectionId]                        INT      NULL,
+    [RefHotspotNeedIndicatorId]                INT      NULL,
+    [RefHotspotReceivedIndicatorId]            INT      NULL,
+    [RefWiFiEnabledDeviceNeedIndicatorId]      INT      NULL,
+    [RefWiFiEnabledDeviceReceivedIndicatorId]  INT      NULL,
     CONSTRAINT [PK_PersonDigitalAccess] PRIMARY KEY CLUSTERED ([PersonDigitalAccessId] ASC),
     CONSTRAINT [FK_PersonDigitalAccess_DataCollection] FOREIGN KEY ([DataCollectionId]) REFERENCES [dbo].[DataCollection] ([DataCollectionId]),
     CONSTRAINT [FK_PersonDigitalAccess_Person] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Person] ([PersonId]),
@@ -17,7 +21,11 @@
     CONSTRAINT [FK_PersonDigitalAccess_RecordStatus] FOREIGN KEY ([RecordStatusId]) REFERENCES [dbo].[RecordStatus] ([RecordStatusId]),
     CONSTRAINT [FK_PersonDigitalAccess_RefBarrierToInternetAccessInResidence] FOREIGN KEY ([RefBarrierToInternetAccessInResidenceId]) REFERENCES [dbo].[RefBarrierToInternetAccessInResidence] ([RefBarrierToInternetAccessInResidenceId]),
     CONSTRAINT [FK_PersonDigitalAccess_RefInternetAccessTypeInResidence] FOREIGN KEY ([RefInternetAccessTypeInResidenceId]) REFERENCES [dbo].[RefInternetAccessTypeInResidence] ([RefInternetAccessTypeInResidenceId]),
-    CONSTRAINT [FK_PersonDigitalAccess_RefInternetPerformanceInResidence] FOREIGN KEY ([RefInternetPerformanceInResidenceId]) REFERENCES [dbo].[RefInternetPerformanceInResidence] ([RefInternetPerformanceInResidenceId])
+    CONSTRAINT [FK_PersonDigitalAccess_RefInternetPerformanceInResidence] FOREIGN KEY ([RefInternetPerformanceInResidenceId]) REFERENCES [dbo].[RefInternetPerformanceInResidence] ([RefInternetPerformanceInResidenceId]),
+    CONSTRAINT [FK_PersonDigitalAccess_RefHotspotNeedIndicator] FOREIGN KEY ([RefHotspotNeedIndicatorId]) REFERENCES [dbo].[RefHotspotNeedIndicator] ([RefHotspotNeedIndicatorId]),
+    CONSTRAINT [FK_PersonDigitalAccess_RefHotspotReceivedIndicator] FOREIGN KEY ([RefHotspotReceivedIndicatorId]) REFERENCES [dbo].[RefHotspotReceivedIndicator] ([RefHotspotReceivedIndicatorId]),
+    CONSTRAINT [FK_PersonDigitalAccess_RefWiFiEnabledDeviceNeedIndicator] FOREIGN KEY ([RefWiFiEnabledDeviceNeedIndicatorId]) REFERENCES [dbo].[RefWiFiEnabledDeviceNeedIndicator] ([RefWiFiEnabledDeviceNeedIndicatorId]),
+    CONSTRAINT [FK_PersonDigitalAccess_RefWiFiEnabledDeviceReceivedIndicator] FOREIGN KEY ([RefWiFiEnabledDeviceReceivedIndicatorId]) REFERENCES [dbo].[RefWiFiEnabledDeviceReceivedIndicator] ([RefWiFiEnabledDeviceReceivedIndicatorId])
 );
 
 
@@ -148,3 +156,82 @@ EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://ceds.ed.g
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RecordEndDateTime';
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'Indicates whether a student needs a Wi-Fi hotspot to access remote instruction.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Hotspot Need Indicator', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002190', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002190', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'Indicates whether a student received a Wi-Fi hotspot to access remote instruction.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Hotspot Received Indicator', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002191', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002191', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefHotspotReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'Indicates a student''s need for a Wi-Fi enabled device to access remote instruction.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Wi-Fi Enabled Device Need Indicator', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002186', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002186', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceNeedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Def_Desc', @value = N'Indicates whether a student received a Wi-Fi enabled device to access remote instruction.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_Element', @value = N'Wi-Fi Enabled Device Received Indicator', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_GlobalId', @value = N'C002187', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'CEDS_URL', @value = N'https://w3id.org/CEDStandards/terms/C002187', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceReceivedIndicatorId';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'See the CEDS_GlobalId, CEDS_Element, CEDS_URL, and CEDS_Def_Desc extended properties.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'PersonDigitalAccess', @level2type = N'COLUMN', @level2name = N'RefWiFiEnabledDeviceReceivedIndicatorId';
