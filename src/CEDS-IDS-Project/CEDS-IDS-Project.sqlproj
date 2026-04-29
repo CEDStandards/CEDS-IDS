@@ -1232,6 +1232,8 @@
     <Build Include="dbo\Tables\ReferenceTables\RefWiFiEnabledDeviceReceivedIndicator.sql" />
     <Build Include="dbo\Tables\DataTables\JobEvaluation.sql" />
     <Build Include="dbo\Tables\DataTables\ProgramFinancialCharacteristic.sql" />
+    <Build Include="dbo\Tables\CredentialAwardIdentifier.sql" />
+    <Build Include="dbo\Tables\CredentialAwardStatus.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CEDS-IDS-Project.refactorlog" />
